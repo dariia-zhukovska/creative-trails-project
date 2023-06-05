@@ -1,7 +1,11 @@
 import styles from "./Footer.module.css";
-import { ReactComponent as LightLinkedin } from "../../assets/icons/lightlinkedin.svg";
-import { ReactComponent as LightInstagram } from "../../assets/icons/lightInstagram.svg";
-import { ReactComponent as LightGithub } from "../../assets/icons/lightGithub.svg";
+// import { ReactComponent as LightLinkedin } from "../../assets/icons/lightlinkedin.svg";
+// import { ReactComponent as LightInstagram } from "../../assets/icons/lightInstagram.svg";
+// import { ReactComponent as LightGithub } from "../../assets/icons/lightGithub.svg";
+
+import lightLinkedin from "../../assets/icons/lightlinkedin.svg";
+import lightInstagram from "../../assets/icons/lightInstagram.svg";
+import lightGithub from "../../assets/icons/lightGithub.svg";
 
 export default function Footer() {
   return (
@@ -14,7 +18,7 @@ export default function Footer() {
             role="button"
             target="blank"
           >
-            <LightLinkedin />
+            <img src={lightLinkedin} alt="" />
           </a>
         </div>
         <div className={styles.instagram}>
@@ -23,7 +27,7 @@ export default function Footer() {
             role="button"
             target="blank"
           >
-            <LightInstagram />
+            <img src={lightInstagram} alt="" />
           </a>
         </div>
         <div className={styles.gitHub}>
@@ -32,7 +36,7 @@ export default function Footer() {
             role="button"
             target="blank"
           >
-            <LightGithub />
+            <img src={lightGithub} alt="" />
           </a>
         </div>
       </div>
