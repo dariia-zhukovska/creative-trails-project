@@ -9,7 +9,7 @@
 
 .footerLogo {
   width: 100%;
-  background-image: url("../../../public/assets/icons/light_logo.svg");
+  background-image: url("/assets/icons/light_logo.svg");
   background-repeat: no-repeat;
   background-position-x: start;
   background-position-y: center;

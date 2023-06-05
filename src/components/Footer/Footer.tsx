@@ -1,11 +1,7 @@
 import styles from "./Footer.module.css";
-// import { ReactComponent as LightLinkedin } from "../../assets/icons/lightlinkedin.svg";
-// import { ReactComponent as LightInstagram } from "../../assets/icons/lightInstagram.svg";
-// import { ReactComponent as LightGithub } from "../../assets/icons/lightGithub.svg";
-
-// import lightLinkedin from "./lightLinkedin.svg";
-// import lightInstagram from "./lightInstagram.svg";
-// import lightGithub from "./lightGithub.svg";
+// import { ReactComponent as LightLinkedin } from "../../../public/assets/icons/lightlinkedin.svg";
+// import { ReactComponent as LightInstagram } from "../../../public/assets/icons/lightInstagram.svg";
+// import { ReactComponent as LightGithub } from "../../../public/assets/icons/lightGithub.svg";
 
 import lightLinkedin from "../../../public/assets/icons/lightLinkedin.svg";
 import lightInstagram from "../../../public/assets/icons/lightInstagram.svg";
