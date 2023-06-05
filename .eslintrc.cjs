@@ -1,5 +1,5 @@
 
-const moduleAlias = require('module').createRequire(import.meta.url);
+// const moduleAlias = require('module').createRequire(import.meta.url);
 module.exports = {
   env: { browser: true, es2020: true },
   extends: [
