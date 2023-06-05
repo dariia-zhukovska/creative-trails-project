@@ -1,5 +1,4 @@
 import { ITourListData } from "../../types";
-import img from "../../assets/img/lisbon.jpg";
 
 import styles from "./Tour.module.css";
 
