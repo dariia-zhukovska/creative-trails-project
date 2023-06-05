@@ -1,0 +1,90 @@
+/* .tourItemDescription {
+  display: none;
+}
+
+.tourItemDescription .isActive {
+  display: block;
+}
+
+.tourItemShortDescription {
+  display: none;
+}
+
+.tourItemShortDescription .isActive {
+  display: block;
+} */
+
+.tourItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 40px 16px 30px;
+  width: 360px;
+  box-shadow: 1px 1px 20px rgba(20, 20, 20, 0.25);
+  border-radius: 12px;
+}
+
+.tourItemImage {
+  display: flex;
+
+  margin: 16px auto 10px auto;
+  height: 340px;
+  transition: all 0.2s ease-in-out;
+}
+
+.tourItemImage:hover {
+  transform: scale(1.1);
+}
+
+.tourDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tourItemTitle {
+  max-width: 360px;
+  color: black;
+  font-size: 24px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tourItemAuthor {
+  color: #808080;
+  font-size: 20px;
+  max-width: 218px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tourItemPriceLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.tourItemPrice {
+  color: #09B3B3;
+  font-size: 24px;
+  font-weight: 500;
+  align-self: center;
+}
+
+.tourItemButton {
+  padding: 12px 30px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #09B3B3;
+  border-radius: 8px;
+  border: 2px solid #09B3B3;
+  background-color: transparent;
+}
+
+.tourItemButton:hover {
+  transform: scale(1.2);
+}
