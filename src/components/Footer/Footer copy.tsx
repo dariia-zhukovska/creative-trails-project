@@ -3,9 +3,9 @@ import styles from "./Footer.module.css";
 // import { ReactComponent as LightInstagram } from "../../assets/icons/lightInstagram.svg";
 // import { ReactComponent as LightGithub } from "../../assets/icons/lightGithub.svg";
 
-import lightLinkedin from "./lightLinkedin.svg";
-import lightInstagram from "./lightInstagram.svg";
-import lightGithub from "./lightGithub.svg";
+import lightLinkedin from "../../assets/icons/lightLinkedin.svg";
+import lightInstagram from "../../assets/icons/lightInstagram.svg";
+import lightGithub from "../../assets/icons/lightGithub.svg";
 
 export default function Footer() {
   return (
