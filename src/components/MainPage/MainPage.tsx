@@ -3,12 +3,14 @@ import { useState } from "react";
 import styles from "./MainPage.module.css";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
+import clsx from "clsx";
 
 interface IProps {
   isLight: boolean;
 }
 function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
+  const titleClass = clsx(isLight ? styles.title : styles.darkTitle);
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
@@ -17,9 +19,7 @@ function MainPage({ isLight }: IProps) {
   return (
     <div className={`${isLight ? styles.light : styles.dark}`}>
       <div className={styles.navContainer}>
-        <div className={`${isLight ? styles.title : styles.darkTitle}`}>
-          Creative Trails - Exclusive tours
-        </div>
+        <div className={titleClass}>Creative Trails - Exclusive tours</div>
         <div className={styles.left}>
           <div className={styles.inputContainer}>
             <div className={styles.inputBox}>

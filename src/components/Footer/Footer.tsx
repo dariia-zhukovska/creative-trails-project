@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import clsx from "clsx";
 
 import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
 import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
@@ -12,15 +13,14 @@ interface IProps {
 }
 
 function Footer({ isLight }: IProps) {
+  const footerClass = clsx(
+    isLight ? styles.footerContainer : styles.darkFooterContainer
+  );
+
+  const footerLogo = clsx(isLight ? styles.footerLogo : styles.darkFooterLogo);
   return (
-    <footer
-      className={`${
-        isLight ? styles.footerContainer : styles.darkFooterContainer
-      }`}
-    >
-      <div
-        className={isLight ? styles.footerLogo : styles.darkFooterLogo}
-      ></div>
+    <footer className={footerClass}>
+      <div className={footerLogo}></div>
       <div className={styles.socialLinks}>
         <div className={styles.linkedIn}>
           <a
