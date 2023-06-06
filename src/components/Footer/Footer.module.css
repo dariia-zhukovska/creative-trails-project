@@ -2,14 +2,14 @@
 .darkFooterContainer {
   display: flex;
   justify-content: space-between;
-  background-color: white;
   padding: 0 32px;
   height: 80px;
+  background-color: white;
   box-shadow: 0px -8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .darkFooterContainer {
-  background-color: #2B3945;
+  background-color: #2b3945;
   box-shadow: 0px 4px 30px rgba(182, 168, 168, 0.15);
 }
 
@@ -23,7 +23,6 @@
 }
 
 .darkFooterLogo {
-
   background-image: url("/assets/icons/dark_logo.svg");
 }
 

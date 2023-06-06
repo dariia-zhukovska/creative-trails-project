@@ -1,0 +1,13 @@
+.listButtons {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.listButtons button {
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
