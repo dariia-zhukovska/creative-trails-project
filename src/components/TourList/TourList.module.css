@@ -1,5 +1,4 @@
-.tourList,
-.darkTourList {
+.gridView {
   display: flex;
   flex-wrap: wrap;
   place-content: center;
@@ -7,11 +6,9 @@
   padding: 16px;
 }
 
-
-.lightMain {
-  background-color: #FAFAFA;
-}
-
-.darkMain {
-  background-color: #202C37;
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  padding: 16px;
 }

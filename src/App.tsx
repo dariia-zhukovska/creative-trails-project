@@ -1,8 +1,8 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import TourList from "./components/TourList/TourList";
 import { useState } from "react";
+import MainPage from "./components/MainPage/MainPage";
 
 function App() {
   const [isThemeLight, setIsThemeLight] = useState(true);
@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Header isLight={isThemeLight} onThemeChange={handleThemeChange} />
-      <TourList isLight={isThemeLight} />
+      <MainPage isLight={isThemeLight} />
       <Footer isLight={isThemeLight} />
     </>
   );
