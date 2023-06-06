@@ -84,7 +84,7 @@
   position: absolute;
   top: 30%;
   left: 90%;
-  background-image: url("../../assets/icons/icon-search.svg");
+  background-image: url("/assets/img/icon-search.svg");
 }
 
 .select_container {
