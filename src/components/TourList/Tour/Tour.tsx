@@ -1,4 +1,5 @@
-import { ITourListData } from "../../types";
+import clsx from "clsx";
+import { ITourListData } from "../../../types";
 
 import styles from "./Tour.module.css";
 
@@ -8,9 +9,15 @@ interface IProps {
   view: boolean;
 }
 
-export default function Tour({ tourItemData, isLight, view }: IProps) {
+function Tour({ tourItemData, isLight, view }: IProps) {
+  const liItemClass = clsx(isLight ? styles.tourItem : styles.darkTourItem);
+  const tourItemClass = clsx(
+    styles.listView,
+    isLight ? styles.tourItem : styles.darkTourItem
+  );
+
   return view ? (
-    <li className={`${isLight ? styles.tourItem : styles.darkTourItem}`}>
+    <li className={liItemClass}>
       <div>
         <img
           src={tourItemData.image}
@@ -19,7 +26,7 @@ export default function Tour({ tourItemData, isLight, view }: IProps) {
         />
       </div>
       <div className={styles.tourDescription}>
-        <div className={styles.tourItemTitle}>{tourItemData.title}</div>
+        <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
         <div className={styles.tourItemPriceLine}>
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}
@@ -31,17 +38,13 @@ export default function Tour({ tourItemData, isLight, view }: IProps) {
             View
           </button>
         </div>
-        <div className={styles.tourItemShortDescription}>
+        <p className={styles.tourItemShortDescription}>
           {tourItemData.description}
-        </div>
+        </p>
       </div>
     </li>
   ) : (
-    <li
-      className={`${styles.listView} ${
-        isLight ? styles.tourItem : styles.darkTourItem
-      } `}
-    >
+    <li className={tourItemClass}>
       <div>
         <img
           src={tourItemData.image}
@@ -49,15 +52,15 @@ export default function Tour({ tourItemData, isLight, view }: IProps) {
           className={styles.tourItemImageList}
         />
         <div className={styles.tourDescriptionList}>
-          <div className={styles.tourItemTitle}>{tourItemData.title}</div>
+          <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
           <div className={styles.tourItemPriceLine}>
             <div className={styles.tourItemPrice}>
               {`${tourItemData.price} $`}
             </div>
           </div>
-          <div className={styles.tourItemShortDescription}>
+          <p className={styles.tourItemShortDescription}>
             {tourItemData.description}
-          </div>
+          </p>
         </div>
       </div>
 
@@ -70,3 +73,5 @@ export default function Tour({ tourItemData, isLight, view }: IProps) {
     </li>
   );
 }
+
+export default Tour;

@@ -1,29 +1,26 @@
 import styles from "./Footer.module.css";
-// import { ReactComponent as LightLinkedin } from "../../../public/assets/icons/lightlinkedin.svg";
-// import { ReactComponent as LightInstagram } from "../../../public/assets/icons/lightInstagram.svg";
-// import { ReactComponent as LightGithub } from "../../../public/assets/icons/lightGithub.svg";
+import clsx from "clsx";
 
-import lightLinkedin from "../../../public/assets/icons/lightLinkedin.svg";
-import darkLinkedin from "../../../public/assets/icons/darkLinkedin.svg";
-import lightInstagram from "../../../public/assets/icons/lightInstagram.svg";
-import darkInstagram from "../../../public/assets/icons/darkInstagram.svg";
-import lightGithub from "../../../public/assets/icons/lightGithub.svg";
-import darkGithub from "../../../public/assets/icons/darkGithub.svg";
+import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
+import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
+import lightInstagram from "/src/assets/icons/lightInstagram.svg";
+import darkInstagram from "/src/assets/icons/darkInstagram.svg";
+import lightGithub from "/src/assets/icons/lightGithub.svg";
+import darkGithub from "/src/assets/icons/darkGithub.svg";
 
 interface IProps {
   isLight: boolean;
 }
 
-export default function Footer({ isLight }: IProps) {
+function Footer({ isLight }: IProps) {
+  const footerClass = clsx(
+    isLight ? styles.footerContainer : styles.darkFooterContainer
+  );
+
+  const footerLogo = clsx(isLight ? styles.footerLogo : styles.darkFooterLogo);
   return (
-    <footer
-      className={`${
-        isLight ? styles.footerContainer : styles.darkFooterContainer
-      }`}
-    >
-      <div
-        className={isLight ? styles.footerLogo : styles.darkFooterLogo}
-      ></div>
+    <footer className={footerClass}>
+      <div className={footerLogo}></div>
       <div className={styles.socialLinks}>
         <div className={styles.linkedIn}>
           <a
@@ -59,3 +56,5 @@ export default function Footer({ isLight }: IProps) {
     </footer>
   );
 }
+
+export default Footer;

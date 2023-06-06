@@ -1,8 +1,8 @@
-import "./App.css";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import { useState } from "react";
+import Header from "./components/Header/Header";
 import MainPage from "./components/MainPage/MainPage";
+import Footer from "./components/Footer/Footer";
+import "./App.css";
 
 function App() {
   const [isThemeLight, setIsThemeLight] = useState(true);

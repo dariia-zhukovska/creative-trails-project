@@ -47,7 +47,7 @@
   top: 10px;
   width: 24px;
   height: 24px;
-  background-image: url("../../../public/assets/icons/light_search.svg");
+  background-image: url("../../assets/icons/icon-search.svg");
   background-repeat: no-repeat;
   border: none;
 }
@@ -84,7 +84,7 @@
   position: absolute;
   top: 30%;
   left: 90%;
-  background-image: url("../../../public/assets/icons/icon-search.svg");
+  background-image: url("/assets/img/icon-search.svg");
 }
 
 .select_container {
