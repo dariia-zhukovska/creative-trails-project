@@ -4,13 +4,26 @@ import styles from "./Footer.module.css";
 // import { ReactComponent as LightGithub } from "../../../public/assets/icons/lightGithub.svg";
 
 import lightLinkedin from "../../../public/assets/icons/lightLinkedin.svg";
+import darkLinkedin from "../../../public/assets/icons/darkLinkedin.svg";
 import lightInstagram from "../../../public/assets/icons/lightInstagram.svg";
+import darkInstagram from "../../../public/assets/icons/darkInstagram.svg";
 import lightGithub from "../../../public/assets/icons/lightGithub.svg";
+import darkGithub from "../../../public/assets/icons/darkGithub.svg";
 
-export default function Footer() {
+interface IProps {
+  isLight: boolean;
+}
+
+export default function Footer({ isLight }: IProps) {
   return (
-    <footer className={styles.footerContainer}>
-      <div className={styles.footerLogo}></div>
+    <footer
+      className={`${
+        isLight ? styles.footerContainer : styles.darkFooterContainer
+      }`}
+    >
+      <div
+        className={isLight ? styles.footerLogo : styles.darkFooterLogo}
+      ></div>
       <div className={styles.socialLinks}>
         <div className={styles.linkedIn}>
           <a
@@ -18,7 +31,7 @@ export default function Footer() {
             role="button"
             target="blank"
           >
-            <img src={lightLinkedin} alt="" />
+            <img src={isLight ? lightLinkedin : darkLinkedin} alt="linkedin" />
           </a>
         </div>
         <div className={styles.instagram}>
@@ -27,7 +40,10 @@ export default function Footer() {
             role="button"
             target="blank"
           >
-            <img src={lightInstagram} alt="" />
+            <img
+              src={isLight ? lightInstagram : darkInstagram}
+              alt="instagram"
+            />
           </a>
         </div>
         <div className={styles.gitHub}>
@@ -36,7 +52,7 @@ export default function Footer() {
             role="button"
             target="blank"
           >
-            <img src={lightGithub} alt="" />
+            <img src={isLight ? lightGithub : darkGithub} alt="github" />
           </a>
         </div>
       </div>

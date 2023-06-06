@@ -1,0 +1,14 @@
+.themeButton {
+  padding: 10px 30px;
+  width: 180px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #09B3B3;
+  border-radius: 8px;
+  border: 2px solid #09B3B3;
+  background-color: transparent;
+}
+
+.themeButton:hover {
+  transform: scale(1.1);
+}

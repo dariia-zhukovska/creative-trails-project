@@ -1,32 +1,24 @@
-/* .tourItemDescription {
-  display: none;
-}
-
-.tourItemDescription .isActive {
-  display: block;
-}
-
-.tourItemShortDescription {
-  display: none;
-}
-
-.tourItemShortDescription .isActive {
-  display: block;
-} */
-
-.tourItem {
+.tourItem,
+.darkTourItem {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 8px 40px 16px 30px;
   width: 360px;
-  box-shadow: 1px 1px 20px rgba(20, 20, 20, 0.25);
   border-radius: 12px;
+}
+
+.tourItem {
+  box-shadow: 1px 1px 20px rgba(20, 20, 20, 0.25);
+}
+
+.darkTourItem {
+  color: white;
+  box-shadow: 0px 4px 30px rgba(238, 238, 238, 0.15);
 }
 
 .tourItemImage {
   display: flex;
-
   margin: 16px auto 10px auto;
   height: 340px;
   transition: all 0.2s ease-in-out;
@@ -44,7 +36,6 @@
 
 .tourItemTitle {
   max-width: 360px;
-  color: black;
   font-size: 24px;
   font-weight: 500;
   overflow: hidden;
