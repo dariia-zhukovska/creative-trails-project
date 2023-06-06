@@ -1,20 +1,17 @@
 import styles from "./Footer.module.css";
-// import { ReactComponent as LightLinkedin } from "../../../public/assets/icons/lightlinkedin.svg";
-// import { ReactComponent as LightInstagram } from "../../../public/assets/icons/lightInstagram.svg";
-// import { ReactComponent as LightGithub } from "../../../public/assets/icons/lightGithub.svg";
 
-import lightLinkedin from "../../../public/assets/icons/lightLinkedin.svg";
-import darkLinkedin from "../../../public/assets/icons/darkLinkedin.svg";
-import lightInstagram from "../../../public/assets/icons/lightInstagram.svg";
-import darkInstagram from "../../../public/assets/icons/darkInstagram.svg";
-import lightGithub from "../../../public/assets/icons/lightGithub.svg";
-import darkGithub from "../../../public/assets/icons/darkGithub.svg";
+import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
+import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
+import lightInstagram from "/src/assets/icons/lightInstagram.svg";
+import darkInstagram from "/src/assets/icons/darkInstagram.svg";
+import lightGithub from "/src/assets/icons/lightGithub.svg";
+import darkGithub from "/src/assets/icons/darkGithub.svg";
 
 interface IProps {
   isLight: boolean;
 }
 
-export default function Footer({ isLight }: IProps) {
+function Footer({ isLight }: IProps) {
   return (
     <footer
       className={`${
@@ -59,3 +56,5 @@ export default function Footer({ isLight }: IProps) {
     </footer>
   );
 }
+
+export default Footer;

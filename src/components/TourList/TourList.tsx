@@ -1,14 +1,14 @@
 import { ITourListData } from "../../types";
 import toursData from "../../data/tours.json";
 import styles from "./TourList.module.css";
-import Tour from "../Tour/Tour";
+import Tour from "./Tour/Tour";
 
 interface IProps {
   isLight: boolean;
   view: boolean;
 }
 
-export default function TourList({ isLight, view }: IProps) {
+function TourList({ isLight, view }: IProps) {
   return (
     <ul className={`${view ? styles.gridView : styles.listView}`}>
       {toursData.tours.map((item: ITourListData) => (
@@ -17,3 +17,5 @@ export default function TourList({ isLight, view }: IProps) {
     </ul>
   );
 }
+
+export default TourList;

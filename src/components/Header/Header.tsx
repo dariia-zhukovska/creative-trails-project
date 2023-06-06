@@ -1,4 +1,4 @@
-import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
+import ThemeSwitcher from "../shared/ThemeSwitcher/ThemeSwitcher";
 import styles from "./Header.module.css";
 
 interface IProps {
@@ -6,7 +6,7 @@ interface IProps {
   onThemeChange: (isLight: boolean) => void;
 }
 
-export default function Header({ isLight, onThemeChange }: IProps) {
+function Header({ isLight, onThemeChange }: IProps) {
   const handleThemeToggle = () => {
     onThemeChange(!isLight);
   };
@@ -29,3 +29,5 @@ export default function Header({ isLight, onThemeChange }: IProps) {
     </header>
   );
 }
+
+export default Header;

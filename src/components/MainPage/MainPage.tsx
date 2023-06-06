@@ -2,13 +2,12 @@ import { useState } from "react";
 
 import styles from "./MainPage.module.css";
 import TourList from "../TourList/TourList";
-import ListViewSwitcher from "../ListViewSwitcher/ListViewSwitcher";
+import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 
 interface IProps {
   isLight: boolean;
 }
-
-export default function MainPage({ isLight }: IProps) {
+function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
 
   const handleViewChange = (isList: boolean) => {
@@ -28,8 +27,6 @@ export default function MainPage({ isLight }: IProps) {
                 type="text"
                 placeholder="Search tour by name"
                 className={styles.searchInput}
-                // onChange={}
-                // value={}
               />
               <i className={styles.search}></i>
             </div>
@@ -43,8 +40,9 @@ export default function MainPage({ isLight }: IProps) {
           </div>
         </div>
       </div>
-
       <TourList isLight={isLight} view={isListView} />
     </div>
   );
 }
+
+export default MainPage;

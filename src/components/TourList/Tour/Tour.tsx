@@ -1,4 +1,4 @@
-import { ITourListData } from "../../types";
+import { ITourListData } from "../../../types";
 
 import styles from "./Tour.module.css";
 
@@ -8,7 +8,7 @@ interface IProps {
   view: boolean;
 }
 
-export default function Tour({ tourItemData, isLight, view }: IProps) {
+function Tour({ tourItemData, isLight, view }: IProps) {
   return view ? (
     <li className={`${isLight ? styles.tourItem : styles.darkTourItem}`}>
       <div>
@@ -70,3 +70,5 @@ export default function Tour({ tourItemData, isLight, view }: IProps) {
     </li>
   );
 }
+
+export default Tour;

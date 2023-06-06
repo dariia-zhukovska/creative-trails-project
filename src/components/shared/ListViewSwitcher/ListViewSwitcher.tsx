@@ -1,17 +1,16 @@
 import styles from "./ListViewSwitcher.module.css";
 
-import lightListIcon from "../../../public/assets/icons/lightListIcon.svg";
-import lightGridIcon from "../../../public/assets/icons/lightGridIcon.svg";
-import darkListIcon from "../../../public/assets/icons/darkListIcon.svg";
-import darkGridIcon from "../../../public/assets/icons/darkGridIcon.svg";
+import lightListIcon from "/src/assets/icons/lightListIcon.svg";
+import lightGridIcon from "/src/assets/icons/lightGridIcon.svg";
+import darkListIcon from "/src/assets/icons/darkListIcon.svg";
+import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
 
 interface IProps {
   isLight: boolean;
   isList: boolean;
   onViewChange: (isList: boolean) => void;
 }
-
-export default function ListViewSwitcher({ isLight, onViewChange }: IProps) {
+function ListViewSwitcher({ isLight, onViewChange }: IProps) {
   const setListView = () => {
     onViewChange(false);
   };
@@ -30,3 +29,5 @@ export default function ListViewSwitcher({ isLight, onViewChange }: IProps) {
     </div>
   );
 }
+
+export default ListViewSwitcher;
