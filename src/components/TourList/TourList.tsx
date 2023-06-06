@@ -3,14 +3,18 @@ import toursData from "../../data/tours.json";
 import styles from "./TourList.module.css";
 import Tour from "../Tour/Tour";
 
-export default function TourList() {
+interface IThemeProps {
+  isLight: boolean;
+}
+
+export default function TourList({ isLight }: IThemeProps) {
   return (
-    <main>
+    <div className={`${isLight ? styles.lightMain : styles.darkMain}`}>
       <ul className={styles.tourList}>
         {toursData.tours.map((item: ITourListData) => (
-          <Tour key={item.id} tourItemData={item} />
+          <Tour key={item.id} tourItemData={item} isLight={isLight} />
         ))}
       </ul>
-    </main>
+    </div>
   );
 }

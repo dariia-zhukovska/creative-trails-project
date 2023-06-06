@@ -1,6 +1,17 @@
-.tourList {
+.tourList,
+.darkTourList {
   display: flex;
   flex-wrap: wrap;
   place-content: center;
   gap: 2vw;
+  padding: 16px;
+}
+
+
+.lightMain {
+  background-color: #FAFAFA;
+}
+
+.darkMain {
+  background-color: #202C37;
 }

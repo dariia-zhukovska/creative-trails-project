@@ -4,15 +4,15 @@ import styles from "./Tour.module.css";
 
 interface IProps {
   tourItemData: ITourListData;
+  isLight: boolean;
 }
 
-export default function Tour({ tourItemData }: IProps) {
+export default function Tour({ tourItemData, isLight }: IProps) {
   return (
-    <li className={styles.tourItem}>
+    <li className={`${isLight ? styles.tourItem : styles.darkTourItem}`}>
       <div>
         <img
           src={tourItemData.image}
-          // src={img}
           alt={tourItemData.title}
           className={styles.tourItemImage}
         />
