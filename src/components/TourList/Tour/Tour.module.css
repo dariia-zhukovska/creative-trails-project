@@ -38,7 +38,7 @@
 }
 
 .tourItemImageList {
-  height: 160px;
+  height: 200px;
   margin-right: 24px;
 }
 
@@ -80,7 +80,6 @@
 
 .tourItemPrice {
   align-self: center;
-
   font-size: 24px;
   font-weight: 500;
   color: #09b3b3;

@@ -13,14 +13,17 @@ interface IProps {
 }
 
 function Footer({ isLight }: IProps) {
-  const footerClass = clsx(
-    isLight ? styles.footerContainer : styles.darkFooterContainer
-  );
-
-  const footerLogo = clsx(isLight ? styles.footerLogo : styles.darkFooterLogo);
   return (
-    <footer className={footerClass}>
-      <div className={footerLogo}></div>
+    <footer
+      className={clsx(styles.footerContainer, {
+        [styles.darkFooterContainer]: !isLight,
+      })}
+    >
+      <div
+        className={clsx(styles.footerLogo, {
+          [styles.darkFooterLogo]: !isLight,
+        })}
+      ></div>
       <div className={styles.socialLinks}>
         <div className={styles.linkedIn}>
           <a
