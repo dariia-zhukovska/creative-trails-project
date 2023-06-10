@@ -4,7 +4,6 @@ import lightListIcon from "/src/assets/icons/lightListIcon.svg";
 import lightGridIcon from "/src/assets/icons/lightGridIcon.svg";
 import darkListIcon from "/src/assets/icons/darkListIcon.svg";
 import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
-import clsx from "clsx";
 
 interface IProps {
   isLight: boolean;
@@ -19,16 +18,13 @@ function ListViewSwitcher({ isLight, onViewChange }: IProps) {
     onViewChange(true);
   };
 
-  const listIconClass = clsx(isLight ? darkListIcon : lightListIcon);
-  const gridIconClass = clsx(isLight ? darkGridIcon : lightGridIcon);
-
   return (
     <div className={styles.listButtons}>
       <button className={styles.listButton} onClick={setListView}>
-        <img src={listIconClass} alt="list-icon" />
+        <img src={isLight ? darkListIcon : lightListIcon} alt="list-icon" />
       </button>
       <button className={styles.gridButton} onClick={setGridView}>
-        <img src={gridIconClass} alt="grid-icon" />
+        <img src={isLight ? darkGridIcon : lightGridIcon} alt="grid-icon" />
       </button>
     </div>
   );

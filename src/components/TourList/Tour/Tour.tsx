@@ -6,18 +6,12 @@ import styles from "./Tour.module.css";
 interface IProps {
   tourItemData: ITourListData;
   isLight: boolean;
-  view: boolean;
+  isList: boolean;
 }
 
-function Tour({ tourItemData, isLight, view }: IProps) {
-  const liItemClass = clsx(isLight ? styles.tourItem : styles.darkTourItem);
-  const tourItemClass = clsx(
-    styles.listView,
-    isLight ? styles.tourItem : styles.darkTourItem
-  );
-
-  return view ? (
-    <li className={liItemClass}>
+function Tour({ tourItemData, isLight, isList }: IProps) {
+  return isList ? (
+    <li className={clsx(styles.tourItem, { [styles.darkTourItem]: !isLight })}>
       <div>
         <img
           src={tourItemData.image}
@@ -27,10 +21,11 @@ function Tour({ tourItemData, isLight, view }: IProps) {
       </div>
       <div className={styles.tourDescription}>
         <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+        <p className={styles.tourItemShortDescription}>
+          {tourItemData.description}
+        </p>
         <div className={styles.tourItemPriceLine}>
-          <div className={styles.tourItemPrice}>
-            {`${tourItemData.price} $`}
-          </div>
+          <p className={styles.tourItemPrice}>{`${tourItemData.price} $`}</p>
           <button
             className={styles.tourItemButton}
             onClick={() => console.log("Button clicked")}
@@ -38,13 +33,14 @@ function Tour({ tourItemData, isLight, view }: IProps) {
             View
           </button>
         </div>
-        <p className={styles.tourItemShortDescription}>
-          {tourItemData.description}
-        </p>
       </div>
     </li>
   ) : (
-    <li className={tourItemClass}>
+    <li
+      className={clsx(styles.listView, styles.tourItem, {
+        [styles.darkTourItem]: !isLight,
+      })}
+    >
       <div>
         <img
           src={tourItemData.image}
@@ -54,16 +50,13 @@ function Tour({ tourItemData, isLight, view }: IProps) {
         <div className={styles.tourDescriptionList}>
           <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
           <div className={styles.tourItemPriceLine}>
-            <div className={styles.tourItemPrice}>
-              {`${tourItemData.price} $`}
-            </div>
+            <p className={styles.tourItemPrice}>{`${tourItemData.price} $`}</p>
           </div>
           <p className={styles.tourItemShortDescription}>
             {tourItemData.description}
           </p>
         </div>
       </div>
-
       <button
         className={styles.tourItemButtonList}
         onClick={() => console.log("Button clicked")}

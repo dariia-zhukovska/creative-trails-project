@@ -10,16 +10,17 @@ interface IProps {
 }
 function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
-  const titleClass = clsx(isLight ? styles.title : styles.darkTitle);
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
   };
 
   return (
-    <div className={`${isLight ? styles.light : styles.dark}`}>
+    <div className={clsx(styles.light, { [styles.dark]: !isLight })}>
       <div className={styles.navContainer}>
-        <div className={titleClass}>Creative Trails - Exclusive tours</div>
+        <div className={clsx(styles.title, { [styles.darkTitle]: !isLight })}>
+          Creative Trails - Exclusive tours
+        </div>
         <div className={styles.left}>
           <div className={styles.inputContainer}>
             <div className={styles.inputBox}>
@@ -40,7 +41,7 @@ function MainPage({ isLight }: IProps) {
           </div>
         </div>
       </div>
-      <TourList isLight={isLight} view={isListView} />
+      <TourList isLight={isLight} isList={isListView} />
     </div>
   );
 }

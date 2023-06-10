@@ -6,15 +6,19 @@ import clsx from "clsx";
 
 interface IProps {
   isLight: boolean;
-  view: boolean;
+  isList: boolean;
 }
 
-function TourList({ isLight, view }: IProps) {
-  const ulClasname = clsx(view ? styles.gridView : styles.listView);
+function TourList({ isLight, isList }: IProps) {
   return (
-    <ul className={ulClasname}>
+    <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
       {toursData.tours.map((item: ITourListData) => (
-        <Tour key={item.id} tourItemData={item} isLight={isLight} view={view} />
+        <Tour
+          key={item.id}
+          tourItemData={item}
+          isLight={isLight}
+          isList={isList}
+        />
       ))}
     </ul>
   );
