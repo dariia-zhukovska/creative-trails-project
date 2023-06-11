@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./MainPage.module.css";
 import TourList from "../TourList/TourList";
 import clsx from "clsx";
-import { ITourListData } from "~/types";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import { debounce } from "lodash";
 
