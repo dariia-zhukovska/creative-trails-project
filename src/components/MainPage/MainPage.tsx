@@ -49,6 +49,12 @@ function MainPage({ isLight }: IProps) {
               onViewChange={handleViewChange}
             />
           </div>
+          <button
+            className={styles.addTourButton}
+            onClick={() => console.log("Button clicked")}
+          >
+            Add New Tour
+          </button>
         </div>
       </div>
       <TourList

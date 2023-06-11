@@ -1,5 +1,6 @@
 .tourItem,
 .darkTourItem {
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -12,10 +13,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 8px;
+  /* gap: 8px; */
   padding: 8px 40px 16px 30px;
   width: auto;
   border-radius: 12px;
+}
+
+
+
+.listView .lightDeleteButton,
+.darkDeleteButton {
+  margin: auto 0;
 }
 
 .tourItem,
@@ -29,6 +37,33 @@
   box-shadow: 0px 4px 30px rgba(238, 238, 238, 0.15);
 }
 
+.tourItemPriceLine div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.lightDeleteButton,
+.darkDeleteButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url('../../../assets/icons/light_delete.svg');
+  background-repeat: no-repeat;
+  background-color: inherit;
+  background-position: center;
+}
+
+.lightDeleteButton:hover,
+.darkDeleteButton:hover {
+  transform: scale(1.1);
+}
+
+.darkDeleteButton {
+  background-image: url('../../../assets/icons/dark_delete.svg');
+}
+
 .tourItemImage,
 .tourItemImageList {
   display: flex;
@@ -40,6 +75,7 @@
 .tourItemImageList {
   height: 160px;
   margin-right: 24px;
+  margin-left: 16px;
 }
 
 .tourItemImage:hover,
@@ -80,7 +116,6 @@
 
 .tourItemPrice {
   align-self: center;
-
   font-size: 24px;
   font-weight: 500;
   color: #09b3b3;
@@ -96,6 +131,7 @@
   background-color: transparent;
 }
 
+
 .tourItemButtonList {
   align-self: center;
   margin-left: 4rem;
@@ -108,6 +144,7 @@
   border: 2px solid #09b3b3;
   background-color: transparent;
 }
+
 
 .tourItemButton:hover,
 .tourItemButtonList:hover {

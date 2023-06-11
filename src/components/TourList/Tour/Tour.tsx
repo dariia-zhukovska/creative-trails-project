@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ITourListData } from "~/types";
+import imageNotFound from "/public/assets/img/img_not_found.svg";
 
 import styles from "./Tour.module.css";
 
@@ -10,17 +11,11 @@ interface IProps {
 }
 
 function Tour({ tourItemData, isLight, isList }: IProps) {
-  const liItemClass = clsx(isLight ? styles.tourItem : styles.darkTourItem);
-  const tourItemClass = clsx(
-    styles.listView,
-    isLight ? styles.tourItem : styles.darkTourItem
-  );
-
   return isList ? (
-    <li className={liItemClass}>
+    <li className={clsx(styles.tourItem, { [styles.darkTourItem]: !isLight })}>
       <div>
         <img
-          src={tourItemData.image}
+          src={tourItemData.image || imageNotFound}
           alt={tourItemData.title}
           className={styles.tourItemImage}
         />
@@ -31,12 +26,24 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}
           </div>
-          <button
-            className={styles.tourItemButton}
-            onClick={() => console.log("Button clicked")}
-          >
-            View
-          </button>
+
+          <div>
+            <button
+              className={styles.tourItemButton}
+              onClick={() => console.log("Button clicked")}
+            >
+              View
+            </button>
+            <button
+              className={clsx(
+                styles.gridDeleteButton,
+                styles.lightDeleteButton,
+                {
+                  [styles.darkDeleteButton]: !isLight,
+                }
+              )}
+            ></button>
+          </div>
         </div>
         <p className={styles.tourItemShortDescription}>
           {tourItemData.description}
@@ -44,8 +51,17 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
       </div>
     </li>
   ) : (
-    <li className={tourItemClass}>
+    <li
+      className={clsx(styles.listView, styles.tourItem, {
+        [styles.darkTourItem]: !isLight,
+      })}
+    >
       <div>
+        <button
+          className={clsx(styles.lightDeleteButton, {
+            [styles.darkDeleteButton]: !isLight,
+          })}
+        ></button>
         <img
           src={tourItemData.image}
           alt={tourItemData.title}
@@ -63,7 +79,6 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
           </p>
         </div>
       </div>
-
       <button
         className={styles.tourItemButtonList}
         onClick={() => console.log("Button clicked")}
