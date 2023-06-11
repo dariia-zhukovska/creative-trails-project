@@ -7,7 +7,6 @@ import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import { debounce } from "lodash";
 
 interface IProps {
-  tourListData: ITourListData[];
   isLight: boolean;
 }
 

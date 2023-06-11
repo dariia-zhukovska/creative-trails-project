@@ -5,4 +5,6 @@ export interface ITourListData {
   price: number;
   image: string;
   description: string;
+  continent: string;
+  age: string;
 }

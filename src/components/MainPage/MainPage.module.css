@@ -19,9 +19,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  padding-bottom: 80px;
   height: 64px;
   background: inherit;
   gap: 2%;
+
 }
 
 .left {
