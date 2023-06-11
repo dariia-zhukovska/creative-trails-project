@@ -1,22 +1,22 @@
 import clsx from "clsx";
-import { ITourListData } from "../../../types";
+import { ITourListData } from "~/types";
 
 import styles from "./Tour.module.css";
 
 interface IProps {
   tourItemData: ITourListData;
   isLight: boolean;
-  view: boolean;
+  isList: boolean;
 }
 
-function Tour({ tourItemData, isLight, view }: IProps) {
+function Tour({ tourItemData, isLight, isList }: IProps) {
   const liItemClass = clsx(isLight ? styles.tourItem : styles.darkTourItem);
   const tourItemClass = clsx(
     styles.listView,
     isLight ? styles.tourItem : styles.darkTourItem
   );
 
-  return view ? (
+  return isList ? (
     <li className={liItemClass}>
       <div>
         <img

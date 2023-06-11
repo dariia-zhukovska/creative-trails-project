@@ -6,15 +6,24 @@ import clsx from "clsx";
 
 interface IProps {
   isLight: boolean;
-  view: boolean;
+  isList: boolean;
+  searchQuery: string;
 }
 
-function TourList({ isLight, view }: IProps) {
-  const ulClasname = clsx(view ? styles.gridView : styles.listView);
+function TourList({ isLight, isList, searchQuery }: IProps) {
+  const filteredTours = toursData.tours.filter((item: ITourListData) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <ul className={ulClasname}>
-      {toursData.tours.map((item: ITourListData) => (
-        <Tour key={item.id} tourItemData={item} isLight={isLight} view={view} />
+    <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
+      {filteredTours.map((item: ITourListData) => (
+        <Tour
+          key={item.id}
+          tourItemData={item}
+          isLight={isLight}
+          isList={isList}
+        />
       ))}
     </ul>
   );
