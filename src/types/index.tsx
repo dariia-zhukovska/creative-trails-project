@@ -1,7 +1,7 @@
 export interface ITourListData {
   id: number;
   title: string;
-  price: number;
+  price: string;
   image: string;
   description: string;
   continent: string;

@@ -12,10 +12,11 @@ interface IProps {
 
 function NewTourForm({ isLight, closeModal }: IProps) {
   const [newTourData, setNewTourData] = useState({
+    id: 0,
     title: "",
     price: "",
-    description: "",
     image: "",
+    description: "",
     continent: "",
     adults: false,
   });
@@ -80,6 +81,17 @@ function NewTourForm({ isLight, closeModal }: IProps) {
           />
         </div>
         <div className={styles.formGroupWrap}>
+          <label htmlFor="imgUrl">Image URL</label>
+          <input
+            id="imgUrl"
+            type="text"
+            name="image"
+            value={image}
+            placeholder="/assets/img/Lviv.png"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className={styles.formGroupWrap}>
           <label htmlFor="description">Description</label>
           <input
             id="description"
@@ -89,17 +101,6 @@ function NewTourForm({ isLight, closeModal }: IProps) {
             placeholder="Experience the rich history and vibrant cultural scene of Lviv."
             onChange={handleInputChange}
             required
-          />
-        </div>
-        <div className={styles.formGroupWrap}>
-          <label htmlFor="imgUrl">Image URL</label>
-          <input
-            id="imgUrl"
-            type="text"
-            name="image"
-            value={image}
-            placeholder="/assets/img/Lviv.png"
-            onChange={handleInputChange}
           />
         </div>
         <div className={styles.formGroupWrap}>
