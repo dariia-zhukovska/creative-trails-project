@@ -7,7 +7,7 @@
       "image": "/assets/img/new_york.jpg",
       "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
       "continent": "North America",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "image": "/assets/img/lisbon.jpg",
       "description": "Discover the historic charm of Lisbon and indulge in delicious Portuguese cuisine.",
       "continent": "Europe",
-      "age": ""
+      "adults": false
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "image": "/assets/img/bali.jpg",
       "description": "Relax on the beautiful beaches of Bali and immerse yourself in its spiritual atmosphere.",
       "continent": "Asia",
-      "age": ""
+      "adults": false
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "image": "/assets/img/reykjavik.jpg",
       "description": "Experience the stunning landscapes and geothermal wonders of Reykjavik.",
       "continent": "Europe",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 5,
@@ -43,7 +43,7 @@
       "image": "/assets/img/antarctica.jpg",
       "description": "Embark on an extraordinary adventure to the remote wilderness of Antarctica.",
       "continent": "Antarctica",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 6,
@@ -52,7 +52,7 @@
       "image": "/assets/img/kathmandu.jpg",
       "description": "Discover the cultural treasures and majestic mountains of Kathmandu.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 7,
@@ -61,7 +61,7 @@
       "image": "/assets/img/petra.jpg",
       "description": "Uncover the ancient city of Petra and marvel at its impressive architecture.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 8,
@@ -70,7 +70,7 @@
       "image": "/assets/img/salar_de_uyuni.jpg",
       "description": "Witness the breathtaking salt flats of Salar de Uyuni in Bolivia.",
       "continent": "South America",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 9,
@@ -79,7 +79,7 @@
       "image": "/assets/img/faroe_islands.jpg",
       "description": "Experience the untouched natural beauty of the Faroe Islands.",
       "continent": "Europe",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 10,
@@ -88,7 +88,7 @@
       "image": "/assets/img/moraine_lake.jpg",
       "description": "Visit the iconic Moraine Lake and soak in the picturesque Canadian Rockies.",
       "continent": "North America",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 11,
@@ -97,7 +97,7 @@
       "image": "/assets/img/namib_desert.jpg",
       "description": "Explore the mesmerizing landscapes of the Namib Desert in Namibia.",
       "continent": "Africa",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 12,
@@ -106,7 +106,7 @@
       "image": "/assets/img/kilimanjaro.jpg",
       "description": "Conquer the highest peak in Africa, Mount Kilimanjaro.",
       "continent": "Africa",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 13,
@@ -115,7 +115,7 @@
       "image": "/assets/img/cairo.jpg",
       "description": "Immerse yourself in the ancient wonders of Cairo, including the pyramids and Sphinx.",
       "continent": "Africa",
-      "age": ""
+      "adults": false
     },
     {
       "id": 14,
@@ -124,7 +124,7 @@
       "image": "/assets/img/socotra.jpg",
       "description": "Discover the unique and otherworldly landscapes of Socotra Island.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 15,
@@ -133,7 +133,7 @@
       "image": "/assets/img/longyearbyen.webp",
       "description": "Experience the Arctic wilderness and spot polar bears in Longyearbyen.",
       "continent": "Europe",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 16,
@@ -142,7 +142,7 @@
       "image": "/assets/img/cancun.jpg",
       "description": "Enjoy the sun-drenched beaches and vibrant nightlife of Cancun.",
       "continent": "North America",
-      "age": ""
+      "adults": false
     },
     {
       "id": 17,
@@ -151,7 +151,7 @@
       "image": "/assets/img/los_angeles.jpg",
       "description": "Explore the glamorous city of Los Angeles and visit its famous landmarks.",
       "continent": "North America",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 18,
@@ -160,7 +160,7 @@
       "image": "/assets/img/provence.jpg",
       "description": "Indulge in the charm of the Provence region with its lavender fields and vineyards.",
       "continent": "Europe",
-      "age": ""
+      "adults": false
     },
     {
       "id": 19,
@@ -169,7 +169,7 @@
       "image": "/assets/img/tokyo.jpg",
       "description": "Experience the vibrant energy and rich traditions of Tokyo.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 20,
@@ -178,7 +178,7 @@
       "image": "/assets/img/bangkok.jpg",
       "description": "Immerse yourself in the bustling markets and temples of Bangkok.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 21,
@@ -187,7 +187,7 @@
       "image": "/assets/img/el_nido.jpg",
       "description": "Discover the pristine beauty of El Nido's white sand beaches and crystal-clear waters.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 22,
@@ -196,7 +196,7 @@
       "image": "/assets/img/dubai.jpg",
       "description": "Experience the luxurious and futuristic cityscape of Dubai.",
       "continent": "Asia",
-      "age": ""
+      "adults": false
     },
     {
       "id": 23,
@@ -205,7 +205,7 @@
       "image": "/assets/img/male.jpg",
       "description": "Relax and indulge in the idyllic beaches and turquoise waters of the Maldives.",
       "continent": "Asia",
-      "age": "18+"
+      "adults": true
     },
     {
       "id": 24,
@@ -214,7 +214,7 @@
       "image": "/assets/img/machu_picchu.jpg",
       "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
       "continent": "South America",
-      "age": "18+"
+      "adults": true
     }
   ]
 }

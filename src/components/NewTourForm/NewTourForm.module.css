@@ -1,0 +1,104 @@
+.formContainer {
+  max-width: 525px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+
+
+
+.tourForm {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 20px 40px;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.darkFormContainer .tourForm {
+  background-color: #202c37;
+}
+
+
+
+h1 {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.darkFormContainer .tourForm h1 {
+  color: #fafafa;
+}
+
+.formGroupWrap {
+  padding-bottom: 20px;
+}
+
+.formGroupWrap label {
+  display: block;
+  margin-bottom: 2px;
+  color: rgb(87, 84, 84);
+}
+
+.darkFormContainer .formGroupWrap label {
+  color: #fafafa;
+}
+
+.formGroupWrap input,
+select {
+  display: block;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 15px;
+}
+
+
+select {
+  height: 40px;
+}
+
+.formGroupWrap input:focus:not(:last-child) {
+  outline: 1px solid #09b3b3;
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.checkboxInput {
+  position: relative;
+  padding-left: 30px;
+  align-items: center;
+}
+
+
+.checkboxInput input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+}
+
+.buttonsGroup button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #09b3b3;
+  ;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.buttonsGroup button:hover {
+  background-color: #057777;
+}

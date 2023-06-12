@@ -12,16 +12,17 @@ function Header({ isLight, onThemeChange }: IProps) {
     onThemeChange(!isLight);
   };
 
-  const headerClass = clsx(
-    isLight ? styles.lightHeaderContainer : styles.darkHeaderContainer
-  );
-
-  const headerLogo = clsx(
-    isLight ? styles.lightHeaderLogo : styles.darkHeaderLogo
-  );
   return (
-    <header className={headerClass}>
-      <div className={headerLogo}>
+    <header
+      className={clsx(styles.lightHeaderContainer, {
+        [styles.darkHeaderContainer]: !isLight,
+      })}
+    >
+      <div
+        className={clsx(styles.lightHeaderLogo, {
+          [styles.darkHeaderLogo]: !isLight,
+        })}
+      >
         <a target="_blank" rel="noreferrer" href="#"></a>
       </div>
       <div className={styles.headerThemeToggle}>

@@ -4,6 +4,8 @@ import TourList from "../TourList/TourList";
 import clsx from "clsx";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import { debounce } from "lodash";
+import ReactModal from "react-modal";
+import NewTourForm from "../NewTourForm/NewTourForm";
 
 interface IProps {
   isLight: boolean;
@@ -12,14 +14,15 @@ interface IProps {
 function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
   };
 
   const handleSearchChange = debounce(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(e.target.value);
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(event.target.value);
     },
     500
   );
@@ -51,10 +54,23 @@ function MainPage({ isLight }: IProps) {
           </div>
           <button
             className={styles.addTourButton}
-            onClick={() => console.log("Button clicked")}
+            onClick={() => setIsModalOpen(true)}
           >
             Add New Tour
           </button>
+
+          <ReactModal
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            contentLabel="Form Modal"
+            className={styles.modalContent}
+            // Doesn't work
+            // overlayClassName={clsx(styles.overlayLight, {
+            //   [styles.overlayDark]: !isLight,
+            // })}
+          >
+            <NewTourForm isLight={isLight} />
+          </ReactModal>
         </div>
       </div>
       <TourList

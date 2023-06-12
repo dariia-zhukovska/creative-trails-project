@@ -22,16 +22,10 @@ function ListViewSwitcher({ isLight, onViewChange }: IProps) {
   return (
     <div className={styles.listButtons}>
       <button className={styles.listButton} onClick={setListView}>
-        <img
-          src={clsx(darkListIcon, { [lightListIcon]: !isLight })}
-          alt="list-icon"
-        />
+        <img src={isLight ? darkListIcon : lightListIcon} alt="list-icon" />
       </button>
       <button className={styles.gridButton} onClick={setGridView}>
-        <img
-          src={clsx(darkGridIcon, { [lightGridIcon]: !isLight })}
-          alt="grid-icon"
-        />
+        <img src={isLight ? darkGridIcon : lightGridIcon} alt="grid-icon" />
       </button>
     </div>
   );

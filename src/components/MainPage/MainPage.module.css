@@ -102,3 +102,17 @@
 .addTourButton:hover {
   transform: scale(1.2);
 }
+
+.modalContent {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.overlayLight {
+  background-color: rgb(32 44 55 / 75%);
+
+}
+
+.overlayDark {
+  background-color: rgb(250 250 250 / 75%);
+}
