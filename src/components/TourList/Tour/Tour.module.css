@@ -20,7 +20,6 @@
 }
 
 
-
 .listView .lightDeleteButton,
 .darkDeleteButton {
   margin: auto 0;
@@ -73,7 +72,7 @@
 }
 
 .tourItemImageList {
-  height: 160px;
+  height: 220px;
   margin-right: 24px;
   margin-left: 16px;
 }
@@ -92,7 +91,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-self: center;
 }
 
 .tourDescriptionList {
@@ -105,6 +103,33 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.continentAge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tourItemContinent {
+  margin: 0;
+  font-weight: 400;
+}
+
+.tourItemAge {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  font-weight: 700;
+  border-radius: 50%;
+  background-color: rgb(106, 181, 230);
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  line-height: 24px;
+
 }
 
 .tourItemPriceLine {

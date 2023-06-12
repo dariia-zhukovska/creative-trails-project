@@ -3,6 +3,7 @@ import { ITourListData } from "~/types";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 
 import styles from "./Tour.module.css";
+import axios from "axios";
 
 interface IProps {
   tourItemData: ITourListData;
@@ -11,6 +12,17 @@ interface IProps {
 }
 
 function Tour({ tourItemData, isLight, isList }: IProps) {
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/tours/${tourItemData.id}`
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return isList ? (
     <li className={clsx(styles.tourItem, { [styles.darkTourItem]: !isLight })}>
       <div>
@@ -22,6 +34,12 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
       </div>
       <div className={styles.tourDescription}>
         <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+        <div className={styles.continentAge}>
+          <h4 className={styles.tourItemContinent}>{tourItemData.continent}</h4>
+          {tourItemData.adults && (
+            <span className={styles.tourItemAge}>18+</span>
+          )}
+        </div>
         <div className={styles.tourItemPriceLine}>
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}
@@ -42,6 +60,7 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
                   [styles.darkDeleteButton]: !isLight,
                 }
               )}
+              onClick={handleDelete}
             ></button>
           </div>
         </div>
@@ -61,6 +80,7 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
           className={clsx(styles.lightDeleteButton, {
             [styles.darkDeleteButton]: !isLight,
           })}
+          onClick={handleDelete}
         ></button>
         <img
           src={tourItemData.image}
@@ -69,6 +89,14 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
         />
         <div className={styles.tourDescriptionList}>
           <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+          <div className={styles.continentAge}>
+            <h4 className={styles.tourItemContinent}>
+              {tourItemData.continent}
+            </h4>
+            {tourItemData.adults && (
+              <span className={styles.tourItemAge}>18+</span>
+            )}
+          </div>
           <div className={styles.tourItemPriceLine}>
             <div className={styles.tourItemPrice}>
               {`${tourItemData.price} $`}

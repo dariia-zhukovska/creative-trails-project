@@ -27,6 +27,10 @@ function MainPage({ isLight }: IProps) {
     500
   );
 
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={`${isLight ? styles.light : styles.dark}`}>
       <div className={styles.navContainer}>
@@ -69,7 +73,7 @@ function MainPage({ isLight }: IProps) {
             //   [styles.overlayDark]: !isLight,
             // })}
           >
-            <NewTourForm isLight={isLight} />
+            <NewTourForm isLight={isLight} closeModal={handleModalClose} />
           </ReactModal>
         </div>
       </div>

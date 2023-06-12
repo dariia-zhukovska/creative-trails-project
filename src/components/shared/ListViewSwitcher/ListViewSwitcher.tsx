@@ -4,7 +4,6 @@ import lightListIcon from "/src/assets/icons/lightListIcon.svg";
 import lightGridIcon from "/src/assets/icons/lightGridIcon.svg";
 import darkListIcon from "/src/assets/icons/darkListIcon.svg";
 import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
-import clsx from "clsx";
 
 interface IProps {
   isLight: boolean;

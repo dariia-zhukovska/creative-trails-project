@@ -1,14 +1,16 @@
 // import clsx from "clsx";
 
-import clsx from "clsx";
-import styles from "./NewTourForm.module.css";
 import { useState } from "react";
+import styles from "./NewTourForm.module.css";
+import clsx from "clsx";
+import axios from "axios";
 
 interface IProps {
   isLight: boolean;
+  closeModal: () => void;
 }
 
-function NewTourForm({ isLight }: IProps) {
+function NewTourForm({ isLight, closeModal }: IProps) {
   const [newTourData, setNewTourData] = useState({
     title: "",
     price: "",
@@ -27,9 +29,25 @@ function NewTourForm({ isLight }: IProps) {
     setNewTourData((prevData) => ({ ...prevData, [name]: inputValue }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(newTourData); // Do something with the new tour data
+
+    try {
+      // const newTourId = Date.now().toString();
+      // const newTourDataWithId = {
+      //   ...newTourData,
+      //   id: newTourId,
+      // };
+
+      const responce = await axios.post(
+        "http://localhost:3001/tours",
+        newTourData
+      );
+      console.log(responce.data);
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { title, price, description, image, continent, adults } = newTourData;
@@ -97,7 +115,9 @@ function NewTourForm({ isLight }: IProps) {
             value={continent}
             onChange={handleInputChange}
           >
-            <option value="">Select Continent</option>
+            <option value="" disabled>
+              Select Continent
+            </option>
             <option value="Africa">Africa</option>
             <option value="Asia">Asia</option>
             <option value="Antarctica">Antarctica</option>
@@ -120,8 +140,10 @@ function NewTourForm({ isLight }: IProps) {
           </label>
         </div>
         <div className={styles.buttonsGroup}>
-          <button>Cancel</button>
-          <button type="submit">Submit</button>
+          <button onClick={closeModal}>Cancel</button>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
       </form>
     </div>
