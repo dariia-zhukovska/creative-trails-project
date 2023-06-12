@@ -33,12 +33,6 @@ function NewTourForm({ isLight, closeModal }: IProps) {
     event.preventDefault();
 
     try {
-      // const newTourId = Date.now().toString();
-      // const newTourDataWithId = {
-      //   ...newTourData,
-      //   id: newTourId,
-      // };
-
       const responce = await axios.post(
         "http://localhost:3001/tours",
         newTourData
@@ -51,6 +45,7 @@ function NewTourForm({ isLight, closeModal }: IProps) {
   };
 
   const { title, price, description, image, continent, adults } = newTourData;
+  const isFormValid = title && price && description && continent;
 
   return (
     <div
@@ -141,8 +136,8 @@ function NewTourForm({ isLight, closeModal }: IProps) {
         </div>
         <div className={styles.buttonsGroup}>
           <button onClick={closeModal}>Cancel</button>
-          <button type="submit" onClick={handleSubmit}>
-            Submit
+          <button type="submit" onClick={handleSubmit} disabled={!isFormValid}>
+            Save
           </button>
         </div>
       </form>
