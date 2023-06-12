@@ -215,15 +215,6 @@
       "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
       "continent": "South America",
       "adults": true
-    },
-    {
-      "id": 25,
-      "title": "Пе",
-      "price": "3000",
-      "image": "/assets/img/grand_canyon.jpg",
-      "description": "One of the deepest canyons in the world",
-      "continent": "North America",
-      "adults": false
     }
   ]
 }
