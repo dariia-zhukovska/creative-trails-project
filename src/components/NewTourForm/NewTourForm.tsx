@@ -1,9 +1,12 @@
-// import clsx from "clsx";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
 import axios from "axios";
+import {
+  CommonCheckboxInput,
+  CommonInput,
+  CommonSelect,
+} from "./Common/CommonInputs";
 
 interface IProps {
   isLight: boolean;
@@ -20,6 +23,24 @@ function NewTourForm({ isLight, closeModal }: IProps) {
     continent: "",
     adults: false,
   });
+  const [selectedContinent, setSelectedContinent] = useState("");
+  const [isSaveDisabled, setIsSaveDisabled] = useState(true);
+
+  useEffect(() => {
+    const isFormValid = validateForm();
+    setIsSaveDisabled(!isFormValid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newTourData, selectedContinent]);
+
+  const validateForm = () => {
+    const { title, price, description } = newTourData;
+    return (
+      title !== "" &&
+      price !== "" &&
+      description !== "" &&
+      selectedContinent !== ""
+    );
+  };
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -27,8 +48,25 @@ function NewTourForm({ isLight, closeModal }: IProps) {
     const { name, value, type } = event.target;
     const inputValue =
       type === "checkbox" ? (event.target as HTMLInputElement).checked : value;
-    setNewTourData((prevData) => ({ ...prevData, [name]: inputValue }));
+    setNewTourData({ ...newTourData, [name]: inputValue });
   };
+
+  const handleContinentChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedContinent(event.target.value);
+  };
+
+  const continentOptions = [
+    { value: "Africa", label: "Africa" },
+    { value: "Asia", label: "Asia" },
+    { value: "Antarctica", label: "Antarctica" },
+    { value: "Australia", label: "Australia" },
+    { value: "Europe", label: "Europe" },
+    { value: "North America", label: "North America" },
+    { value: "South America", label: "South America" },
+  ];
+  // Asyncronous code with API
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -45,9 +83,6 @@ function NewTourForm({ isLight, closeModal }: IProps) {
     }
   };
 
-  const { title, price, description, image, continent, adults } = newTourData;
-  const isFormValid = title && price && description && continent;
-
   return (
     <div
       className={clsx(styles.formContainer, {
@@ -56,88 +91,76 @@ function NewTourForm({ isLight, closeModal }: IProps) {
     >
       <form onSubmit={handleSubmit} className={styles.tourForm}>
         <h1>Add new tour of your dream</h1>
-        <div className={styles.formGroupWrap}>
-          <label htmlFor="title">Title</label>
-          <input
-            id="title"
-            type="text"
-            name="title"
-            value={title}
-            placeholder="Lviv, Ukraine"
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className={styles.formGroupWrap}>
-          <label htmlFor="price">Price</label>
-          <input
-            id="price"
-            type="text"
-            name="price"
-            value={price}
-            placeholder="500 $"
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className={styles.formGroupWrap}>
-          <label htmlFor="imgUrl">Image URL</label>
-          <input
-            id="imgUrl"
-            type="text"
-            name="image"
-            value={image}
-            placeholder="/assets/img/Lviv.png"
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className={styles.formGroupWrap}>
-          <label htmlFor="description">Description</label>
-          <input
-            id="description"
-            type="text"
-            name="description"
-            value={description}
-            placeholder="Experience the rich history and vibrant cultural scene of Lviv."
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className={styles.formGroupWrap}>
-          <label htmlFor="continent">Continent</label>
-          <select
-            id="continent"
-            name="continent"
-            value={continent}
-            onChange={handleInputChange}
-          >
-            <option value="" disabled>
-              Select Continent
-            </option>
-            <option value="Africa">Africa</option>
-            <option value="Asia">Asia</option>
-            <option value="Antarctica">Antarctica</option>
-            <option value="Australia">Australia</option>
-            <option value="Europe">Europe</option>
-            <option value="North America">North America</option>
-            <option value="South America">South America</option>
-          </select>
-        </div>
-        <div className={clsx(styles.formGroupWrap, styles.checkboxInput)}>
-          <label htmlFor="age">
-            Tour is only for adults
-            <input
-              id="age"
-              type="checkbox"
-              name="adults"
-              checked={adults}
-              onChange={handleInputChange}
-            />
-          </label>
-        </div>
+        <CommonInput
+          label={"Title"}
+          id={"title"}
+          type={"text"}
+          name={"title"}
+          value={newTourData.title}
+          placeholder={"Lviv, Ukraine"}
+          onChange={handleInputChange}
+          required
+          isLight={isLight}
+        />
+        <CommonInput
+          label={"Price"}
+          id={"price"}
+          type={"text"}
+          name={"price"}
+          value={newTourData.price}
+          placeholder={"500 $"}
+          onChange={handleInputChange}
+          required
+          isLight={isLight}
+        />
+        <CommonInput
+          label={"Image URL"}
+          id={"imgUrl"}
+          type={"text"}
+          name={"image"}
+          value={newTourData.image}
+          placeholder={"/assets/img/Lviv.png"}
+          onChange={handleInputChange}
+          isLight={isLight}
+        />
+        <CommonInput
+          label={"Description"}
+          id={"description"}
+          type={""}
+          name={"description"}
+          value={newTourData.description}
+          placeholder={
+            "Experience the rich history and vibrant cultural scene of Lviv."
+          }
+          onChange={handleInputChange}
+          required
+          isLight={isLight}
+        />
+        <CommonSelect
+          label="Continent"
+          id="continent"
+          name="continent"
+          value={selectedContinent}
+          options={continentOptions}
+          onChange={handleContinentChange}
+          isLight={isLight}
+        />
+        <CommonCheckboxInput
+          label={"Tour is only for adults"}
+          id={"age"}
+          type={"checkbox"}
+          name={"adults"}
+          onChange={handleInputChange}
+          checked={newTourData.adults}
+          isLight={isLight}
+        />
         <div className={styles.buttonsGroup}>
           <button onClick={closeModal}>Cancel</button>
-          <button type="submit" onClick={handleSubmit} disabled={!isFormValid}>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={isSaveDisabled}
+          >
             Save
           </button>
         </div>

@@ -21,7 +21,7 @@ function Footer({ isLight }: IProps) {
     >
       <div
         className={clsx(styles.footerLogo, {
-          [styles.darkFooterLogo]: isLight,
+          [styles.darkFooterLogo]: !isLight,
         })}
       ></div>
       <div className={styles.socialLinks}>

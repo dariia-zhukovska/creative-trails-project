@@ -1,0 +1,54 @@
+.lightInput {
+  padding-bottom: 20px;
+}
+
+.lightInput label {
+  display: block;
+  margin-bottom: 2px;
+  color: rgb(87, 84, 84);
+}
+
+.lightInput label {
+  color: rgb(87, 84, 84);
+}
+
+.darkInput label {
+  color: #fafafa;
+}
+
+.lightInput input,
+select {
+  display: block;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 15px;
+}
+
+
+
+select {
+  height: 40px;
+}
+
+.lightInput input:focus:not(:last-child) {
+  outline: 1px solid #09b3b3;
+}
+
+.checkboxInput {
+  position: relative;
+  padding-left: 30px;
+  margin-top: 16px;
+  align-items: center;
+
+}
+
+.checkboxInput input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+}
