@@ -1,20 +1,23 @@
 import { useState } from "react";
-import styles from "./MainPage.module.css";
-import TourList from "../TourList/TourList";
-import clsx from "clsx";
-import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
-import { debounce } from "lodash";
 import ReactModal from "react-modal";
+import styles from "./MainPage.module.css";
+import clsx from "clsx";
+import { debounce } from "lodash";
+import TourList from "../TourList/TourList";
+import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
+import { ITourListData } from "~/types";
 
 interface IProps {
   isLight: boolean;
+  data: ITourListData[];
 }
 
-function MainPage({ isLight }: IProps) {
+function MainPage({ isLight, data }: IProps) {
   const [isListView, setListView] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newData, setNewData] = useState(data);
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
@@ -26,6 +29,16 @@ function MainPage({ isLight }: IProps) {
     },
     500
   );
+
+  const addNewTour = (newTour: ITourListData) => {
+    const updatedData = [...newData, newTour];
+    setNewData(updatedData);
+  };
+
+  const deleteTour = (tourId: number) => {
+    const updatedData = newData.filter((item) => item.id !== tourId);
+    setNewData(updatedData);
+  };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -73,7 +86,11 @@ function MainPage({ isLight }: IProps) {
             //   [styles.overlayDark]: !isLight,
             // })}
           >
-            <NewTourForm isLight={isLight} closeModal={handleModalClose} />
+            <NewTourForm
+              isLight={isLight}
+              closeModal={handleModalClose}
+              addNewTour={addNewTour}
+            />
           </ReactModal>
         </div>
       </div>
@@ -81,6 +98,8 @@ function MainPage({ isLight }: IProps) {
         isLight={isLight}
         isList={isListView}
         searchQuery={searchQuery}
+        data={newData}
+        deleteTour={deleteTour}
       />
     </div>
   );

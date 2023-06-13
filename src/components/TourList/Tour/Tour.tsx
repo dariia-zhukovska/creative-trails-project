@@ -1,26 +1,32 @@
 import clsx from "clsx";
 import { ITourListData } from "~/types";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
-
 import styles from "./Tour.module.css";
-import axios from "axios";
 
 interface IProps {
   tourItemData: ITourListData;
   isLight: boolean;
   isList: boolean;
+  deleteTour: () => void;
 }
 
-function Tour({ tourItemData, isLight, isList }: IProps) {
-  const handleDelete = async () => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:3001/tours/${tourItemData.id}`
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
+  // Async code with API usage (saved for later)
+
+  // const handleDelete = async () => {
+  //   try {
+  //     const response = await axios.delete(
+  //       `http://localhost:3001/tours/${tourItemData.id}`
+  //     );
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  const handleDeleteTour = (event: React.FormEvent) => {
+    event.preventDefault();
+    deleteTour();
   };
 
   return isList ? (
@@ -60,7 +66,7 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
                   [styles.darkDeleteButton]: !isLight,
                 }
               )}
-              onClick={handleDelete}
+              onClick={handleDeleteTour}
             ></button>
           </div>
         </div>
@@ -80,7 +86,7 @@ function Tour({ tourItemData, isLight, isList }: IProps) {
           className={clsx(styles.lightDeleteButton, {
             [styles.darkDeleteButton]: !isLight,
           })}
-          onClick={handleDelete}
+          onClick={handleDeleteTour}
         ></button>
         <img
           src={tourItemData.image}

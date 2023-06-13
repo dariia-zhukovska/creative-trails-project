@@ -1,5 +1,4 @@
 import { ITourListData } from "../../types";
-import toursData from "../../data/tours.json";
 import styles from "./TourList.module.css";
 import Tour from "./Tour/Tour";
 import clsx from "clsx";
@@ -8,12 +7,17 @@ interface IProps {
   isLight: boolean;
   isList: boolean;
   searchQuery: string;
+  data: ITourListData[];
+  deleteTour: (tourId: number) => void;
 }
 
-function TourList({ isLight, isList, searchQuery }: IProps) {
-  const filteredTours = toursData.tours.filter((item: ITourListData) =>
+function TourList({ isLight, isList, searchQuery, data, deleteTour }: IProps) {
+  const filteredTours = data.filter((item: ITourListData) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const handleDeleteTour = (tourId: number) => {
+    deleteTour(tourId);
+  };
 
   return (
     <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
@@ -23,6 +27,7 @@ function TourList({ isLight, isList, searchQuery }: IProps) {
           tourItemData={item}
           isLight={isLight}
           isList={isList}
+          deleteTour={() => handleDeleteTour(item.id)}
         />
       ))}
     </ul>

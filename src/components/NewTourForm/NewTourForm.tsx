@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
-import axios from "axios";
 import {
   CommonCheckboxInput,
   CommonInput,
   CommonSelect,
 } from "./Common/CommonInputs";
+import { ITourListData } from "~/types";
 
 interface IProps {
   isLight: boolean;
   closeModal: () => void;
+  addNewTour: (newTour: ITourListData) => void;
 }
 
-function NewTourForm({ isLight, closeModal }: IProps) {
+function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
   const [newTourData, setNewTourData] = useState({
     id: 0,
     title: "",
@@ -26,21 +27,15 @@ function NewTourForm({ isLight, closeModal }: IProps) {
   const [selectedContinent, setSelectedContinent] = useState("");
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
 
+  const validateForm = useCallback(() => {
+    const { title, price, description } = newTourData;
+    return title && price && description && selectedContinent;
+  }, [newTourData, selectedContinent]);
+
   useEffect(() => {
     const isFormValid = validateForm();
     setIsSaveDisabled(!isFormValid);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newTourData, selectedContinent]);
-
-  const validateForm = () => {
-    const { title, price, description } = newTourData;
-    return (
-      title !== "" &&
-      price !== "" &&
-      description !== "" &&
-      selectedContinent !== ""
-    );
-  };
+  }, [newTourData, selectedContinent, validateForm]);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -54,7 +49,9 @@ function NewTourForm({ isLight, closeModal }: IProps) {
   const handleContinentChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setSelectedContinent(event.target.value);
+    const selectedContinent = event.target.value;
+    setSelectedContinent(selectedContinent);
+    setNewTourData({ ...newTourData, continent: selectedContinent });
   };
 
   const continentOptions = [
@@ -66,21 +63,34 @@ function NewTourForm({ isLight, closeModal }: IProps) {
     { value: "North America", label: "North America" },
     { value: "South America", label: "South America" },
   ];
-  // Asyncronous code with API
+  // Async code with API usage (saved for later)
+
+  //  const handleSubmit = async (event: React.FormEvent) => {
+  //    event.preventDefault();
+
+  //    try {
+  //      const responce = await axios.post(
+  //        "http://localhost:3001/tours",
+  //        newTourData
+  //      );
+  //      console.log(responce.data);
+  //      closeModal();
+  //    } catch (error) {
+  //      console.log(error);
+  //    }
+  //  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    try {
-      const responce = await axios.post(
-        "http://localhost:3001/tours",
-        newTourData
-      );
-      console.log(responce.data);
-      closeModal();
-    } catch (error) {
-      console.log(error);
-    }
+    const newTourId = Math.floor(Math.random() * 1000000);
+    const newTour = {
+      ...newTourData,
+      id: newTourId,
+    };
+
+    addNewTour(newTour);
+    closeModal();
   };
 
   return (
