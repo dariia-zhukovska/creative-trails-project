@@ -7,16 +7,19 @@ import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
 import { ITourListData } from "types";
+import toursData from "../../data/tours.json";
 
 interface IProps {
   isLight: boolean;
-  data: ITourListData[];
 }
 
-function MainPage({ isLight, data }: IProps) {
+const data = toursData.tours;
+
+function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [toursData, setToursData] = useState(data);
 
   const handleViewChange = (isList: boolean) => {

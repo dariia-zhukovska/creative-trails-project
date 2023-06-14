@@ -29,6 +29,13 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
     deleteTour();
   };
 
+  const handleEditTour = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Edited");
+
+    // setIsEditing(false);
+  };
+
   return isList ? (
     <li className={clsx(styles.tourItem, { [styles.darkTourItem]: !isLight })}>
       <div>
@@ -42,6 +49,12 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
         <div className={styles.titleLine}>
           <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
           <div>
+            <button
+              className={clsx(styles.gridEditButton, styles.lightEditButton, {
+                [styles.darkEditButton]: !isLight,
+              })}
+              onClick={handleEditTour}
+            ></button>
             <button
               className={clsx(
                 styles.gridDeleteButton,
@@ -91,6 +104,12 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
           <div className={styles.titleLine}>
             <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
             <div>
+              <button
+                className={clsx(styles.gridEditButton, styles.lightEditButton, {
+                  [styles.darkEditButton]: !isLight,
+                })}
+                onClick={handleEditTour}
+              ></button>
               <button
                 className={clsx(
                   styles.gridDeleteButton,
