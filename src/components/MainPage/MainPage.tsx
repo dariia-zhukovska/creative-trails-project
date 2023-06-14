@@ -6,21 +6,25 @@ import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
-import { ITourListData } from "types";
 import toursData from "../../data/tours.json";
+import { ITourListData } from "types";
 
 interface IProps {
   isLight: boolean;
 }
 
-const data = toursData.tours;
-
 function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTour, setSelectedTour] = useState<ITourListData | undefined>(
+    undefined
+  );
+  const [initialTourData, setInitialTourData] = useState<
+    ITourListData | undefined
+  >(undefined);
 
-  const [toursData, setToursData] = useState(data);
+  const data = toursData.tours;
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
@@ -33,16 +37,24 @@ function MainPage({ isLight }: IProps) {
     500
   );
 
-  const addNewTour = (newTour: ITourListData) => {
-    setToursData((prevState) => [...prevState, newTour]);
-  };
-
-  const deleteTour = (tourId: number) => {
-    setToursData((prevState) => prevState.filter((item) => item.id !== tourId));
-  };
-
   const handleModalClose = () => {
+    setSelectedTour(initialTourData);
     setIsModalOpen(false);
+  };
+
+  const handleEditTour = (tour: ITourListData) => {
+    setSelectedTour(tour);
+    setInitialTourData(tour);
+    setIsModalOpen(true);
+  };
+
+  const resetForm = () => {
+    setInitialTourData(undefined);
+  };
+
+  const handleAddNewTour = () => {
+    resetForm();
+    setIsModalOpen(true);
   };
 
   return (
@@ -70,10 +82,7 @@ function MainPage({ isLight }: IProps) {
               onViewChange={handleViewChange}
             />
           </div>
-          <button
-            className={styles.addTourButton}
-            onClick={() => setIsModalOpen(true)}
-          >
+          <button className={styles.addTourButton} onClick={handleAddNewTour}>
             Add New Tour
           </button>
 
@@ -87,11 +96,14 @@ function MainPage({ isLight }: IProps) {
             //   [styles.overlayDark]: !isLight,
             // })}
           >
-            <NewTourForm
-              isLight={isLight}
-              closeModal={handleModalClose}
-              addNewTour={addNewTour}
-            />
+            {toursData.tours.length > 0 && (
+              <NewTourForm
+                isLight={isLight}
+                closeModal={handleModalClose}
+                tourData={selectedTour}
+                editMode={!!initialTourData}
+              />
+            )}
           </ReactModal>
         </div>
       </div>
@@ -99,8 +111,8 @@ function MainPage({ isLight }: IProps) {
         isLight={isLight}
         isList={isListView}
         searchQuery={searchQuery}
-        data={toursData}
-        deleteTour={deleteTour}
+        data={data}
+        onEditTour={handleEditTour}
       />
     </div>
   );

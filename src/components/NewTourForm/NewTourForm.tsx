@@ -3,15 +3,17 @@ import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
+import { addTour, editTour } from "../../api/tours";
 import { ITourListData } from "types";
 
 interface IProps {
   isLight: boolean;
   closeModal: () => void;
-  addNewTour: (newTour: ITourListData) => void;
+  editMode: boolean;
+  tourData?: ITourListData;
 }
 
-function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
+function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
   const [newTourData, setNewTourData] = useState({
     id: 0,
     title: "",
@@ -22,6 +24,36 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
     adults: false,
   });
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
+
+  const resetForm = () => {
+    setNewTourData({
+      id: 0,
+      title: "",
+      price: "",
+      image: "",
+      description: "",
+      continent: "",
+      adults: false,
+    });
+  };
+
+  useEffect(() => {
+    if (editMode) {
+      setNewTourData(
+        tourData ?? {
+          id: 0,
+          title: "",
+          price: "",
+          image: "",
+          description: "",
+          continent: "",
+          adults: false,
+        }
+      );
+    } else {
+      resetForm();
+    }
+  }, [editMode, tourData]);
 
   const validateForm = useCallback(() => {
     const { title, price, description, continent } = newTourData;
@@ -50,36 +82,19 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
     { value: "North America", label: "North America" },
     { value: "South America", label: "South America" },
   ];
-  // Async code with API usage (saved for later)
 
-  //  const handleSubmit = async (event: React.FormEvent) => {
-  //    event.preventDefault();
-
-  //    try {
-  //      const responce = await axios.post(
-  //        "http://localhost:3001/tours",
-  //        newTourData
-  //      );
-  //      console.log(responce.data);
-  //      closeModal();
-  //    } catch (error) {
-  //      console.log(error);
-  //    }
-  //  };
-
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    const newTourId = Math.floor(Math.random() * 1000000);
-    const newTour = {
-      ...newTourData,
-      id: newTourId,
-    };
-
-    addNewTour(newTour);
+    if (editMode && tourData) {
+      editTour(tourData.id, newTourData);
+    } else {
+      addTour(newTourData);
+    }
     closeModal();
   };
 
+  
   return (
     <div
       className={clsx(styles.formContainer, {

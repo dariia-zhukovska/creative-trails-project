@@ -39,7 +39,7 @@
 .titleLine {
   display: flex;
   align-items: center;
-  gap: 86px;
+  justify-content: space-between;
 }
 
 .tourItemPriceLine div {

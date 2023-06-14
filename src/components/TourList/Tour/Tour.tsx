@@ -2,38 +2,24 @@ import clsx from "clsx";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
 import { ITourListData } from "types";
+import { deleteTour } from "../../../api/tours";
 
 interface IProps {
   tourItemData: ITourListData;
   isLight: boolean;
   isList: boolean;
-  deleteTour: () => void;
+  onEditTour: (tour: ITourListData) => void;
 }
 
-function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
-  // Async code with API usage (saved for later)
-
-  // const handleDelete = async () => {
-  //   try {
-  //     const response = await axios.delete(
-  //       `http://localhost:3001/tours/${tourItemData.id}`
-  //     );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+function Tour({ tourItemData, isLight, isList, onEditTour }: IProps) {
+  const handleEditTour = (event: React.FormEvent) => {
+    event.preventDefault();
+    onEditTour(tourItemData);
+  };
 
   const handleDeleteTour = (event: React.FormEvent) => {
     event.preventDefault();
-    deleteTour();
-  };
-
-  const handleEditTour = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log("Edited");
-
-    // setIsEditing(false);
+    deleteTour(tourItemData.id);
   };
 
   return isList ? (
