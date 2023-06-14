@@ -64,7 +64,6 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}
           </div>
-
           <div>
             <button
               className={styles.tourItemButton}
