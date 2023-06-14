@@ -1,5 +1,5 @@
-import styles from "./Footer.module.css";
 import clsx from "clsx";
+import styles from "./Footer.module.css";
 
 import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
 import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
