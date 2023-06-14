@@ -1,6 +1,6 @@
 import styles from "./CommonInputs.module.css";
 import clsx from "clsx";
-import { IInputProps } from "~/types";
+import { IInputProps } from "types";
 
 function CommonInput({
   label,

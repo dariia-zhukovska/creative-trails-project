@@ -1,6 +1,6 @@
 import styles from "./CommonInputs.module.css";
 import clsx from "clsx";
-import { ISelectProps } from "~/types";
+import { ISelectProps } from "types";
 
 function CommonSelect({
   label,

@@ -3,7 +3,7 @@ import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
 import CommonInput from "../shared/elements/Common/CommonInputs";
 import CommonSelect from "../shared/elements/Common/CommonSelect";
-import { ITourListData } from "~/types";
+import { ITourListData } from "types";
 
 interface IProps {
   isLight: boolean;

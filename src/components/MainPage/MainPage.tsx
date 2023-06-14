@@ -6,7 +6,7 @@ import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
-import { ITourListData } from "~/types";
+import { ITourListData } from "types";
 
 interface IProps {
   isLight: boolean;
