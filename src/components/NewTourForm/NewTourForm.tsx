@@ -89,42 +89,42 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
       <form onSubmit={handleSubmit} className={styles.tourForm}>
         <h1>Add new tour of your dream</h1>
         <CommonInput
-          label={"Title"}
-          id={"title"}
-          type={"text"}
-          name={"title"}
+          label="Title"
+          id="title"
+          type="text"
+          name="title"
           value={newTourData.title}
-          placeholder={"Lviv, Ukraine"}
+          placeholder="Lviv, Ukraine"
           onChange={handleInputChange}
           required
           isLight={isLight}
         />
         <CommonInput
-          label={"Price"}
-          id={"price"}
-          type={"text"}
-          name={"price"}
+          label="Price"
+          id="price"
+          type="text"
+          name="price"
           value={newTourData.price}
-          placeholder={"500 $"}
+          placeholder="500 $"
           onChange={handleInputChange}
           required
           isLight={isLight}
         />
         <CommonInput
-          label={"Image URL"}
-          id={"imgUrl"}
-          type={"text"}
-          name={"image"}
+          label="Image URL"
+          id="imgUrl"
+          type="text"
+          name="image"
           value={newTourData.image}
-          placeholder={"/assets/img/Lviv.png"}
+          placeholder="/assets/img/Lviv.png"
           onChange={handleInputChange}
           isLight={isLight}
         />
         <CommonInput
-          label={"Description"}
-          id={"description"}
-          type={""}
-          name={"description"}
+          label="Description"
+          id="description"
+          type="text"
+          name="description"
           value={newTourData.description}
           placeholder={
             "Experience the rich history and vibrant cultural scene of Lviv."
@@ -144,21 +144,17 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           required
         />
         <CommonInput
-          label={"Tour is only for adults"}
-          id={"age"}
-          type={"checkbox"}
-          name={"adults"}
+          label="Tour is only for adults"
+          id="age"
+          type="checkbox"
+          name="adults"
           onChange={handleInputChange}
           checked={newTourData.adults}
           isLight={isLight}
         />
         <div className={styles.buttonsGroup}>
           <button onClick={closeModal}>Cancel</button>
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={isSaveDisabled}
-          >
+          <button type="submit" disabled={isSaveDisabled}>
             Save
           </button>
         </div>
