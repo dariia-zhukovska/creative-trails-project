@@ -1,18 +1,45 @@
 import { useState } from "react";
-
+import ReactModal from "react-modal";
 import styles from "./MainPage.module.css";
+import clsx from "clsx";
+import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
-import clsx from "clsx";
+import NewTourForm from "../NewTourForm/NewTourForm";
+import { ITourListData } from "types";
 
 interface IProps {
   isLight: boolean;
+  data: ITourListData[];
 }
-function MainPage({ isLight }: IProps) {
+
+function MainPage({ isLight, data }: IProps) {
   const [isListView, setListView] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [toursData, setToursData] = useState(data);
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
+  };
+
+  const handleSearchChange = debounce(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(event.target.value);
+    },
+    500
+  );
+
+  const addNewTour = (newTour: ITourListData) => {
+    setToursData((prevState) => [...prevState, newTour]);
+  };
+
+  const deleteTour = (tourId: number) => {
+    setToursData((prevState) => prevState.filter((item) => item.id !== tourId));
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -28,6 +55,7 @@ function MainPage({ isLight }: IProps) {
                 type="text"
                 placeholder="Search tour by name"
                 className={styles.searchInput}
+                onChange={handleSearchChange}
               />
               <i className={styles.search}></i>
             </div>
@@ -39,9 +67,38 @@ function MainPage({ isLight }: IProps) {
               onViewChange={handleViewChange}
             />
           </div>
+          <button
+            className={styles.addTourButton}
+            onClick={() => setIsModalOpen(true)}
+          >
+            Add New Tour
+          </button>
+
+          <ReactModal
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            contentLabel="Form Modal"
+            className={styles.modalContent}
+            // Doesn't work
+            // overlayClassName={clsx(styles.overlayLight, {
+            //   [styles.overlayDark]: !isLight,
+            // })}
+          >
+            <NewTourForm
+              isLight={isLight}
+              closeModal={handleModalClose}
+              addNewTour={addNewTour}
+            />
+          </ReactModal>
         </div>
       </div>
-      <TourList isLight={isLight} isList={isListView} />
+      <TourList
+        isLight={isLight}
+        isList={isListView}
+        searchQuery={searchQuery}
+        data={toursData}
+        deleteTour={deleteTour}
+      />
     </div>
   );
 }

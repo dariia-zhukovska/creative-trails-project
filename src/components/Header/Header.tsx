@@ -12,8 +12,6 @@ function Header({ isLight, onThemeChange }: IProps) {
     onThemeChange(!isLight);
   };
 
-  // clsx(, {[] :!isLight})
-
   return (
     <header
       className={clsx(styles.lightHeaderContainer, {

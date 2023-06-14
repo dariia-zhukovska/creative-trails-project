@@ -1,5 +1,6 @@
 .tourItem,
 .darkTourItem {
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -12,10 +13,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 8px;
+  /* gap: 8px; */
   padding: 8px 40px 16px 30px;
   width: auto;
   border-radius: 12px;
+}
+
+
+.listView .lightDeleteButton,
+.darkDeleteButton {
+  margin: auto 0;
 }
 
 .tourItem,
@@ -29,6 +36,39 @@
   box-shadow: 0px 4px 30px rgba(238, 238, 238, 0.15);
 }
 
+.titleLine {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tourItemPriceLine div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.lightDeleteButton,
+.darkDeleteButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url('../../../assets/icons/light_delete.svg');
+  background-repeat: no-repeat;
+  background-color: inherit;
+  background-position: center;
+}
+
+.lightDeleteButton:hover,
+.darkDeleteButton:hover {
+  transform: scale(1.1);
+}
+
+.darkDeleteButton {
+  background-image: url('../../../assets/icons/dark_delete.svg');
+}
+
 .tourItemImage,
 .tourItemImageList {
   display: flex;
@@ -38,8 +78,9 @@
 }
 
 .tourItemImageList {
-  height: 200px;
+  height: 220px;
   margin-right: 24px;
+  margin-left: 16px;
 }
 
 .tourItemImage:hover,
@@ -56,7 +97,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-self: center;
 }
 
 .tourDescriptionList {
@@ -69,6 +109,33 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  align-self: center;
+}
+
+.continentAge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tourItemContinent {
+  margin: 0;
+  font-weight: 400;
+}
+
+.tourItemAge {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  font-weight: 700;
+  border-radius: 50%;
+  background-color: rgb(106, 181, 230);
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  line-height: 24px;
+
 }
 
 .tourItemPriceLine {
@@ -95,6 +162,7 @@
   background-color: transparent;
 }
 
+
 .tourItemButtonList {
   align-self: center;
   margin-left: 4rem;
@@ -107,6 +175,7 @@
   border: 2px solid #09b3b3;
   background-color: transparent;
 }
+
 
 .tourItemButton:hover,
 .tourItemButtonList:hover {
