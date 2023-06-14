@@ -34,4 +34,5 @@ export interface ISelectProps {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   options: Option[];
   isLight: boolean;
+  required?: boolean;
 }

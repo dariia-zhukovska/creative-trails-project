@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
-import CommonInput from "../shared/elements/Common/CommonInputs";
-import CommonSelect from "../shared/elements/Common/CommonSelect";
+import CommonInput from "../shared/elements/CommonInputs";
+import CommonSelect from "../shared/elements/CommonSelect";
 import { ITourListData } from "types";
 
 interface IProps {
@@ -21,34 +21,24 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
     continent: "",
     adults: false,
   });
-  const [selectedContinent, setSelectedContinent] = useState("");
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
 
   const validateForm = useCallback(() => {
-    const { title, price, description } = newTourData;
-    return title && price && description && selectedContinent;
-  }, [newTourData, selectedContinent]);
+    const { title, price, description, continent } = newTourData;
+    return title && price && description && continent;
+  }, [newTourData]);
 
   useEffect(() => {
     const isFormValid = validateForm();
     setIsSaveDisabled(!isFormValid);
-  }, [newTourData, selectedContinent, validateForm]);
+  }, [newTourData, validateForm]);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value, type } = event.target;
-    const inputValue =
-      type === "checkbox" ? (event.target as HTMLInputElement).checked : value;
+    const { name, value, type, checked } = event.target as HTMLInputElement;
+    const inputValue = type === "checkbox" ? checked : value;
     setNewTourData({ ...newTourData, [name]: inputValue });
-  };
-
-  const handleContinentChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedContinent = event.target.value;
-    setSelectedContinent(selectedContinent);
-    setNewTourData({ ...newTourData, continent: selectedContinent });
   };
 
   const continentOptions = [
@@ -147,10 +137,11 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           label="Continent"
           id="continent"
           name="continent"
-          value={selectedContinent}
+          value={newTourData.continent}
           options={continentOptions}
-          onChange={handleContinentChange}
+          onChange={handleInputChange}
           isLight={isLight}
+          required
         />
         <CommonInput
           label={"Tour is only for adults"}

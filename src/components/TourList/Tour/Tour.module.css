@@ -36,6 +36,12 @@
   box-shadow: 0px 4px 30px rgba(238, 238, 238, 0.15);
 }
 
+.titleLine {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .tourItemPriceLine div {
   display: flex;
   align-items: center;
@@ -103,7 +109,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 4px;
+  align-self: center;
 }
 
 .continentAge {

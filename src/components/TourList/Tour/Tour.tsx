@@ -39,7 +39,21 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
         />
       </div>
       <div className={styles.tourDescription}>
-        <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+        <div className={styles.titleLine}>
+          <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+          <div>
+            <button
+              className={clsx(
+                styles.gridDeleteButton,
+                styles.lightDeleteButton,
+                {
+                  [styles.darkDeleteButton]: !isLight,
+                }
+              )}
+              onClick={handleDeleteTour}
+            ></button>
+          </div>
+        </div>
         <div className={styles.continentAge}>
           <h4 className={styles.tourItemContinent}>{tourItemData.continent}</h4>
           {tourItemData.adults && (
@@ -58,16 +72,6 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
             >
               View
             </button>
-            <button
-              className={clsx(
-                styles.gridDeleteButton,
-                styles.lightDeleteButton,
-                {
-                  [styles.darkDeleteButton]: !isLight,
-                }
-              )}
-              onClick={handleDeleteTour}
-            ></button>
           </div>
         </div>
       </div>
@@ -79,19 +83,27 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
       })}
     >
       <div>
-        <button
-          className={clsx(styles.lightDeleteButton, {
-            [styles.darkDeleteButton]: !isLight,
-          })}
-          onClick={handleDeleteTour}
-        ></button>
         <img
           src={tourItemData.image}
           alt={tourItemData.title}
           className={styles.tourItemImageList}
         />
         <div className={styles.tourDescriptionList}>
-          <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+          <div className={styles.titleLine}>
+            <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+            <div>
+              <button
+                className={clsx(
+                  styles.gridDeleteButton,
+                  styles.lightDeleteButton,
+                  {
+                    [styles.darkDeleteButton]: !isLight,
+                  }
+                )}
+                onClick={handleDeleteTour}
+              ></button>
+            </div>
+          </div>
           <div className={styles.continentAge}>
             <h4 className={styles.tourItemContinent}>
               {tourItemData.continent}

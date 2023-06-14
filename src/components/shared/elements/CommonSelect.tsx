@@ -9,6 +9,7 @@ function CommonSelect({
   value,
   options,
   onChange,
+  required,
   isLight,
 }: ISelectProps) {
   return (
@@ -18,7 +19,13 @@ function CommonSelect({
       })}
     >
       <label htmlFor={id}>{label}</label>
-      <select id={id} name={name} value={value} onChange={onChange}>
+      <select
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
+      >
         <option value="" disabled>
           Select {label}
         </option>
