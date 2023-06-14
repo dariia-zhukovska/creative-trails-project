@@ -27,8 +27,6 @@ select {
   font-size: 15px;
 }
 
-
-
 select {
   height: 40px;
 }
@@ -40,9 +38,7 @@ select {
 .checkboxInput {
   position: relative;
   padding-left: 30px;
-  margin-top: 16px;
   align-items: center;
-
 }
 
 .checkboxInput input {

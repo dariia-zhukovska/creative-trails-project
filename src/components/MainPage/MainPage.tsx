@@ -17,7 +17,7 @@ function MainPage({ isLight, data }: IProps) {
   const [isListView, setListView] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newData, setNewData] = useState(data);
+  const [toursData, setToursData] = useState(data);
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
@@ -31,13 +31,11 @@ function MainPage({ isLight, data }: IProps) {
   );
 
   const addNewTour = (newTour: ITourListData) => {
-    const updatedData = [...newData, newTour];
-    setNewData(updatedData);
+    setToursData((prevState) => [...prevState, newTour]);
   };
 
   const deleteTour = (tourId: number) => {
-    const updatedData = newData.filter((item) => item.id !== tourId);
-    setNewData(updatedData);
+    setToursData((prevState) => prevState.filter((item) => item.id !== tourId));
   };
 
   const handleModalClose = () => {
@@ -98,7 +96,7 @@ function MainPage({ isLight, data }: IProps) {
         isLight={isLight}
         isList={isListView}
         searchQuery={searchQuery}
-        data={newData}
+        data={toursData}
         deleteTour={deleteTour}
       />
     </div>

@@ -1,11 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
-import {
-  CommonCheckboxInput,
-  CommonInput,
-  CommonSelect,
-} from "./Common/CommonInputs";
+import CommonInput from "../shared/elements/Common/CommonInputs";
+import CommonSelect from "../shared/elements/Common/CommonSelect";
 import { ITourListData } from "~/types";
 
 interface IProps {
@@ -155,7 +152,7 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           onChange={handleContinentChange}
           isLight={isLight}
         />
-        <CommonCheckboxInput
+        <CommonInput
           label={"Tour is only for adults"}
           id={"age"}
           type={"checkbox"}

@@ -4,7 +4,6 @@
   padding-top: 50px;
 }
 
-
 .tourForm {
   display: flex;
   justify-content: space-between;
@@ -17,8 +16,6 @@
 .darkFormContainer .tourForm {
   background-color: #202c37;
 }
-
-
 
 h1 {
   text-align: center;
@@ -54,7 +51,6 @@ select {
   font-size: 15px;
 }
 
-
 select {
   height: 40px;
 }
@@ -74,7 +70,6 @@ select {
   padding-left: 30px;
   align-items: center;
 }
-
 
 .checkboxInput input {
   position: absolute;
