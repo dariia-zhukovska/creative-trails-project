@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { ITourListData } from "~/types";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
+import { ITourListData } from "types";
 
 interface IProps {
   tourItemData: ITourListData;
