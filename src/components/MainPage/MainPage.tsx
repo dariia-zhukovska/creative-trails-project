@@ -43,7 +43,7 @@ function MainPage({ isLight, data }: IProps) {
   };
 
   return (
-    <div className={`${isLight ? styles.light : styles.dark}`}>
+    <div className={clsx(styles.light, { [styles.dark]: !isLight })}>
       <div className={styles.navContainer}>
         <div className={clsx(styles.title, { [styles.darkTitle]: !isLight })}>
           Creative Trails - Exclusive tours

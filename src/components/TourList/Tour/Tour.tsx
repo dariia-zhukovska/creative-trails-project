@@ -70,9 +70,6 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
             ></button>
           </div>
         </div>
-        <p className={styles.tourItemShortDescription}>
-          {tourItemData.description}
-        </p>
       </div>
     </li>
   ) : (
@@ -104,9 +101,7 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
             )}
           </div>
           <div className={styles.tourItemPriceLine}>
-            <div className={styles.tourItemPrice}>
-              {`${tourItemData.price} $`}
-            </div>
+            <p className={styles.tourItemPrice}>{`${tourItemData.price} $`}</p>
           </div>
           <p className={styles.tourItemShortDescription}>
             {tourItemData.description}
