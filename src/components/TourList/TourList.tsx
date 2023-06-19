@@ -10,20 +10,15 @@ interface IProps {
   isList: boolean;
   data: ITourListData[];
   onEditTour: (tour: ITourListData) => void;
+  onSuccess: () => void;
 }
 
-function TourList({ isLight, isList, data, onEditTour }: IProps) {
+function TourList({ isLight, isList, data, onEditTour, onSuccess }: IProps) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     setIsLoading(false);
   }, []);
-
-  // const filteredTours = data.filter((item: ITourListData) => {
-  //   return searchQuery.some((query: ITourListData) =>
-  //     item.title.toLowerCase().includes(query.title.toLowerCase())
-  //   );
-  // });
 
   return isLoading ? (
     <Loading />
@@ -36,6 +31,7 @@ function TourList({ isLight, isList, data, onEditTour }: IProps) {
           isLight={isLight}
           isList={isList}
           onEditTour={onEditTour}
+          onSuccess={onSuccess}
         />
       ))}
     </ul>

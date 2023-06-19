@@ -11,9 +11,16 @@ interface IProps {
   closeModal: () => void;
   editMode: boolean;
   tourData: ITourListData;
+  onSuccess: () => void;
 }
 
-function TourForm({ isLight, closeModal, editMode, tourData }: IProps) {
+function TourForm({
+  isLight,
+  closeModal,
+  editMode,
+  tourData,
+  onSuccess,
+}: IProps) {
   const [formTourData, setFormTourData] = useState(tourData);
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
 
@@ -45,13 +52,14 @@ function TourForm({ isLight, closeModal, editMode, tourData }: IProps) {
     { value: "South America", label: "South America" },
   ];
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (editMode && tourData) {
-      editTour(tourData.id, formTourData);
-      
+      await editTour(tourData.id, formTourData);
+      onSuccess();
     } else {
-      addTour(formTourData);
+      await addTour(formTourData);
+      onSuccess();
     }
     closeModal();
   };
@@ -62,7 +70,7 @@ function TourForm({ isLight, closeModal, editMode, tourData }: IProps) {
       })}
     >
       <form onSubmit={handleSubmit} className={styles.tourForm}>
-        <h1>Add new tour of your dream</h1>
+        <h1> {`${editMode ? "Edit" : "Add"} tour of your dream`} </h1>
         <CommonInput
           label="Title"
           id="title"
@@ -130,7 +138,7 @@ function TourForm({ isLight, closeModal, editMode, tourData }: IProps) {
         <div className={styles.buttonsGroup}>
           <button onClick={closeModal}>Cancel</button>
           <button type="submit" disabled={isSaveDisabled}>
-            Save
+            {editMode ? "Edit" : "Save"}
           </button>
         </div>
       </form>

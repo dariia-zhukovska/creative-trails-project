@@ -33,10 +33,14 @@ function MainPage({ isLight }: IProps) {
     setListView(isList);
   };
 
+  const onSuccess = async () => {
+    const response = await getTours();
+    setTourList(response);
+  };
+
   useEffect(() => {
     const getData = async () => {
-      const response = await getTours();
-      setTourList(response);
+      onSuccess();
     };
     getData();
   }, []);
@@ -106,6 +110,7 @@ function MainPage({ isLight }: IProps) {
                 closeModal={handleModalClose}
                 tourData={tourData}
                 editMode={tourData.id !== 0}
+                onSuccess={onSuccess}
               />
             )}
           </ReactModal>
@@ -117,9 +122,9 @@ function MainPage({ isLight }: IProps) {
         <TourList
           isLight={isLight}
           isList={isListView}
-          // searchQuery={tourList}
           data={tourList}
           onEditTour={handleEditTour}
+          onSuccess={onSuccess}
         />
       )}
     </div>

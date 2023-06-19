@@ -9,17 +9,25 @@ interface IProps {
   isLight: boolean;
   isList: boolean;
   onEditTour: (tour: ITourListData) => void;
+  onSuccess: () => void;
 }
 
-function Tour({ tourItemData, isLight, isList, onEditTour }: IProps) {
+function Tour({
+  tourItemData,
+  isLight,
+  isList,
+  onEditTour,
+  onSuccess,
+}: IProps) {
   const handleEditTour = (event: React.FormEvent) => {
     event.preventDefault();
     onEditTour(tourItemData);
   };
 
-  const handleDeleteTour = (event: React.FormEvent) => {
+  const handleDeleteTour = async (event: React.FormEvent) => {
     event.preventDefault();
-    deleteTour(tourItemData.id);
+    await deleteTour(tourItemData.id);
+    onSuccess();
   };
 
   return isList ? (

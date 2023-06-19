@@ -1,7 +1,15 @@
 import instance from "./config";
 import { ITourListData } from "types";
 
-
+export const getTours = async (query?: string): Promise<ITourListData[]> => {
+  try {
+    const response = await instance.get(`/tours?title_like=${query || ''}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 
 export const addTour = async (newTourData: ITourListData) => {
   try {
@@ -30,15 +38,7 @@ export const deleteTour = async (tourItemId: number) => {
   }
 };
 
-export const getTours = async (query?: string): Promise<ITourListData[]> => {
-  try {
-    const response = await instance.get(`/tours?title_like=${query || ''}`);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
+
 
 
 
