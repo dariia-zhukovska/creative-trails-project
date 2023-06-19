@@ -59,6 +59,9 @@ function Tour({ tourItemData, isLight, isList, onEditTour }: IProps) {
             <span className={styles.tourItemAge}>18+</span>
           )}
         </div>
+        <p className={styles.tourItemShortDescription}>
+          {tourItemData.description}
+        </p>
         <div className={styles.tourItemPriceLine}>
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}

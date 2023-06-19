@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import styles from "./NewTourForm.module.css";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import styles from "./TourForm.module.css";
 import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
@@ -10,67 +10,29 @@ interface IProps {
   isLight: boolean;
   closeModal: () => void;
   editMode: boolean;
-  tourData?: ITourListData;
+  tourData: ITourListData;
 }
 
-function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
-  const [newTourData, setNewTourData] = useState({
-    id: 0,
-    title: "",
-    price: "",
-    image: "",
-    description: "",
-    continent: "",
-    adults: false,
-  });
+function TourForm({ isLight, closeModal, editMode, tourData }: IProps) {
+  const [formTourData, setFormTourData] = useState(tourData);
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
 
-  const resetForm = () => {
-    setNewTourData({
-      id: 0,
-      title: "",
-      price: "",
-      image: "",
-      description: "",
-      continent: "",
-      adults: false,
-    });
-  };
-
-  useEffect(() => {
-    if (editMode) {
-      setNewTourData(
-        tourData ?? {
-          id: 0,
-          title: "",
-          price: "",
-          image: "",
-          description: "",
-          continent: "",
-          adults: false,
-        }
-      );
-    } else {
-      resetForm();
-    }
-  }, [editMode, tourData]);
-
   const validateForm = useCallback(() => {
-    const { title, price, description, continent } = newTourData;
+    const { title, price, description, continent } = formTourData;
     return title && price && description && continent;
-  }, [newTourData]);
+  }, [formTourData]);
 
   useEffect(() => {
     const isFormValid = validateForm();
     setIsSaveDisabled(!isFormValid);
-  }, [newTourData, validateForm]);
+  }, [formTourData, validateForm]);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value, type, checked } = event.target as HTMLInputElement;
     const inputValue = type === "checkbox" ? checked : value;
-    setNewTourData({ ...newTourData, [name]: inputValue });
+    setFormTourData({ ...formTourData, [name]: inputValue });
   };
 
   const continentOptions = [
@@ -85,16 +47,14 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-
     if (editMode && tourData) {
-      editTour(tourData.id, newTourData);
+      editTour(tourData.id, formTourData);
+      
     } else {
-      addTour(newTourData);
+      addTour(formTourData);
     }
     closeModal();
   };
-
-  
   return (
     <div
       className={clsx(styles.formContainer, {
@@ -108,7 +68,7 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
           id="title"
           type="text"
           name="title"
-          value={newTourData.title}
+          value={formTourData.title}
           placeholder="Lviv, Ukraine"
           onChange={handleInputChange}
           required
@@ -119,7 +79,7 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
           id="price"
           type="text"
           name="price"
-          value={newTourData.price}
+          value={formTourData.price}
           placeholder="500 $"
           onChange={handleInputChange}
           required
@@ -130,7 +90,7 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
           id="imgUrl"
           type="text"
           name="image"
-          value={newTourData.image}
+          value={formTourData.image}
           placeholder="/assets/img/Lviv.png"
           onChange={handleInputChange}
           isLight={isLight}
@@ -140,7 +100,7 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
           id="description"
           type="text"
           name="description"
-          value={newTourData.description}
+          value={formTourData.description}
           placeholder={
             "Experience the rich history and vibrant cultural scene of Lviv."
           }
@@ -152,7 +112,7 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
           label="Continent"
           id="continent"
           name="continent"
-          value={newTourData.continent}
+          value={formTourData.continent}
           options={continentOptions}
           onChange={handleInputChange}
           isLight={isLight}
@@ -164,7 +124,7 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
           type="checkbox"
           name="adults"
           onChange={handleInputChange}
-          checked={newTourData.adults}
+          checked={formTourData.adults}
           isLight={isLight}
         />
         <div className={styles.buttonsGroup}>
@@ -178,4 +138,4 @@ function NewTourForm({ isLight, closeModal, editMode, tourData }: IProps) {
   );
 }
 
-export default NewTourForm;
+export default TourForm;

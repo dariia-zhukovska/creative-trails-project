@@ -1,59 +1,68 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./MainPage.module.css";
 import clsx from "clsx";
 import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
-import NewTourForm from "../NewTourForm/NewTourForm";
-import toursData from "../../data/tours.json";
+import TourForm from "../TourForm/TourForm";
 import { ITourListData } from "types";
+import Loading from "../../components/shared/Loading/Loading";
+import { getTours } from "../../api/tours";
 
 interface IProps {
   isLight: boolean;
 }
+const initialState = {
+  id: 0,
+  title: "",
+  price: "",
+  image: "",
+  description: "",
+  continent: "",
+  adults: false,
+};
 
 function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [tourList, setTourList] = useState<ITourListData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTour, setSelectedTour] = useState<ITourListData | undefined>(
-    undefined
-  );
-  const [initialTourData, setInitialTourData] = useState<
-    ITourListData | undefined
-  >(undefined);
-
-  const data = toursData.tours;
-
+  const [tourData, setTourData] = useState(initialState);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      const response = await getTours();
+      setTourList(response);
+    };
+    getData();
+  }, []);
+
   const handleSearchChange = debounce(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(event.target.value);
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      setLoading(true);
+      const response = await getTours(event.target.value);
+      setTourList(response);
+      setLoading(false);
     },
     500
   );
 
   const handleModalClose = () => {
-    setSelectedTour(initialTourData);
+    setTourData(initialState);
     setIsModalOpen(false);
   };
 
   const handleEditTour = (tour: ITourListData) => {
-    setSelectedTour(tour);
-    setInitialTourData(tour);
     setIsModalOpen(true);
-  };
-
-  const resetForm = () => {
-    setInitialTourData(undefined);
+    setTourData(tour);
   };
 
   const handleAddNewTour = () => {
-    resetForm();
+    setTourData(initialState);
     setIsModalOpen(true);
   };
 
@@ -85,35 +94,34 @@ function MainPage({ isLight }: IProps) {
           <button className={styles.addTourButton} onClick={handleAddNewTour}>
             Add New Tour
           </button>
-
           <ReactModal
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
             contentLabel="Form Modal"
             className={styles.modalContent}
-            // Doesn't work
-            // overlayClassName={clsx(styles.overlayLight, {
-            //   [styles.overlayDark]: !isLight,
-            // })}
           >
-            {toursData.tours.length > 0 && (
-              <NewTourForm
+            {tourList.length > 0 && (
+              <TourForm
                 isLight={isLight}
                 closeModal={handleModalClose}
-                tourData={selectedTour}
-                editMode={!!initialTourData}
+                tourData={tourData}
+                editMode={tourData.id !== 0}
               />
             )}
           </ReactModal>
         </div>
       </div>
-      <TourList
-        isLight={isLight}
-        isList={isListView}
-        searchQuery={searchQuery}
-        data={data}
-        onEditTour={handleEditTour}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <TourList
+          isLight={isLight}
+          isList={isListView}
+          // searchQuery={tourList}
+          data={tourList}
+          onEditTour={handleEditTour}
+        />
+      )}
     </div>
   );
 }

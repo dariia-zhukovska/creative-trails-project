@@ -12,6 +12,7 @@ function CommonInput({
   onChange,
   required,
   isLight,
+  checked,
 }: IInputProps) {
   return (
     <div
@@ -29,6 +30,7 @@ function CommonInput({
         placeholder={placeholder}
         onChange={onChange}
         required={required}
+        checked={checked}
       />
     </div>
   );

@@ -2,21 +2,13 @@ import instance from "./config";
 import { ITourListData } from "types";
 
 
-export const deleteTour = async (tourItemId: number) => {
-  try {
-    const response = await instance.delete(`/tours/${tourItemId}`);
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 export const addTour = async (newTourData: ITourListData) => {
   try {
     const response = await instance.post('/tours', newTourData);
     console.log(response.data);
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching data:", error);
   }
 };
 
@@ -28,3 +20,32 @@ export const editTour = async (tourItemId: number, updatedTourData: ITourListDat
     console.error(error);
   }
 };
+
+export const deleteTour = async (tourItemId: number) => {
+  try {
+    const response = await instance.delete(`/tours/${tourItemId}`);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getTours = async (query?: string): Promise<ITourListData[]> => {
+  try {
+    const response = await instance.get(`/tours?title_like=${query || ''}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "New York, USA",
-      "price": "1500",
+      "price": "5000",
       "image": "/assets/img/new_york.jpg",
       "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
       "continent": "North America",
@@ -215,6 +215,15 @@
       "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
       "continent": "South America",
       "adults": true
+    },
+    {
+      "id": 25,
+      "title": "Romko",
+      "price": "3000",
+      "image": "",
+      "description": "Cool",
+      "continent": "Asia",
+      "adults": false
     }
   ]
 }

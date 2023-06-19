@@ -2,23 +2,34 @@ import { ITourListData } from "../../types";
 import styles from "./TourList.module.css";
 import Tour from "./Tour/Tour";
 import clsx from "clsx";
+import Loading from "../../components/shared/Loading/Loading";
+import { useState, useEffect } from "react";
 
 interface IProps {
   isLight: boolean;
   isList: boolean;
-  searchQuery: string;
   data: ITourListData[];
   onEditTour: (tour: ITourListData) => void;
 }
 
-function TourList({ isLight, isList, searchQuery, data, onEditTour }: IProps) {
-  const filteredTours = data.filter((item: ITourListData) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+function TourList({ isLight, isList, data, onEditTour }: IProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  return (
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  // const filteredTours = data.filter((item: ITourListData) => {
+  //   return searchQuery.some((query: ITourListData) =>
+  //     item.title.toLowerCase().includes(query.title.toLowerCase())
+  //   );
+  // });
+
+  return isLoading ? (
+    <Loading />
+  ) : (
     <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
-      {filteredTours.map((item: ITourListData) => (
+      {data.map((item: ITourListData) => (
         <Tour
           key={item.id}
           tourItemData={item}
