@@ -56,11 +56,10 @@ function TourForm({
     event.preventDefault();
     if (editMode && tourData) {
       await editTour(tourData.id, formTourData);
-      onSuccess();
     } else {
       await addTour(formTourData);
-      onSuccess();
     }
+    onSuccess();
     closeModal();
   };
   return (

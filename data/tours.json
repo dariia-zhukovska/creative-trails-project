@@ -215,15 +215,6 @@
       "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
       "continent": "South America",
       "adults": true
-    },
-    {
-      "id": 25,
-      "title": "Romko",
-      "price": "3000",
-      "image": "",
-      "description": "Cool",
-      "continent": "Asia",
-      "adults": false
     }
   ]
 }

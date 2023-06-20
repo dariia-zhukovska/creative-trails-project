@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./MainPage.module.css";
 import clsx from "clsx";
@@ -13,6 +13,7 @@ import { getTours } from "../../api/tours";
 interface IProps {
   isLight: boolean;
 }
+
 const initialState = {
   id: 0,
   title: "",
@@ -29,28 +30,25 @@ function MainPage({ isLight }: IProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tourData, setTourData] = useState(initialState);
   const [isLoading, setLoading] = useState<boolean>(false);
+
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
   };
 
-  const onSuccess = async () => {
-    const response = await getTours();
+  const onSuccess = async (value?: string) => {
+    setLoading(true);
+    const response = await getTours(value);
     setTourList(response);
+    setLoading(false);
   };
 
   useEffect(() => {
-    const getData = async () => {
-      onSuccess();
-    };
-    getData();
+    onSuccess();
   }, []);
 
   const handleSearchChange = debounce(
-    async (event: React.ChangeEvent<HTMLInputElement>) => {
-      setLoading(true);
-      const response = await getTours(event.target.value);
-      setTourList(response);
-      setLoading(false);
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      onSuccess(event.target.value);
     },
     500
   );
@@ -65,7 +63,7 @@ function MainPage({ isLight }: IProps) {
     setTourData(tour);
   };
 
-  const handleAddNewTour = () => {
+  const addNewTour = () => {
     setTourData(initialState);
     setIsModalOpen(true);
   };
@@ -95,7 +93,7 @@ function MainPage({ isLight }: IProps) {
               onViewChange={handleViewChange}
             />
           </div>
-          <button className={styles.addTourButton} onClick={handleAddNewTour}>
+          <button className={styles.addTourButton} onClick={addNewTour}>
             Add New Tour
           </button>
           <ReactModal

@@ -2,8 +2,6 @@ import { ITourListData } from "../../types";
 import styles from "./TourList.module.css";
 import Tour from "./Tour/Tour";
 import clsx from "clsx";
-import Loading from "../../components/shared/Loading/Loading";
-import { useState, useEffect } from "react";
 
 interface IProps {
   isLight: boolean;
@@ -14,15 +12,7 @@ interface IProps {
 }
 
 function TourList({ isLight, isList, data, onEditTour, onSuccess }: IProps) {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
       {data.map((item: ITourListData) => (
         <Tour
