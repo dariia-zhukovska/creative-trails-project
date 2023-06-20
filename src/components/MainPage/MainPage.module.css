@@ -45,50 +45,6 @@
   color: aqua;
 }
 
-.search {
-  left: 10px;
-  top: 10px;
-  width: 24px;
-  height: 24px;
-  background-image: url("../../assets/icons/icon-search.svg");
-  background-repeat: no-repeat;
-  border: none;
-}
-
-.inputBox {
-  position: relative;
-  max-width: 350px;
-  border: #333;
-}
-
-.inputBox input {
-  position: relative;
-  margin: 8px auto;
-  padding: 10px 24px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #9d9fa3;
-  border: 1px solid #9d9fa3;
-  border-radius: 8px;
-  background: white;
-  outline: none;
-}
-
-.inputBox input::placeholder {
-  color: #cacaca;
-  border-bottom: 1px solid #cacaca;
-}
-
-.inputBox input {
-  border-radius: 12px;
-}
-
-.inputBox .search {
-  position: absolute;
-  top: 30%;
-  left: 90%;
-  background-image: url("/assets/img/icon-search.svg");
-}
 
 .addTourButton {
   padding: 10px 18px;

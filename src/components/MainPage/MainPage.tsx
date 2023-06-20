@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./MainPage.module.css";
 import clsx from "clsx";
-import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import TourForm from "../TourForm/TourForm";
 import { ITourListData } from "types";
 import Loading from "../../components/shared/Loading/Loading";
 import { getTours } from "../../api/tours";
+import SearchInput from "../shared/elements/SearchInput";
 
 interface IProps {
   isLight: boolean;
@@ -30,28 +30,24 @@ function MainPage({ isLight }: IProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tourData, setTourData] = useState(initialState);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
   };
 
-  const onSuccess = async (value?: string) => {
+  const requestData = useCallback(async () => {
     setLoading(true);
-    const response = await getTours(value);
+    const response = await getTours(searchValue);
     setTourList(response);
     setLoading(false);
-  };
+  }, [searchValue]);
+
+  console.log(searchValue);
 
   useEffect(() => {
-    onSuccess();
-  }, []);
-
-  const handleSearchChange = debounce(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      onSuccess(event.target.value);
-    },
-    500
-  );
+    requestData();
+  }, [requestData]);
 
   const handleModalClose = () => {
     setTourData(initialState);
@@ -75,17 +71,7 @@ function MainPage({ isLight }: IProps) {
           Creative Trails - Exclusive tours
         </div>
         <div className={styles.left}>
-          <div className={styles.inputContainer}>
-            <div className={styles.inputBox}>
-              <input
-                type="text"
-                placeholder="Search tour by name"
-                className={styles.searchInput}
-                onChange={handleSearchChange}
-              />
-              <i className={styles.search}></i>
-            </div>
-          </div>
+          <SearchInput onChange={setSearchValue} />
           <div className={styles.listView}>
             <ListViewSwitcher
               isLight={isLight}
@@ -108,7 +94,7 @@ function MainPage({ isLight }: IProps) {
                 closeModal={handleModalClose}
                 tourData={tourData}
                 editMode={tourData.id !== 0}
-                onSuccess={onSuccess}
+                onSuccess={requestData}
               />
             )}
           </ReactModal>
@@ -122,7 +108,7 @@ function MainPage({ isLight }: IProps) {
           isList={isListView}
           data={tourList}
           onEditTour={handleEditTour}
-          onSuccess={onSuccess}
+          onSuccess={requestData}
         />
       )}
     </div>

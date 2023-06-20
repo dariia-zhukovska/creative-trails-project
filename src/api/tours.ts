@@ -3,7 +3,7 @@ import { ITourListData } from "types";
 
 export const getTours = async (query?: string): Promise<ITourListData[]> => {
   try {
-    const response = await instance.get(`/tours?title_like=${query || ''}`);
+    const response = await instance.get(`/tours?title_like=${query || ""}`);
     return response.data;
   } catch (error) {
     console.error(error);
