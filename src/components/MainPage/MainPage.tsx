@@ -1,45 +1,67 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./MainPage.module.css";
 import clsx from "clsx";
-import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
-import NewTourForm from "../NewTourForm/NewTourForm";
+import TourForm from "../TourForm/TourForm";
 import { ITourListData } from "types";
+import Loading from "../../components/shared/Loading/Loading";
+import { getTours } from "../../api/tours";
+import SearchInput from "../shared/elements/SearchInput";
 
 interface IProps {
   isLight: boolean;
-  data: ITourListData[];
 }
 
-function MainPage({ isLight, data }: IProps) {
+const initialState = {
+  id: 0,
+  title: "",
+  price: "",
+  image: "",
+  description: "",
+  continent: "",
+  adults: false,
+};
+
+function MainPage({ isLight }: IProps) {
   const [isListView, setListView] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [tourList, setTourList] = useState<ITourListData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [toursData, setToursData] = useState(data);
+  const [tourData, setTourData] = useState(initialState);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleViewChange = (isList: boolean) => {
     setListView(isList);
   };
 
-  const handleSearchChange = debounce(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(event.target.value);
-    },
-    500
-  );
+  const requestData = useCallback(async () => {
+    setLoading(true);
+    const response = await getTours(searchValue);
+    setTourList(response);
+    setLoading(false);
+  }, [searchValue]);
 
-  const addNewTour = (newTour: ITourListData) => {
-    setToursData((prevState) => [...prevState, newTour]);
-  };
+  console.log(searchValue);
 
-  const deleteTour = (tourId: number) => {
-    setToursData((prevState) => prevState.filter((item) => item.id !== tourId));
-  };
+  useEffect(() => {
+    requestData();
+  }, [requestData]);
 
   const handleModalClose = () => {
+    setTourData(initialState);
     setIsModalOpen(false);
+  };
+
+  const handleEditTour = (tour: ITourListData) => {
+    setIsModalOpen(true);
+    setTourData(tour);
+  };
+
+  const addNewTour = () => {
+    setTourData(initialState);
+    setIsModalOpen(true);
   };
 
   return (
@@ -49,17 +71,7 @@ function MainPage({ isLight, data }: IProps) {
           Creative Trails - Exclusive tours
         </div>
         <div className={styles.left}>
-          <div className={styles.inputContainer}>
-            <div className={styles.inputBox}>
-              <input
-                type="text"
-                placeholder="Search tour by name"
-                className={styles.searchInput}
-                onChange={handleSearchChange}
-              />
-              <i className={styles.search}></i>
-            </div>
-          </div>
+          <SearchInput onChange={setSearchValue} />
           <div className={styles.listView}>
             <ListViewSwitcher
               isLight={isLight}
@@ -67,38 +79,38 @@ function MainPage({ isLight, data }: IProps) {
               onViewChange={handleViewChange}
             />
           </div>
-          <button
-            className={styles.addTourButton}
-            onClick={() => setIsModalOpen(true)}
-          >
+          <button className={styles.addTourButton} onClick={addNewTour}>
             Add New Tour
           </button>
-
           <ReactModal
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
             contentLabel="Form Modal"
             className={styles.modalContent}
-            // Doesn't work
-            // overlayClassName={clsx(styles.overlayLight, {
-            //   [styles.overlayDark]: !isLight,
-            // })}
           >
-            <NewTourForm
-              isLight={isLight}
-              closeModal={handleModalClose}
-              addNewTour={addNewTour}
-            />
+            {tourList.length > 0 && (
+              <TourForm
+                isLight={isLight}
+                closeModal={handleModalClose}
+                tourData={tourData}
+                editMode={tourData.id !== 0}
+                onSuccess={requestData}
+              />
+            )}
           </ReactModal>
         </div>
       </div>
-      <TourList
-        isLight={isLight}
-        isList={isListView}
-        searchQuery={searchQuery}
-        data={toursData}
-        deleteTour={deleteTour}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <TourList
+          isLight={isLight}
+          isList={isListView}
+          data={tourList}
+          onEditTour={handleEditTour}
+          onSuccess={requestData}
+        />
+      )}
     </div>
   );
 }

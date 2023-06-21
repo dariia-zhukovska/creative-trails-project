@@ -9,7 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "clean": "rimraf dist",
-    "start": "json-server --watch src/data/tours.json --port 3001"
+    "start": "json-server --watch data/tours.json --port 3001"
   },
   "dependencies": {
     "axios": "^1.4.0",

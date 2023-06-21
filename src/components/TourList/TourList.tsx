@@ -6,28 +6,22 @@ import clsx from "clsx";
 interface IProps {
   isLight: boolean;
   isList: boolean;
-  searchQuery: string;
   data: ITourListData[];
-  deleteTour: (tourId: number) => void;
+  onEditTour: (tour: ITourListData) => void;
+  onSuccess: () => void;
 }
 
-function TourList({ isLight, isList, searchQuery, data, deleteTour }: IProps) {
-  const filteredTours = data.filter((item: ITourListData) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  const handleDeleteTour = (tourId: number) => {
-    deleteTour(tourId);
-  };
-
+function TourList({ isLight, isList, data, onEditTour, onSuccess }: IProps) {
   return (
     <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
-      {filteredTours.map((item: ITourListData) => (
+      {data.map((item: ITourListData) => (
         <Tour
           key={item.id}
           tourItemData={item}
           isLight={isLight}
           isList={isList}
-          deleteTour={() => handleDeleteTour(item.id)}
+          onEditTour={onEditTour}
+          onSuccess={onSuccess}
         />
       ))}
     </ul>

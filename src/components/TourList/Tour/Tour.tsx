@@ -2,31 +2,32 @@ import clsx from "clsx";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
 import { ITourListData } from "types";
+import { deleteTour } from "../../../api/tours";
 
 interface IProps {
   tourItemData: ITourListData;
   isLight: boolean;
   isList: boolean;
-  deleteTour: () => void;
+  onEditTour: (tour: ITourListData) => void;
+  onSuccess: () => void;
 }
 
-function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
-  // Async code with API usage (saved for later)
-
-  // const handleDelete = async () => {
-  //   try {
-  //     const response = await axios.delete(
-  //       `http://localhost:3001/tours/${tourItemData.id}`
-  //     );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  const handleDeleteTour = (event: React.FormEvent) => {
+function Tour({
+  tourItemData,
+  isLight,
+  isList,
+  onEditTour,
+  onSuccess,
+}: IProps) {
+  const handleEditTour = (event: React.FormEvent) => {
     event.preventDefault();
-    deleteTour();
+    onEditTour(tourItemData);
+  };
+
+  const handleDeleteTour = async (event: React.FormEvent) => {
+    event.preventDefault();
+    await deleteTour(tourItemData.id);
+    onSuccess();
   };
 
   return isList ? (
@@ -42,6 +43,12 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
         <div className={styles.titleLine}>
           <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
           <div>
+            <button
+              className={clsx(styles.gridEditButton, styles.lightEditButton, {
+                [styles.darkEditButton]: !isLight,
+              })}
+              onClick={handleEditTour}
+            ></button>
             <button
               className={clsx(
                 styles.gridDeleteButton,
@@ -60,6 +67,9 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
             <span className={styles.tourItemAge}>18+</span>
           )}
         </div>
+        <p className={styles.tourItemShortDescription}>
+          {tourItemData.description}
+        </p>
         <div className={styles.tourItemPriceLine}>
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}
@@ -91,6 +101,12 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
           <div className={styles.titleLine}>
             <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
             <div>
+              <button
+                className={clsx(styles.gridEditButton, styles.lightEditButton, {
+                  [styles.darkEditButton]: !isLight,
+                })}
+                onClick={handleEditTour}
+              ></button>
               <button
                 className={clsx(
                   styles.gridDeleteButton,

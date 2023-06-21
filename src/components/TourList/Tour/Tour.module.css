@@ -39,7 +39,7 @@
 .titleLine {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
 }
 
 .tourItemPriceLine div {
@@ -48,11 +48,11 @@
   gap: 16px;
 }
 
-
 .lightDeleteButton,
-.darkDeleteButton {
-  width: 40px;
-  height: 40px;
+.darkDeleteButton,
+.gridEditButton {
+  width: 24px;
+  height: 24px;
   border: none;
   background-image: url('../../../assets/icons/light_delete.svg');
   background-repeat: no-repeat;
@@ -60,14 +60,26 @@
   background-position: center;
 }
 
+.gridEditButton {
+  background-image: url('../../../assets/icons/light_edit.svg');
+  margin-right: 16px;
+}
+
 .lightDeleteButton:hover,
-.darkDeleteButton:hover {
+.darkDeleteButton:hover,
+.gridEditButton:hover {
   transform: scale(1.1);
+}
+
+.darkEditButton {
+  background-image: url('../../../assets/icons/dark_edit.svg');
 }
 
 .darkDeleteButton {
   background-image: url('../../../assets/icons/dark_delete.svg');
 }
+
+
 
 .tourItemImage,
 .tourItemImageList {
@@ -179,5 +191,5 @@
 
 .tourItemButton:hover,
 .tourItemButtonList:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }

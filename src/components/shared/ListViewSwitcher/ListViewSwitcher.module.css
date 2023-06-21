@@ -5,9 +5,15 @@
   gap: 1em;
 }
 
+
+
 .listButtons button {
   align-items: center;
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.listButtons button:hover {
+  transform: scale(1.1);
 }
