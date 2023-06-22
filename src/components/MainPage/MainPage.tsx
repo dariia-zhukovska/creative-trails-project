@@ -42,9 +42,6 @@ function MainPage({ isLight }: IProps) {
     setTourList(response);
     setLoading(false);
   }, [searchValue]);
-
-  console.log(searchValue);
-
   useEffect(() => {
     requestData();
   }, [requestData]);

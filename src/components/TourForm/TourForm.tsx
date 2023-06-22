@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./TourForm.module.css";
 import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
@@ -54,7 +54,7 @@ function TourForm({
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (editMode && tourData) {
+    if (editMode && tourData.id) {
       await editTour(tourData.id, formTourData);
     } else {
       await addTour(formTourData);
