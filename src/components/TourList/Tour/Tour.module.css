@@ -42,10 +42,13 @@
 .titleLine {
   display: flex;
   align-items: center;
-  gap: 10em;
+  justify-content: space-between;
 }
 
-
+.tourDescriptionList .titleLine {
+  justify-content: flex-start;
+  gap: 30px;
+}
 
 .tourItemPriceLine div {
   display: flex;
@@ -113,7 +116,8 @@
 .tourDescriptionList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .tourDescriptionList {
@@ -184,7 +188,7 @@
   align-self: center;
   margin-left: 4rem;
   padding: 12px 30px;
-  height: 3em;
+  /* height: 3em; */
   font-weight: 600;
   font-size: 20px;
   color: #09b3b3;

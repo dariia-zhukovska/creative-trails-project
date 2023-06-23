@@ -97,9 +97,16 @@ function Tour({
             {`${tourItemData.price} $`}
           </div>
           <div>
-            <button className={styles.tourItemButton} onClick={openTourPage}>
-              View
-            </button>
+            {state?.id === tourItemData.id ? (
+              <button
+                className={styles.tourItemButtonList}
+                onClick={openTourPage}
+              >
+                View
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
@@ -166,9 +173,13 @@ function Tour({
           </div>
         </div>
       </div>
-      <button className={styles.tourItemButtonList} onClick={openTourPage}>
-        View
-      </button>
+      {state?.id === tourItemData.id ? (
+        <button className={styles.tourItemButtonList} onClick={openTourPage}>
+          View
+        </button>
+      ) : (
+        ""
+      )}
     </li>
   );
 }
