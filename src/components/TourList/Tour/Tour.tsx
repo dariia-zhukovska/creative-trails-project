@@ -3,6 +3,7 @@ import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
 import { ITourListData } from "types";
 import { deleteTour } from "../../../api/tours";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface IProps {
   tourItemData: ITourListData;
@@ -19,6 +20,9 @@ function Tour({
   onEditTour,
   onSuccess,
 }: IProps) {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
   const handleEditTour = (event: React.FormEvent) => {
     event.preventDefault();
     onEditTour(tourItemData);
@@ -28,6 +32,11 @@ function Tour({
     event.preventDefault();
     await deleteTour(tourItemData.id);
     onSuccess();
+  };
+
+  const openTourPage = async (event: React.FormEvent) => {
+    event.preventDefault();
+    navigate(`/tours/${tourItemData.id}`);
   };
 
   return isList ? (
@@ -66,19 +75,29 @@ function Tour({
           {tourItemData.adults && (
             <span className={styles.tourItemAge}>18+</span>
           )}
+          <div>
+            <Link
+              to="/"
+              state={{
+                description: tourItemData.description,
+                id: tourItemData.id,
+              }}
+              className={styles.tourMore}
+            >
+              More
+            </Link>
+          </div>
         </div>
-        <p className={styles.tourItemShortDescription}>
-          {tourItemData.description}
-        </p>
+
+        <div className={styles.tourItemMoreCard}>
+          <p>{state?.id === tourItemData.id ? state.description : ""}</p>
+        </div>
         <div className={styles.tourItemPriceLine}>
           <div className={styles.tourItemPrice}>
             {`${tourItemData.price} $`}
           </div>
           <div>
-            <button
-              className={styles.tourItemButton}
-              onClick={() => console.log("Button clicked")}
-            >
+            <button className={styles.tourItemButton} onClick={openTourPage}>
               View
             </button>
           </div>
@@ -93,7 +112,7 @@ function Tour({
     >
       <div>
         <img
-          src={tourItemData.image}
+          src={tourItemData.image || imageNotFound}
           alt={tourItemData.title}
           className={styles.tourItemImageList}
         />
@@ -126,19 +145,28 @@ function Tour({
             {tourItemData.adults && (
               <span className={styles.tourItemAge}>18+</span>
             )}
+            <div>
+              <Link
+                to="/"
+                state={{
+                  description: tourItemData.description,
+                  id: tourItemData.id,
+                }}
+                className={styles.tourMore}
+              >
+                More
+              </Link>
+            </div>
           </div>
           <div className={styles.tourItemPriceLine}>
             <p className={styles.tourItemPrice}>{`${tourItemData.price} $`}</p>
           </div>
-          <p className={styles.tourItemShortDescription}>
-            {tourItemData.description}
-          </p>
+          <div className={styles.tourItemMoreCard}>
+            <p>{state?.id === tourItemData.id ? state.description : ""}</p>
+          </div>
         </div>
       </div>
-      <button
-        className={styles.tourItemButtonList}
-        onClick={() => console.log("Button clicked")}
-      >
+      <button className={styles.tourItemButtonList} onClick={openTourPage}>
         View
       </button>
     </li>

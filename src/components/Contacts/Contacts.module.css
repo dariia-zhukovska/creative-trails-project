@@ -1,0 +1,34 @@
+.lightContainer,
+.darkContainer {
+  color: black;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.darkContainer {
+  color: white;
+  background-color: #2B3945;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 32px;
+  text-align: center;
+  padding: 30px;
+  width: max-content;
+  background-color: #fafafa;
+  box-shadow: 0px 4px 30px rgb(9, 179, 179, 0.5);
+  border-radius: 30px;
+
+}
+
+.socialLinks {
+  display: flex;
+  gap: 3em;
+}

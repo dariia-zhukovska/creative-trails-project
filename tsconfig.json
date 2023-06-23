@@ -17,7 +17,8 @@
     "baseUrl": "./src",
     "paths": {
       "api/*": ["api/*"],
-      "types/*": ["types/*"]
+      "types/*": ["types/*"],
+      "src/*": ["src/*"]
     },
    
 

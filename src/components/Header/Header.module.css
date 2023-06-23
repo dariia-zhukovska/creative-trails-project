@@ -1,8 +1,14 @@
+header {
+  position: fixed;
+  width: -webkit-fill-available;
+  z-index: 1;
+}
+
 .lightHeaderContainer,
 .darkHeaderContainer {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  align-items: center;
   padding: 0 32px;
   background-color: white;
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
@@ -13,19 +19,7 @@
   box-shadow: 0px 4px 30px rgba(238, 238, 238, 0.15);
 }
 
-.lightHeaderLogo,
-.darkHeaderLogo {
-  width: 100%;
-  background-image: url("/src/assets/icons/light_logo.svg");
-  background-repeat: no-repeat;
-  background-position-x: start;
-  background-position-y: center;
-}
-
-.darkHeaderLogo {
-  background-image: url("/src/assets/icons/dark_logo.svg");
-}
-
-.headerThemeToggle {
-  align-self: center;
+.logo {
+  height: max-content;
+  margin: 15px 0;
 }

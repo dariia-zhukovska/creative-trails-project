@@ -4,6 +4,7 @@ export interface ITourListData {
   price: string;
   image: string;
   description: string;
+  fullDescription?: string;
   continent: string;
   adults: boolean;
 }
