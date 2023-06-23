@@ -28,6 +28,10 @@
 
 }
 
+.darkContainer .content {
+  background-color: #2B3945;
+}
+
 .socialLinks {
   display: flex;
   gap: 3em;

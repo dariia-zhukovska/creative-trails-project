@@ -1,11 +1,20 @@
-.App {
+.App,
+.AppDark {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
   font-family: 'Nunito', sans-serif;
+  position: relative;
+  padding-bottom: 80px;
 }
 
 
 .mainContainer {
   flex: 1;
+}
+
+
+.AppDark {
+  background-color: #202c37;
+  min-height: 100vh;
 }

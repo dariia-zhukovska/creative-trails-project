@@ -8,7 +8,6 @@ import About from "./components/About/About";
 import Contacts from "./components/Contacts/Contacts";
 import WhyTravel from "./components/WhyTravel/WhyTravel";
 import SpecificTour from "./components/SpecificTour/SpecificTour";
-import clsx from "clsx";
 
 function App() {
   const [isThemeLight, setIsThemeLight] = useState(true);
@@ -17,7 +16,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={isThemeLight ? "App" : "AppDark"}>
       <Header isLight={isThemeLight} onThemeChange={handleThemeChange} />
       <Routes>
         <Route path="/" element={<MainPage isLight={isThemeLight} />}></Route>

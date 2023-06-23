@@ -4,8 +4,8 @@
   display: flex;
   align-self: center;
   justify-content: space-between;
-  margin: 150px 30px auto 30px;
-
+  margin: 150px 30px 30px;
+  height: 100%;
   gap: 8px;
   padding: 8px 40px 16px 30px;
   border-radius: 12px;
@@ -134,10 +134,16 @@
   color: #09b3b3;
 }
 
+
+
 .tourItemMore {
   margin-bottom: 16px;
   font-weight: 700;
   font-size: 16px;
   background-size: 12px;
   color: #09b3b3;
+}
+
+.tourItemMoreCard p {
+  max-width: 36em;
 }

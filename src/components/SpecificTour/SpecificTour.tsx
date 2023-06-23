@@ -7,6 +7,7 @@ import { ITourListData } from "types/index";
 import { useParams } from "react-router-dom";
 import TourForm from "../TourForm/TourForm";
 import ReactModal from "react-modal";
+import NotFound from "../NotFound/NotFound";
 
 interface IProps {
   isLight: boolean;
@@ -36,10 +37,6 @@ function SpecificTour({ isLight }: IProps) {
     setIsExpanded(!isExpanded);
   };
 
-  if (!tourItemData?.id) {
-    return <div>No tour found.</div>;
-  }
-
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
@@ -48,7 +45,9 @@ function SpecificTour({ isLight }: IProps) {
     setIsModalOpen(true);
   };
 
-  return (
+  return !tourItemData?.id ? (
+    <NotFound isLight={isLight} />
+  ) : (
     <div
       className={clsx(styles.tourItem, {
         [styles.darkTourItem]: !isLight,
