@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import TourForm from "../TourForm/TourForm";
 import ReactModal from "react-modal";
 import NotFound from "../NotFound/NotFound";
+import Loading from "../../components/shared/Loading/Loading";
 
 interface IProps {
   isLight: boolean;
@@ -17,15 +18,16 @@ function SpecificTour({ isLight }: IProps) {
   const [tourItemData, setTourItemData] = useState<ITourListData | null>(null);
   const [isExpanded, setIsExpanded] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const { id: tourId } = useParams();
 
   const requestTourData = useCallback(async () => {
     if (tourId) {
+      setLoading(true);
       const response = await getSpecificTour(tourId);
-
-      console.log("work");
       setTourItemData(response);
+      setLoading(false);
     }
   }, [tourId]);
 
@@ -45,7 +47,9 @@ function SpecificTour({ isLight }: IProps) {
     setIsModalOpen(true);
   };
 
-  return !tourItemData?.id ? (
+  return isLoading ? (
+    <Loading />
+  ) : !tourItemData?.id ? (
     <NotFound isLight={isLight} />
   ) : (
     <div

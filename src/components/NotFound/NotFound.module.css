@@ -1,5 +1,9 @@
+.notFoundContainer {
+  height: 100vh;
+  padding-top: 200px;
+}
+
 .notFound {
   display: flex;
   justify-content: center;
-  margin-top: 200px;
 }

@@ -249,15 +249,6 @@
       "continent": "Australia",
       "adults": true,
       "fullDescription": "Experience the vibrant city life and stunning harbor views of Sydney. As Australia's largest city, Sydney offers a perfect blend of natural beauty and cosmopolitan attractions. Take a stroll along the iconic Sydney Harbour Bridge, visit the Sydney Opera House, and relax at the famous Bondi Beach. Explore the historic Rocks district, shop at trendy boutiques in Paddington, and indulge in delicious cuisine at world-class restaurants. Immerse yourself in the city's vibrant arts and culture scene, and enjoy breathtaking views of the city skyline from scenic viewpoints like the Royal Botanic Garden and Mrs. Macquarie's Chair. With its diverse attractions and laid-back atmosphere, Sydney promises an unforgettable experience for every traveler."
-    },
-    {
-      "id": 26,
-      "title": "s",
-      "price": "s",
-      "image": "",
-      "description": "Cool",
-      "continent": "Europe",
-      "adults": false
     }
   ]
 }

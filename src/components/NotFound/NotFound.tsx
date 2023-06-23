@@ -9,8 +9,10 @@ interface IProps {
 
 function NotFound({ isLight }: IProps) {
   return (
-    <div className={styles.notFound}>
-      <img src={isLight ? notFoundDark : notFoundLight} alt="not found" />
+    <div className={styles.notFoundContainer}>
+      <div className={styles.notFound}>
+        <img src={isLight ? notFoundDark : notFoundLight} alt="not found" />
+      </div>
     </div>
   );
 }
