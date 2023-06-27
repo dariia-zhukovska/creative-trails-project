@@ -7,21 +7,20 @@ import lightInstagram from "/src/assets/icons/lightInstagram.svg";
 import darkInstagram from "/src/assets/icons/darkInstagram.svg";
 import lightGithub from "/src/assets/icons/lightGithub.svg";
 import darkGithub from "/src/assets/icons/darkGithub.svg";
+import { useSelector } from "react-redux";
 
-interface IProps {
-  isLight: boolean;
-}
+function Footer() {
+  const theme = useSelector((state: any) => state.theme);
 
-function Footer({ isLight }: IProps) {
   return (
     <footer
       className={clsx(styles.footerContainer, {
-        [styles.darkFooterContainer]: !isLight,
+        [styles.darkFooterContainer]: theme === "isLight",
       })}
     >
       <div
         className={clsx(styles.footerLogo, {
-          [styles.darkFooterLogo]: !isLight,
+          [styles.darkFooterLogo]: theme === "isLight",
         })}
       ></div>
       <div className={styles.socialLinks}>
@@ -31,7 +30,10 @@ function Footer({ isLight }: IProps) {
             role="button"
             target="blank"
           >
-            <img src={isLight ? lightLinkedin : darkLinkedin} alt="linkedin" />
+            <img
+              src={theme === "isLight" ? darkLinkedin : lightLinkedin}
+              alt="linkedin"
+            />
           </a>
         </div>
         <div className={styles.instagram}>
@@ -41,7 +43,7 @@ function Footer({ isLight }: IProps) {
             target="blank"
           >
             <img
-              src={isLight ? lightInstagram : darkInstagram}
+              src={theme === "isLight" ? darkInstagram : lightInstagram}
               alt="instagram"
             />
           </a>
@@ -52,7 +54,10 @@ function Footer({ isLight }: IProps) {
             role="button"
             target="blank"
           >
-            <img src={isLight ? lightGithub : darkGithub} alt="github" />
+            <img
+              src={theme === "isLight" ? darkGithub : lightGithub}
+              alt="github"
+            />
           </a>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import styles from "./MainPage.module.css";
 import clsx from "clsx";
@@ -7,21 +7,27 @@ import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
 import { ITourListData } from "types";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAllTours } from "../../store/tours/tours-selector";
+import { fechTours } from "../../store/tours/tours-actions";
 
 interface IProps {
-  isLight: boolean;
   data: ITourListData[];
 }
 
-function MainPage({ isLight, data }: IProps) {
-  const [isListView, setListView] = useState(true);
+function MainPage({ data }: IProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [toursData, setToursData] = useState(data);
 
-  const handleViewChange = (isList: boolean) => {
-    setListView(isList);
-  };
+  const dispatch = useDispatch();
+  const theme = useSelector((state: any) => state.theme);
+  const { total_tours } = useSelector(selectAllTours);
+  useEffect(() => {
+    console.log("fetch works");
+
+    dispatch(fechTours());
+  }, [dispatch]);
 
   const handleSearchChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,11 +49,22 @@ function MainPage({ isLight, data }: IProps) {
   };
 
   return (
-    <div className={clsx(styles.light, { [styles.dark]: !isLight })}>
+    <div className={clsx(styles.light, { [styles.dark]: theme === "isLight" })}>
       <div className={styles.navContainer}>
-        <div className={clsx(styles.title, { [styles.darkTitle]: !isLight })}>
+        <div
+          className={clsx(styles.title, {
+            [styles.darkTitle]: theme === "isLight",
+          })}
+        >
           Creative Trails - Exclusive tours
         </div>
+        <p
+          className={clsx(styles.title, {
+            [styles.darkTitle]: theme === "isLight",
+          })}
+        >
+          Total tours: {total_tours}
+        </p>
         <div className={styles.left}>
           <div className={styles.inputContainer}>
             <div className={styles.inputBox}>
@@ -61,11 +78,7 @@ function MainPage({ isLight, data }: IProps) {
             </div>
           </div>
           <div className={styles.listView}>
-            <ListViewSwitcher
-              isLight={isLight}
-              isList={isListView}
-              onViewChange={handleViewChange}
-            />
+            <ListViewSwitcher />
           </div>
           <button
             className={styles.addTourButton}
@@ -79,26 +92,15 @@ function MainPage({ isLight, data }: IProps) {
             onRequestClose={() => setIsModalOpen(false)}
             contentLabel="Form Modal"
             className={styles.modalContent}
-            // Doesn't work
-            // overlayClassName={clsx(styles.overlayLight, {
-            //   [styles.overlayDark]: !isLight,
-            // })}
           >
             <NewTourForm
-              isLight={isLight}
               closeModal={handleModalClose}
               addNewTour={addNewTour}
             />
           </ReactModal>
         </div>
       </div>
-      <TourList
-        isLight={isLight}
-        isList={isListView}
-        searchQuery={searchQuery}
-        data={toursData}
-        deleteTour={deleteTour}
-      />
+      <TourList deleteTour={deleteTour} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import styles from "./CommonInputs.module.css";
 import clsx from "clsx";
+import { useSelector } from "react-redux";
 import { IInputProps } from "types";
 
 function CommonInput({
@@ -11,12 +12,12 @@ function CommonInput({
   placeholder,
   onChange,
   required,
-  isLight,
 }: IInputProps) {
+  const theme = useSelector((state: any) => state.theme);
   return (
     <div
       className={clsx(styles.lightInput, {
-        [styles.darkInput]: !isLight,
+        [styles.darkInput]: theme === "isLight",
         [styles.checkboxInput]: type == "checkbox",
       })}
     >

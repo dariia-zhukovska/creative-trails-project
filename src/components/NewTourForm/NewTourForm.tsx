@@ -4,14 +4,14 @@ import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
 import { ITourListData } from "types";
+import { useSelector } from "react-redux";
 
 interface IProps {
-  isLight: boolean;
   closeModal: () => void;
   addNewTour: (newTour: ITourListData) => void;
 }
 
-function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
+function NewTourForm({ closeModal, addNewTour }: IProps) {
   const [newTourData, setNewTourData] = useState({
     id: 0,
     title: "",
@@ -22,6 +22,8 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
     adults: false,
   });
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
+
+  const theme = useSelector((state: any) => state.theme);
 
   const validateForm = useCallback(() => {
     const { title, price, description, continent } = newTourData;
@@ -50,22 +52,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
     { value: "North America", label: "North America" },
     { value: "South America", label: "South America" },
   ];
-  // Async code with API usage (saved for later)
-
-  //  const handleSubmit = async (event: React.FormEvent) => {
-  //    event.preventDefault();
-
-  //    try {
-  //      const responce = await axios.post(
-  //        "http://localhost:3001/tours",
-  //        newTourData
-  //      );
-  //      console.log(responce.data);
-  //      closeModal();
-  //    } catch (error) {
-  //      console.log(error);
-  //    }
-  //  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -83,7 +69,7 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
   return (
     <div
       className={clsx(styles.formContainer, {
-        [styles.darkFormContainer]: !isLight,
+        [styles.darkFormContainer]: theme === "isLight",
       })}
     >
       <form onSubmit={handleSubmit} className={styles.tourForm}>
@@ -97,7 +83,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           placeholder="Lviv, Ukraine"
           onChange={handleInputChange}
           required
-          isLight={isLight}
         />
         <CommonInput
           label="Price"
@@ -108,7 +93,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           placeholder="500 $"
           onChange={handleInputChange}
           required
-          isLight={isLight}
         />
         <CommonInput
           label="Image URL"
@@ -118,7 +102,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           value={newTourData.image}
           placeholder="/assets/img/Lviv.png"
           onChange={handleInputChange}
-          isLight={isLight}
         />
         <CommonInput
           label="Description"
@@ -131,7 +114,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           }
           onChange={handleInputChange}
           required
-          isLight={isLight}
         />
         <CommonSelect
           label="Continent"
@@ -140,7 +122,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           value={newTourData.continent}
           options={continentOptions}
           onChange={handleInputChange}
-          isLight={isLight}
           required
         />
         <CommonInput
@@ -150,7 +131,6 @@ function NewTourForm({ isLight, closeModal, addNewTour }: IProps) {
           name="adults"
           onChange={handleInputChange}
           checked={newTourData.adults}
-          isLight={isLight}
         />
         <div className={styles.buttonsGroup}>
           <button onClick={closeModal}>Cancel</button>

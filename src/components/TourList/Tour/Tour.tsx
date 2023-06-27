@@ -2,35 +2,28 @@ import clsx from "clsx";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
 import { ITourListData } from "types";
+import { useSelector } from "react-redux";
 
 interface IProps {
   tourItemData: ITourListData;
-  isLight: boolean;
-  isList: boolean;
   deleteTour: () => void;
 }
 
-function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
-  // Async code with API usage (saved for later)
-
-  // const handleDelete = async () => {
-  //   try {
-  //     const response = await axios.delete(
-  //       `http://localhost:3001/tours/${tourItemData.id}`
-  //     );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+function Tour({ tourItemData, deleteTour }: IProps) {
+  const theme = useSelector((state: any) => state.theme);
+  const view = useSelector((state: any) => state.view);
 
   const handleDeleteTour = (event: React.FormEvent) => {
     event.preventDefault();
     deleteTour();
   };
 
-  return isList ? (
-    <li className={clsx(styles.tourItem, { [styles.darkTourItem]: !isLight })}>
+  return view !== "isList" ? (
+    <li
+      className={clsx(styles.tourItem, {
+        [styles.darkTourItem]: theme === "isLight",
+      })}
+    >
       <div>
         <img
           src={tourItemData.image || imageNotFound}
@@ -47,7 +40,7 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
                 styles.gridDeleteButton,
                 styles.lightDeleteButton,
                 {
-                  [styles.darkDeleteButton]: !isLight,
+                  [styles.darkDeleteButton]: theme === "isLight",
                 }
               )}
               onClick={handleDeleteTour}
@@ -78,7 +71,7 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
   ) : (
     <li
       className={clsx(styles.listView, styles.tourItem, {
-        [styles.darkTourItem]: !isLight,
+        [styles.darkTourItem]: theme === "isLight",
       })}
     >
       <div>
@@ -96,7 +89,7 @@ function Tour({ tourItemData, isLight, isList, deleteTour }: IProps) {
                   styles.gridDeleteButton,
                   styles.lightDeleteButton,
                   {
-                    [styles.darkDeleteButton]: !isLight,
+                    [styles.darkDeleteButton]: theme === "isLight",
                   }
                 )}
                 onClick={handleDeleteTour}
