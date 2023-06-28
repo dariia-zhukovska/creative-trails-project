@@ -6,16 +6,12 @@ import { useSelector } from "react-redux";
 import { selectAllTours } from "../../store/tours/tours-selector";
 
 interface IProps {
-  deleteTour: (tourId: number) => void;
+  handleEditTour: (id: number) => void;
 }
 
-function TourList({ deleteTour }: IProps) {
+function TourList({ handleEditTour }: IProps) {
   const view = useSelector((state: any) => state.view);
   const { tours } = useSelector(selectAllTours);
-
-  const handleDeleteTour = (tourId: number) => {
-    deleteTour(tourId);
-  };
 
   return (
     <ul
@@ -27,7 +23,7 @@ function TourList({ deleteTour }: IProps) {
         <Tour
           key={item.id}
           tourItemData={item}
-          deleteTour={() => handleDeleteTour(item.id)}
+          handleEditTour={handleEditTour}
         />
       ))}
     </ul>

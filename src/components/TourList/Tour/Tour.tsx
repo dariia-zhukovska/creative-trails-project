@@ -2,20 +2,21 @@ import clsx from "clsx";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
 import { ITourListData } from "types";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTour } from "../../../store/tours/tours-actions";
 
 interface IProps {
   tourItemData: ITourListData;
-  deleteTour: () => void;
+  handleEditTour: (id: number) => void;
 }
 
-function Tour({ tourItemData, deleteTour }: IProps) {
+function Tour({ tourItemData, handleEditTour }: IProps) {
   const theme = useSelector((state: any) => state.theme);
   const view = useSelector((state: any) => state.view);
+  const dispatch = useDispatch();
 
-  const handleDeleteTour = (event: React.FormEvent) => {
-    event.preventDefault();
-    deleteTour();
+  const handleDeleteTour = (id: number) => {
+    dispatch(deleteTour(id));
   };
 
   return view !== "isList" ? (
@@ -43,7 +44,13 @@ function Tour({ tourItemData, deleteTour }: IProps) {
                   [styles.darkDeleteButton]: theme === "isLight",
                 }
               )}
-              onClick={handleDeleteTour}
+              onClick={() => handleDeleteTour(tourItemData.id)}
+            ></button>
+            <button
+              className={clsx(styles.gridEditButton, styles.lightEditButton, {
+                [styles.darkEditButton]: theme === "isLight",
+              })}
+              onClick={() => handleEditTour(tourItemData.id)}
             ></button>
           </div>
         </div>
@@ -92,7 +99,13 @@ function Tour({ tourItemData, deleteTour }: IProps) {
                     [styles.darkDeleteButton]: theme === "isLight",
                   }
                 )}
-                onClick={handleDeleteTour}
+                onClick={() => handleDeleteTour(tourItemData.id)}
+              ></button>
+              <button
+                className={clsx(styles.gridEditButton, styles.lightEditButton, {
+                  [styles.darkEditButton]: theme === "isLight",
+                })}
+                onClick={() => handleEditTour(tourItemData.id)}
               ></button>
             </div>
           </div>

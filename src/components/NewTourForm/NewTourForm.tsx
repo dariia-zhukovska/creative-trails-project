@@ -3,25 +3,52 @@ import styles from "./NewTourForm.module.css";
 import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
-import { ITourListData } from "types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addTour, editTour } from "../../store/tours/tours-actions";
+import { selectedTour } from "../../store/tours/tours-selector";
 
 interface IProps {
   closeModal: () => void;
-  addNewTour: (newTour: ITourListData) => void;
+  selectedTourId: number | null;
 }
 
-function NewTourForm({ closeModal, addNewTour }: IProps) {
-  const [newTourData, setNewTourData] = useState({
-    id: 0,
-    title: "",
-    price: "",
-    image: "",
-    description: "",
-    continent: "",
-    adults: false,
-  });
+const initialState = {
+  id: 0,
+  title: "",
+  price: "",
+  image: "",
+  description: "",
+  continent: "",
+  adults: false,
+};
+
+function NewTourForm({ closeModal, selectedTourId }: IProps) {
+  const selectedTourItem = useSelector(selectedTour(selectedTourId));
+  const [newTourData, setNewTourData] = useState(
+    selectedTourItem || initialState
+  );
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
+  const dispatch = useDispatch();
+
+  const isEditMode = !!selectedTourId;
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (isEditMode) {
+      dispatch(editTour(newTourData));
+      closeModal();
+      return;
+    }
+
+    const newTourId = Math.floor(Math.random() * 1000000);
+    const newTour = {
+      ...newTourData,
+      id: newTourId,
+    };
+
+    dispatch(addTour(newTour));
+    closeModal();
+  };
 
   const theme = useSelector((state: any) => state.theme);
 
@@ -52,19 +79,6 @@ function NewTourForm({ closeModal, addNewTour }: IProps) {
     { value: "North America", label: "North America" },
     { value: "South America", label: "South America" },
   ];
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    const newTourId = Math.floor(Math.random() * 1000000);
-    const newTour = {
-      ...newTourData,
-      id: newTourId,
-    };
-
-    addNewTour(newTour);
-    closeModal();
-  };
 
   return (
     <div

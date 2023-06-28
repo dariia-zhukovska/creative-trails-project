@@ -69,6 +69,26 @@
   background-image: url('../../../assets/icons/dark_delete.svg');
 }
 
+.lightEditButton,
+.darkEditButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url('../../../assets/icons/dark_edit.svg');
+  background-repeat: no-repeat;
+  background-color: inherit;
+  background-position: center;
+}
+
+.lightEditButton:hover,
+.darkEditButton:hover {
+  transform: scale(1.1);
+}
+
+.darkEditButton {
+  background-image: url('../../../assets/icons/light_edit.svg');
+}
+
 .tourItemImage,
 .tourItemImageList {
   display: flex;

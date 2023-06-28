@@ -6,25 +6,20 @@ import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
-import { ITourListData } from "types";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllTours } from "../../store/tours/tours-selector";
-import { SET_TOURS, fetchTours } from "../../store/tours/tours-actions";
+import { fetchTours } from "../../store/tours/tours-actions";
 
-interface IProps {
-  data: ITourListData[];
-}
-
-function MainPage({ data }: IProps) {
+function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [toursData, setToursData] = useState(data);
+  const [selectedTourId, setSelectedTourId] = useState<number | null>(null);
 
   const dispatch = useDispatch();
   const theme = useSelector((state: any) => state.theme);
   const { total_tours } = useSelector(selectAllTours);
+
   useEffect(() => {
-    console.log("fetch works", searchQuery);
     dispatch(fetchTours(searchQuery));
   }, [searchQuery, dispatch]);
 
@@ -35,15 +30,12 @@ function MainPage({ data }: IProps) {
     500
   );
 
-  const addNewTour = (newTour: ITourListData) => {
-    setToursData((prevState) => [...prevState, newTour]);
+  const handleEditTour = (id: number) => {
+    setSelectedTourId(id);
+    setIsModalOpen(true);
   };
-
-  const deleteTour = (tourId: number) => {
-    setToursData((prevState) => prevState.filter((item) => item.id !== tourId));
-  };
-
   const handleModalClose = () => {
+    setSelectedTourId(null);
     setIsModalOpen(false);
   };
 
@@ -85,7 +77,6 @@ function MainPage({ data }: IProps) {
           >
             Add New Tour
           </button>
-
           <ReactModal
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
@@ -94,12 +85,12 @@ function MainPage({ data }: IProps) {
           >
             <NewTourForm
               closeModal={handleModalClose}
-              addNewTour={addNewTour}
+              selectedTourId={selectedTourId}
             />
           </ReactModal>
         </div>
       </div>
-      <TourList deleteTour={deleteTour} />
+      <TourList handleEditTour={handleEditTour} />
     </div>
   );
 }
