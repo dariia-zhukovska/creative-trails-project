@@ -9,7 +9,6 @@ export interface SetThemeAction {
   payload: string;
 }
 
-
 export const setTheme = (theme: string): SetThemeAction => ({
   type: ThemeActionTypes.SET_THEME,
   payload: theme

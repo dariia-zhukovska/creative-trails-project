@@ -1,5 +1,3 @@
-import { ITourListData } from "types";
-
 export const SET_TOURS = '@@tours/SET_TOURS';
 
 export enum ToursActionTypes {
@@ -8,13 +6,12 @@ export enum ToursActionTypes {
 
 export interface SetToursAction {
   type: ToursActionTypes.SET_TOURS;
-  payload?: any;
+  payload: string;
 }
 
-
-export const fechTours = () => ({
+export const fetchTours = (query: string) => ({
   type: ToursActionTypes.SET_TOURS,
-  // payload: tours
+  payload: query
 })
 
 

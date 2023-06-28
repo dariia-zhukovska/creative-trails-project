@@ -9,7 +9,6 @@ export interface SetViewAction {
   payload: string;
 }
 
-
 export const setView = (view: string): SetViewAction => ({
   type: ViewActionTypes.SET_VIEW,
   payload: view

@@ -3,10 +3,7 @@ import styles from "./TourList.module.css";
 import Tour from "./Tour/Tour";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-import {
-  selectAllTours,
-  selectVisibleTours,
-} from "../../store/tours/tours-selector";
+import { selectAllTours } from "../../store/tours/tours-selector";
 
 interface IProps {
   deleteTour: (tourId: number) => void;
@@ -14,9 +11,6 @@ interface IProps {
 
 function TourList({ deleteTour }: IProps) {
   const view = useSelector((state: any) => state.view);
-  // const filteredTours = data.filter((item: ITourListData) =>
-  //   item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
   const { tours } = useSelector(selectAllTours);
 
   const handleDeleteTour = (tourId: number) => {

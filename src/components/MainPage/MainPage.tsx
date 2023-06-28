@@ -9,7 +9,7 @@ import NewTourForm from "../NewTourForm/NewTourForm";
 import { ITourListData } from "types";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllTours } from "../../store/tours/tours-selector";
-import { fechTours } from "../../store/tours/tours-actions";
+import { SET_TOURS, fetchTours } from "../../store/tours/tours-actions";
 
 interface IProps {
   data: ITourListData[];
@@ -24,10 +24,9 @@ function MainPage({ data }: IProps) {
   const theme = useSelector((state: any) => state.theme);
   const { total_tours } = useSelector(selectAllTours);
   useEffect(() => {
-    console.log("fetch works");
-
-    dispatch(fechTours());
-  }, [dispatch]);
+    console.log("fetch works", searchQuery);
+    dispatch(fetchTours(searchQuery));
+  }, [searchQuery, dispatch]);
 
   const handleSearchChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
