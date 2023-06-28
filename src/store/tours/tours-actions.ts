@@ -14,7 +14,7 @@ export enum ToursActionTypes {
 
 export interface SetToursAction {
   type: ToursActionTypes.GET_TOURS;
-  payload: string;
+  payload?: any;
 }
 
 export interface AddTourAction {

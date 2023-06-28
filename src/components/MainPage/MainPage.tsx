@@ -7,7 +7,10 @@ import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllTours } from "../../store/tours/tours-selector";
+import {
+  selectAllTours,
+  selectVisibleTours,
+} from "../../store/tours/tours-selector";
 import { fetchTours } from "../../store/tours/tours-actions";
 
 function MainPage() {
@@ -17,6 +20,10 @@ function MainPage() {
 
   const dispatch = useDispatch();
   const theme = useSelector((state: any) => state.theme);
+  const tours = useSelector((state: any) =>
+    selectVisibleTours(state, searchQuery)
+  );
+
   const { total_tours } = useSelector(selectAllTours);
 
   useEffect(() => {
@@ -90,7 +97,7 @@ function MainPage() {
           </ReactModal>
         </div>
       </div>
-      <TourList handleEditTour={handleEditTour} />
+      <TourList handleEditTour={handleEditTour} data={tours} />
     </div>
   );
 }

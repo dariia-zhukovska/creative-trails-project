@@ -3,10 +3,9 @@ import toursData from '../../data/tours.json'
 import { ITourListData } from '../../types'
 
 const initialState = {
-  total_tours: 0,
-  tours: []
+  total_tours: toursData.tours.length,
+  tours: toursData.tours,
 }
-
 export const toursReducer = (
   state = initialState,
   { type, payload }: ToursAction
@@ -16,9 +15,7 @@ export const toursReducer = (
 
   switch (type) {
     case GET_TOURS:
-      data = toursData.tours.filter((tour) =>
-        tour.title.toLowerCase().includes(payload.toLowerCase())
-      );
+      data = [...state.tours];
       return {
         ...state,
         total_tours: data.length,
@@ -32,17 +29,19 @@ export const toursReducer = (
         tours: newTours,
       };
     case DELETE_TOUR:
+      newTours = state.tours.filter((tour: ITourListData) => tour.id !== payload);
       return {
         ...state,
-        total_tours: state.total_tours - 1,
-        tours: state.tours.filter((tour: ITourListData) => tour.id !== payload),
+        total_tours: newTours.length,
+        tours: newTours,
       };
     case EDIT_TOUR:
+      newTours = state.tours.map((tour: ITourListData) =>
+        tour.id === payload.id ? payload : tour
+      );
       return {
         ...state,
-        tours: state.tours.map((tour: ITourListData) =>
-          tour.id === payload.id ? payload : tour
-        ),
+        tours: newTours,
       };
     default:
       return state;
