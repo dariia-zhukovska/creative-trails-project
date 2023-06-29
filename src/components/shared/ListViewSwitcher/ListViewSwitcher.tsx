@@ -6,11 +6,13 @@ import darkListIcon from "/src/assets/icons/darkListIcon.svg";
 import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "../../../store/view/view-actions";
+import { selectTheme } from "../../../store/theme/theme-selector";
+import { selectView } from "../../../store/view/view-selector";
 
 function ListViewSwitcher() {
   const dispatch = useDispatch();
-  const theme = useSelector((state: any) => state.theme);
-  const view = useSelector((state: any) => state.view);
+  const theme = useSelector(selectTheme);
+  const view = useSelector(selectView);
 
   const handleViewChange = () => {
     const newView = view === "isList" ? "isGrid" : "isList";

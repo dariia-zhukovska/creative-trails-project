@@ -1,44 +1,51 @@
-import { ADD_TOUR, DELETE_TOUR, GET_TOURS, EDIT_TOUR, ToursAction } from './tours-actions';
+import { ToursAction, ToursActionTypes } from './tours-actions-types';
 import toursData from '../../data/tours.json'
 import { ITourListData } from '../../types'
 
+// const initialState = {
+//   total_tours: toursData.tours.length,
+//   tours: toursData.tours,
+// }
+
 const initialState = {
-  total_tours: toursData.tours.length,
-  tours: toursData.tours,
+  total_tours: 0,
+  tours: [],
 }
+
 export const toursReducer = (
   state = initialState,
   { type, payload }: ToursAction
 ) => {
-  let data;
   let newTours;
+  let data;
 
   switch (type) {
-    case GET_TOURS:
-      data = [...state.tours];
+    case ToursActionTypes.GET_TOURS:
+      data = toursData.tours.filter((tour: ITourListData) =>
+        tour.title?.toLowerCase().includes(payload?.toLowerCase())
+      )
       return {
         ...state,
         total_tours: data.length,
         tours: data
       };
-    case ADD_TOUR:
+    case ToursActionTypes.ADD_TOUR:
       newTours = [...state.tours, payload];
       return {
         ...state,
         total_tours: newTours.length,
         tours: newTours,
       };
-    case DELETE_TOUR:
+    case ToursActionTypes.DELETE_TOUR:
       newTours = state.tours.filter((tour: ITourListData) => tour.id !== payload);
       return {
-        ...state,
         total_tours: newTours.length,
         tours: newTours,
       };
-    case EDIT_TOUR:
+    case ToursActionTypes.EDIT_TOUR:
       newTours = state.tours.map((tour: ITourListData) =>
         tour.id === payload.id ? payload : tour
-      );
+      )
       return {
         ...state,
         tours: newTours,

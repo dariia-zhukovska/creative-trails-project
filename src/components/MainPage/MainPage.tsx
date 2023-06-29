@@ -10,8 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAllTours,
   selectVisibleTours,
-} from "../../store/tours/tours-selector";
+} from "../../store/tours/tours-selectors";
 import { fetchTours } from "../../store/tours/tours-actions";
+import { selectTheme } from "../../store/theme/theme-selector";
 
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,10 +20,10 @@ function MainPage() {
   const [selectedTourId, setSelectedTourId] = useState<number | null>(null);
 
   const dispatch = useDispatch();
-  const theme = useSelector((state: any) => state.theme);
-  const tours = useSelector((state: any) =>
-    selectVisibleTours(state, searchQuery)
-  );
+  const theme = useSelector(selectTheme);
+  // const tours = useSelector((state: any) =>
+  //   selectVisibleTours(state, searchQuery)
+  // );
 
   const { total_tours } = useSelector(selectAllTours);
 
@@ -97,7 +98,10 @@ function MainPage() {
           </ReactModal>
         </div>
       </div>
-      <TourList handleEditTour={handleEditTour} data={tours} />
+      <TourList
+        handleEditTour={handleEditTour}
+        // data={tours}
+      />
     </div>
   );
 }

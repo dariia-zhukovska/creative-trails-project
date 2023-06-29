@@ -4,11 +4,11 @@ import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setTheme } from "../../store/theme/theme-actions";
+import { selectTheme } from "../../store/theme/theme-selector";
 
 function Header() {
   const dispatch = useDispatch();
-  const theme = useSelector((state: any) => state.theme);
-
+  const theme = useSelector(selectTheme);
   const handleThemeToggle = () => {
     const newTheme = theme === "isLight" ? "isDark" : "isLight";
     dispatch(setTheme(newTheme));

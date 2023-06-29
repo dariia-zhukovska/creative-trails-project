@@ -8,9 +8,10 @@ import darkInstagram from "/src/assets/icons/darkInstagram.svg";
 import lightGithub from "/src/assets/icons/lightGithub.svg";
 import darkGithub from "/src/assets/icons/darkGithub.svg";
 import { useSelector } from "react-redux";
+import { selectTheme } from "../../store/theme/theme-selector";
 
 function Footer() {
-  const theme = useSelector((state: any) => state.theme);
+  const theme = useSelector(selectTheme);
 
   return (
     <footer

@@ -1,6 +1,7 @@
 import styles from "./CommonInputs.module.css";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
+import { selectTheme } from "../../../store/theme/theme-selector";
 import { ISelectProps } from "types";
 
 function CommonSelect({
@@ -12,13 +13,11 @@ function CommonSelect({
   onChange,
   required,
 }: ISelectProps) {
-  
-  const theme = useSelector((state: any) => state.theme);
-
+  const theme = useSelector(selectTheme);
   return (
     <div
       className={clsx(styles.lightInput, {
-        [styles.darkInput]: theme === 'isLight',
+        [styles.darkInput]: theme === "isLight",
       })}
     >
       <label htmlFor={id}>{label}</label>

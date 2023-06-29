@@ -5,7 +5,8 @@ import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
 import { useDispatch, useSelector } from "react-redux";
 import { addTour, editTour } from "../../store/tours/tours-actions";
-import { selectedTour } from "../../store/tours/tours-selector";
+import { selectedTour } from "../../store/tours/tours-selectors";
+import { selectTheme } from "../../store/theme/theme-selector";
 
 interface IProps {
   closeModal: () => void;
@@ -50,7 +51,7 @@ function NewTourForm({ closeModal, selectedTourId }: IProps) {
     closeModal();
   };
 
-  const theme = useSelector((state: any) => state.theme);
+  const theme = useSelector(selectTheme);
 
   const validateForm = useCallback(() => {
     const { title, price, description, continent } = newTourData;

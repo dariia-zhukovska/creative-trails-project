@@ -4,6 +4,8 @@ import styles from "./Tour.module.css";
 import { ITourListData } from "types";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTour } from "../../../store/tours/tours-actions";
+import { selectTheme } from "../../../store/theme/theme-selector";
+import { selectView } from "../../../store/view/view-selector";
 
 interface IProps {
   tourItemData: ITourListData;
@@ -11,8 +13,8 @@ interface IProps {
 }
 
 function Tour({ tourItemData, handleEditTour }: IProps) {
-  const theme = useSelector((state: any) => state.theme);
-  const view = useSelector((state: any) => state.view);
+  const theme = useSelector(selectTheme);
+  const view = useSelector(selectView);
   const dispatch = useDispatch();
 
   const handleDeleteTour = (id: number) => {

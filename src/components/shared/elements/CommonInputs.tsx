@@ -1,6 +1,7 @@
 import styles from "./CommonInputs.module.css";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
+import { selectTheme } from "../../../store/theme/theme-selector";
 import { IInputProps } from "types";
 
 function CommonInput({
@@ -13,7 +14,7 @@ function CommonInput({
   onChange,
   required,
 }: IInputProps) {
-  const theme = useSelector((state: any) => state.theme);
+  const theme = useSelector(selectTheme);
   return (
     <div
       className={clsx(styles.lightInput, {
