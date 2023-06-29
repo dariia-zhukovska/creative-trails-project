@@ -19,7 +19,10 @@ function App() {
     <div className={isThemeLight ? "App" : "AppDark"}>
       <Header isLight={isThemeLight} onThemeChange={handleThemeChange} />
       <Routes>
-        <Route path="/" element={<MainPage isLight={isThemeLight} />}></Route>
+        <Route
+          path="/"
+          element={<MainPage isLight={isThemeLight}></MainPage>}
+        ></Route>
         <Route
           path="/tours"
           element={<MainPage isLight={isThemeLight} />}

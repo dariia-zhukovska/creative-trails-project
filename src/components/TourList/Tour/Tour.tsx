@@ -98,12 +98,12 @@ function Tour({
           </div>
           <div>
             {state?.id === tourItemData.id ? (
-              <button
+              <Link
+                to={`/tours/${tourItemData.id}`}
                 className={styles.tourItemButtonList}
-                onClick={openTourPage}
               >
                 View
-              </button>
+              </Link>
             ) : (
               ""
             )}
@@ -174,9 +174,12 @@ function Tour({
         </div>
       </div>
       {state?.id === tourItemData.id ? (
-        <button className={styles.tourItemButtonList} onClick={openTourPage}>
+        <Link
+          to={`/tours/${tourItemData.id}`}
+          className={styles.tourItemButtonList}
+        >
           View
-        </button>
+        </Link>
       ) : (
         ""
       )}
