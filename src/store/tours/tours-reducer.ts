@@ -1,56 +1,36 @@
-import { ToursAction, ToursActionTypes } from './tours-actions-types';
+import { ADD_TOUR, AddTourAction, DELETE_TOUR, DeleteTourAction, EDIT_TOUR, EditTourAction, GET_TOURS } from './tours-actions-types';
 import toursData from '../../data/tours.json'
 import { ITourListData } from '../../types'
-
-// const initialState = {
-//   total_tours: toursData.tours.length,
-//   tours: toursData.tours,
-// }
+import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
-  total_tours: 0,
-  tours: [],
+  total_tours: toursData.tours.length,
+  tours: toursData.tours,
 }
 
-export const toursReducer = (
-  state = initialState,
-  { type, payload }: ToursAction
-) => {
-  let newTours;
-  let data;
+export const toursReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(GET_TOURS, (state) => {
+      const data = [...state.tours];
+      state.total_tours = data.length;
+      state.tours = data;
+    })
+    .addCase(ADD_TOUR, (state, action: AddTourAction) => {
+      state.tours.push(action.payload);
+      state.total_tours = state.tours.length;
+    })
+    .addCase(DELETE_TOUR, (state, action: DeleteTourAction) => {
+      state.tours = state.tours.filter(
+        (tour: ITourListData) => tour.id !== action.payload
+      );
+      state.total_tours = state.tours.length;
+    })
+    .addCase(EDIT_TOUR, (state, action: EditTourAction) => {
+      state.tours = state.tours.map((tour: ITourListData) =>
+        tour.id === action.payload.id ? action.payload : tour
+      );
+    });
+});
 
-  switch (type) {
-    case ToursActionTypes.GET_TOURS:
-      data = toursData.tours.filter((tour: ITourListData) =>
-        tour.title?.toLowerCase().includes(payload?.toLowerCase())
-      )
-      return {
-        ...state,
-        total_tours: data.length,
-        tours: data
-      };
-    case ToursActionTypes.ADD_TOUR:
-      newTours = [...state.tours, payload];
-      return {
-        ...state,
-        total_tours: newTours.length,
-        tours: newTours,
-      };
-    case ToursActionTypes.DELETE_TOUR:
-      newTours = state.tours.filter((tour: ITourListData) => tour.id !== payload);
-      return {
-        total_tours: newTours.length,
-        tours: newTours,
-      };
-    case ToursActionTypes.EDIT_TOUR:
-      newTours = state.tours.map((tour: ITourListData) =>
-        tour.id === payload.id ? payload : tour
-      )
-      return {
-        ...state,
-        tours: newTours,
-      };
-    default:
-      return state;
-  }
-};
+
+

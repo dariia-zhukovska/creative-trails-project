@@ -1,16 +1,12 @@
-import { SetThemeAction } from './theme-actions-types'
-import { ThemeActionTypes } from './theme-actions-types'
+import { createReducer } from '@reduxjs/toolkit'
+import { SET_THEME, SetThemeAction } from './theme-actions-types'
 
 const initialState = {
-  theme: 'isLight',
+  theme: 'isDark',
 }
 
-export const themeReducer = (state = initialState, { type, payload }: SetThemeAction) => {
-  switch (type) {
-    case ThemeActionTypes.SET_THEME:
-      return payload;
-    default:
-      return state;
-  }
-};
-
+export const themeReducer = createReducer(initialState, (builder) => {
+  builder.addCase(SET_THEME, (state, { payload }: SetThemeAction) => {
+    state.theme = payload;
+  })
+})

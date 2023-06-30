@@ -5,9 +5,9 @@ import lightGridIcon from "/src/assets/icons/lightGridIcon.svg";
 import darkListIcon from "/src/assets/icons/darkListIcon.svg";
 import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setView } from "../../../store/view/view-actions";
 import { selectTheme } from "../../../store/theme/theme-selector";
 import { selectView } from "../../../store/view/view-selector";
+import { setView } from "../../../store/view/view-slice";
 
 function ListViewSwitcher() {
   const dispatch = useDispatch();

@@ -3,8 +3,8 @@ import ThemeSwitcher from "../shared/ThemeSwitcher/ThemeSwitcher";
 import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setTheme } from "../../store/theme/theme-actions";
 import { selectTheme } from "../../store/theme/theme-selector";
+import { setTheme } from "../../store/theme/theme-slice";
 
 function Header() {
   const dispatch = useDispatch();

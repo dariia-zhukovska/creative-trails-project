@@ -1,8 +1,6 @@
-export enum ThemeActionTypes {
-  SET_THEME = '@@theme/SET_THEME',
-}
+export const SET_THEME = 'SET_THEME';
 
 export interface SetThemeAction {
-  type: ThemeActionTypes.SET_THEME;
+  type: typeof SET_THEME;
   payload: string;
 }

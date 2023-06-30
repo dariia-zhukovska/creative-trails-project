@@ -3,7 +3,7 @@ import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
 import { ITourListData } from "types";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTour } from "../../../store/tours/tours-actions";
+import { deleteTour } from "../../../store/tours/tours-slice";
 import { selectTheme } from "../../../store/theme/theme-selector";
 import { selectView } from "../../../store/view/view-selector";
 

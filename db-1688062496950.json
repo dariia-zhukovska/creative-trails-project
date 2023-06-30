@@ -1,0 +1,220 @@
+{
+  "tours": [
+    {
+      "id": 1,
+      "title": "New York, USA",
+      "price": "1500",
+      "image": "/assets/img/new_york.jpg",
+      "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
+      "continent": "North America",
+      "adults": true
+    },
+    {
+      "id": 2,
+      "title": "Lisbon, Portugal",
+      "price": "1200",
+      "image": "/assets/img/lisbon.jpg",
+      "description": "Discover the historic charm of Lisbon and indulge in delicious Portuguese cuisine.",
+      "continent": "Europe",
+      "adults": false
+    },
+    {
+      "id": 3,
+      "title": "Bali, Indonesia",
+      "price": "1800",
+      "image": "/assets/img/bali.jpg",
+      "description": "Relax on the beautiful beaches of Bali and immerse yourself in its spiritual atmosphere.",
+      "continent": "Asia",
+      "adults": false
+    },
+    {
+      "id": 4,
+      "title": "Reykjavik, Iceland",
+      "price": "2200",
+      "image": "/assets/img/reykjavik.jpg",
+      "description": "Experience the stunning landscapes and geothermal wonders of Reykjavik.",
+      "continent": "Europe",
+      "adults": true
+    },
+    {
+      "id": 5,
+      "title": "Antarctica",
+      "price": "5000",
+      "image": "/assets/img/antarctica.jpg",
+      "description": "Embark on an extraordinary adventure to the remote wilderness of Antarctica.",
+      "continent": "Antarctica",
+      "adults": true
+    },
+    {
+      "id": 6,
+      "title": "Kathmandu, Nepal",
+      "price": "1600",
+      "image": "/assets/img/kathmandu.jpg",
+      "description": "Discover the cultural treasures and majestic mountains of Kathmandu.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 7,
+      "title": "Petra, Jordan",
+      "price": "2000",
+      "image": "/assets/img/petra.jpg",
+      "description": "Uncover the ancient city of Petra and marvel at its impressive architecture.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 8,
+      "title": "Salar de Uyunumi, Bolivia",
+      "price": "1900",
+      "image": "/assets/img/salar_de_uyuni.jpg",
+      "description": "Witness the breathtaking salt flats of Salar de Uyuni in Bolivia.",
+      "continent": "South America",
+      "adults": true
+    },
+    {
+      "id": 9,
+      "title": "Faroe Islands",
+      "price": "2500",
+      "image": "/assets/img/faroe_islands.jpg",
+      "description": "Experience the untouched natural beauty of the Faroe Islands.",
+      "continent": "Europe",
+      "adults": true
+    },
+    {
+      "id": 10,
+      "title": "Moraine Lake, Canada",
+      "price": "1800",
+      "image": "/assets/img/moraine_lake.jpg",
+      "description": "Visit the iconic Moraine Lake and soak in the picturesque Canadian Rockies.",
+      "continent": "North America",
+      "adults": true
+    },
+    {
+      "id": 11,
+      "title": "Namib Desert, Namibia",
+      "price": "2100",
+      "image": "/assets/img/namib_desert.jpg",
+      "description": "Explore the mesmerizing landscapes of the Namib Desert in Namibia.",
+      "continent": "Africa",
+      "adults": true
+    },
+    {
+      "id": 12,
+      "title": "Kilimanjaro, Tanzania",
+      "price": "2800",
+      "image": "/assets/img/kilimanjaro.jpg",
+      "description": "Conquer the highest peak in Africa, Mount Kilimanjaro.",
+      "continent": "Africa",
+      "adults": true
+    },
+    {
+      "id": 13,
+      "title": "Cairo, Egypt",
+      "price": "1500",
+      "image": "/assets/img/cairo.jpg",
+      "description": "Immerse yourself in the ancient wonders of Cairo, including the pyramids and Sphinx.",
+      "continent": "Africa",
+      "adults": false
+    },
+    {
+      "id": 14,
+      "title": "Socotra, Yemen",
+      "price": "2200",
+      "image": "/assets/img/socotra.jpg",
+      "description": "Discover the unique and otherworldly landscapes of Socotra Island.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 15,
+      "title": "Longyearbyen, Spitsbergen",
+      "price": "2600",
+      "image": "/assets/img/longyearbyen.webp",
+      "description": "Experience the Arctic wilderness and spot polar bears in Longyearbyen.",
+      "continent": "Europe",
+      "adults": true
+    },
+    {
+      "id": 16,
+      "title": "Cancun, Mexico",
+      "price": "1700",
+      "image": "/assets/img/cancun.jpg",
+      "description": "Enjoy the sun-drenched beaches and vibrant nightlife of Cancun.",
+      "continent": "North America",
+      "adults": false
+    },
+    {
+      "id": 17,
+      "title": "Los Angeles, USA",
+      "price": "1900",
+      "image": "/assets/img/los_angeles.jpg",
+      "description": "Explore the glamorous city of Los Angeles and visit its famous landmarks.",
+      "continent": "North America",
+      "adults": true
+    },
+    {
+      "id": 18,
+      "title": "Provence, France",
+      "price": "1500",
+      "image": "/assets/img/provence.jpg",
+      "description": "Indulge in the charm of the Provence region with its lavender fields and vineyards.",
+      "continent": "Europe",
+      "adults": false
+    },
+    {
+      "id": 19,
+      "title": "Tokyo, Japan",
+      "price": "2200",
+      "image": "/assets/img/tokyo.jpg",
+      "description": "Experience the vibrant energy and rich traditions of Tokyo.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 20,
+      "title": "Bangkok, Thailand",
+      "price": "1800",
+      "image": "/assets/img/bangkok.jpg",
+      "description": "Immerse yourself in the bustling markets and temples of Bangkok.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 21,
+      "title": "El Nido, Philippines",
+      "price": "2000",
+      "image": "/assets/img/el_nido.jpg",
+      "description": "Discover the pristine beauty of El Nido's white sand beaches and crystal-clear waters.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 22,
+      "title": "Dubai, UAE",
+      "price": "2500",
+      "image": "/assets/img/dubai.jpg",
+      "description": "Experience the luxurious and futuristic cityscape of Dubai.",
+      "continent": "Asia",
+      "adults": false
+    },
+    {
+      "id": 23,
+      "title": "Male, Maldives",
+      "price": "2800",
+      "image": "/assets/img/male.jpg",
+      "description": "Relax and indulge in the idyllic beaches and turquoise waters of the Maldives.",
+      "continent": "Asia",
+      "adults": true
+    },
+    {
+      "id": 24,
+      "title": "Machu Picchu, Peru",
+      "price": "2100",
+      "image": "/assets/img/machu_picchu.jpg",
+      "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
+      "continent": "South America",
+      "adults": true
+    }
+  ]
+}

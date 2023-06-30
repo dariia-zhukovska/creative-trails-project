@@ -1,1 +1,1 @@
-export const selectView = (state: any) => state.view;
+export const selectView = (state: any) => state.view.view;

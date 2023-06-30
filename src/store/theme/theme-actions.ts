@@ -1,7 +1,5 @@
-import { SetThemeAction, ThemeActionTypes } from './theme-actions-types'
+import { createAction } from '@reduxjs/toolkit'
+import { SET_THEME, SetThemeAction } from './theme-actions-types'
 
 
-export const setTheme = (theme: string): SetThemeAction => ({
-  type: ThemeActionTypes.SET_THEME,
-  payload: theme
-})
+export const setTheme = createAction(SET_THEME, (payload) => ({ payload }))

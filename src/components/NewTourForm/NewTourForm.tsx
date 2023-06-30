@@ -4,7 +4,7 @@ import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
 import { useDispatch, useSelector } from "react-redux";
-import { addTour, editTour } from "../../store/tours/tours-actions";
+import { addTour, editTour } from "../../store/tours/tours-slice";
 import { selectedTour } from "../../store/tours/tours-selectors";
 import { selectTheme } from "../../store/theme/theme-selector";
 

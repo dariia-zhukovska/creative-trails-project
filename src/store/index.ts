@@ -1,13 +1,19 @@
-import { createStore } from 'redux';
 
 
-import { rootReducer } from './root-reducer';
-import { devToolsEnhancer } from '@redux-devtools/extension';
-
-const enchancer = devToolsEnhancer();
-
-
-const store = createStore(rootReducer, enchancer);
+import { configureStore } from '@reduxjs/toolkit';
+import { themeSlice } from './theme/theme-slice';
+import { viewSlice } from './view/view-slice';
+import { toursSlice } from './tours/tours-slice'
 
 
-export default store;
+
+
+
+export const store = configureStore({
+  reducer: {
+    [themeSlice.name]: themeSlice.reducer,
+    [viewSlice.name]: viewSlice.reducer,
+    [toursSlice.name]: toursSlice.reducer,
+  }
+})
+

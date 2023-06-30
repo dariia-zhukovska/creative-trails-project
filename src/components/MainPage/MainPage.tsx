@@ -8,10 +8,10 @@ import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectAllTours,
   selectVisibleTours,
+  selectVisibleToursCount,
 } from "../../store/tours/tours-selectors";
-import { fetchTours } from "../../store/tours/tours-actions";
+import { fetchTours } from "../../store/tours/tours-slice";
 import { selectTheme } from "../../store/theme/theme-selector";
 
 function MainPage() {
@@ -21,11 +21,9 @@ function MainPage() {
 
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
-  // const tours = useSelector((state: any) =>
-  //   selectVisibleTours(state, searchQuery)
-  // );
+  const tours = useSelector(selectVisibleTours(searchQuery));
 
-  const { total_tours } = useSelector(selectAllTours);
+  const total_tours = useSelector(selectVisibleToursCount(searchQuery));
 
   useEffect(() => {
     dispatch(fetchTours(searchQuery));
@@ -98,10 +96,7 @@ function MainPage() {
           </ReactModal>
         </div>
       </div>
-      <TourList
-        handleEditTour={handleEditTour}
-        // data={tours}
-      />
+      <TourList handleEditTour={handleEditTour} data={tours} />
     </div>
   );
 }
