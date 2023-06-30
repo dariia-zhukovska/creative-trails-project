@@ -22,12 +22,11 @@ function MainPage() {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const tours = useSelector(selectVisibleTours(searchQuery));
-
   const total_tours = useSelector(selectVisibleToursCount(searchQuery));
 
   useEffect(() => {
-    dispatch(fetchTours(searchQuery));
-  }, [searchQuery, dispatch]);
+    dispatch(fetchTours());
+  }, [dispatch]);
 
   const handleSearchChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
