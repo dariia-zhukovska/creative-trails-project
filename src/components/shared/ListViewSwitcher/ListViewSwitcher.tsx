@@ -7,7 +7,7 @@ import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../store/theme/theme-selector";
 import { selectView } from "../../../store/view/view-selector";
-import { setView } from "../../../store/view/view-slice";
+import { setView } from "../../../store/view/view-slices";
 
 function ListViewSwitcher() {
   const dispatch = useDispatch();

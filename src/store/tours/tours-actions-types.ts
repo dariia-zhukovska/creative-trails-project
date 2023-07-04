@@ -1,4 +1,4 @@
-import { ITourListData } from "types";
+import { ITourListData } from "interfaces";
 
 export const GET_TOURS = '@@tours/GET_TOURS';
 export const ADD_TOUR = '@@tours/ADD_TOUR';

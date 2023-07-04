@@ -1,4 +1,4 @@
-import { ITourListData } from "../../types";
+import { ITourListData } from "../../interfaces";
 import styles from "./TourList.module.css";
 import Tour from "./Tour/Tour";
 import clsx from "clsx";

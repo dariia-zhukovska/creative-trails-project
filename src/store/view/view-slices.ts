@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IViewState } from "interfaces/storeStates";
 
-const initialState = {
+const initialState: IViewState = {
   view: 'isGrid'
 }
 

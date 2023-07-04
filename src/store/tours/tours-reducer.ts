@@ -1,6 +1,6 @@
 import { ADD_TOUR, AddTourAction, DELETE_TOUR, DeleteTourAction, EDIT_TOUR, EditTourAction, GET_TOURS } from './tours-actions-types';
 import toursData from '../../data/tours.json'
-import { ITourListData } from '../../types'
+import { ITourListData } from '../../interfaces'
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {

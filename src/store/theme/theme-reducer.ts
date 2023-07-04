@@ -1,7 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit'
 import { SET_THEME, SetThemeAction } from './theme-actions-types'
+import { IThemeState } from 'interfaces/storeStates'
 
-const initialState = {
+const initialState: IThemeState = {
   theme: 'isDark',
 }
 

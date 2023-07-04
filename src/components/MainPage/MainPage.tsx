@@ -8,25 +8,34 @@ import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getToursIsError,
+  getToursIsErrorMessage,
+  getToursIsLoading,
   selectVisibleTours,
   selectVisibleToursCount,
 } from "../../store/tours/tours-selectors";
-import { fetchTours } from "../../store/tours/tours-slice";
 import { selectTheme } from "../../store/theme/theme-selector";
+import { fetchToursThunk } from "../../store/tours/operations";
+import { AppDispatch } from "../../store/index";
+
+// import { fetchTours } from "../../store/tours/tours-slices";
 
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTourId, setSelectedTourId] = useState<number | null>(null);
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const tours = useSelector(selectVisibleTours(searchQuery));
   const total_tours = useSelector(selectVisibleToursCount(searchQuery));
+  const isLoading = useSelector(getToursIsLoading);
+  const isError = useSelector(getToursIsError);
+  const errorMessage = useSelector(getToursIsErrorMessage);
 
   useEffect(() => {
-    dispatch(fetchTours());
-  }, [dispatch]);
+    dispatch(fetchToursThunk(searchQuery));
+  }, [dispatch, searchQuery]);
 
   const handleSearchChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +104,17 @@ function MainPage() {
           </ReactModal>
         </div>
       </div>
-      <TourList handleEditTour={handleEditTour} data={tours} />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {isError ? (
+            <div>{errorMessage}</div>
+          ) : (
+            <TourList handleEditTour={handleEditTour} data={tours} />
+          )}
+        </>
+      )}
     </div>
   );
 }

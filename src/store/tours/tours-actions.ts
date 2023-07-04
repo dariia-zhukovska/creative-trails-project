@@ -1,4 +1,4 @@
-import { ITourListData } from 'types';
+import { ITourListData } from 'interfaces';
 import { ADD_TOUR, DELETE_TOUR, EDIT_TOUR, GET_TOURS } from './tours-actions-types'
 import { createAction } from "@reduxjs/toolkit";
 

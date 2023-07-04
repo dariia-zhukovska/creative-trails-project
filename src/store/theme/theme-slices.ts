@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IThemeState } from "interfaces/storeStates";
 
-const initialState = {
+const initialState: IThemeState = {
   theme: 'isDark'
 }
 

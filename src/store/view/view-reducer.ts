@@ -1,7 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { SET_VIEW, SetViewAction } from "./view-actions-types";
+import { IViewState } from "interfaces/storeStates";
 
-const initialState = {
+const initialState: IViewState = {
   view: 'isGrid',
 }
 

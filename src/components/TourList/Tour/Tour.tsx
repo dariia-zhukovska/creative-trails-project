@@ -1,11 +1,13 @@
 import clsx from "clsx";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./Tour.module.css";
-import { ITourListData } from "types";
+import { ITourListData } from "interfaces";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTour } from "../../../store/tours/tours-slice";
+// import { deleteTour } from "../../../store/tours/tours-slices";
 import { selectTheme } from "../../../store/theme/theme-selector";
 import { selectView } from "../../../store/view/view-selector";
+import { deleteTourThunk } from "../../../store/tours/operations";
+import { AppDispatch } from "store";
 
 interface IProps {
   tourItemData: ITourListData;
@@ -15,10 +17,10 @@ interface IProps {
 function Tour({ tourItemData, handleEditTour }: IProps) {
   const theme = useSelector(selectTheme);
   const view = useSelector(selectView);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleDeleteTour = (id: number) => {
-    dispatch(deleteTour(id));
+    dispatch(deleteTourThunk(id));
   };
 
   return view !== "isList" ? (

@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectTheme } from "../../store/theme/theme-selector";
-import { setTheme } from "../../store/theme/theme-slice";
+import { setTheme } from "../../store/theme/theme-slices";
 
 function Header() {
   const dispatch = useDispatch();

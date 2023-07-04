@@ -4,9 +4,11 @@ import clsx from "clsx";
 import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
 import { useDispatch, useSelector } from "react-redux";
-import { addTour, editTour } from "../../store/tours/tours-slice";
+import { editTour } from "../../store/tours/tours-slices";
 import { selectedTour } from "../../store/tours/tours-selectors";
 import { selectTheme } from "../../store/theme/theme-selector";
+import { addTourThunk, editTourThunk } from "../../store/tours/operations";
+import { AppDispatch } from "store";
 
 interface IProps {
   closeModal: () => void;
@@ -29,14 +31,14 @@ function NewTourForm({ closeModal, selectedTourId }: IProps) {
     selectedTourItem || initialState
   );
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const isEditMode = !!selectedTourId;
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (isEditMode) {
-      dispatch(editTour(newTourData));
+      dispatch(editTourThunk(newTourData));
       closeModal();
       return;
     }
@@ -46,8 +48,7 @@ function NewTourForm({ closeModal, selectedTourId }: IProps) {
       ...newTourData,
       id: newTourId,
     };
-
-    dispatch(addTour(newTour));
+    dispatch(addTourThunk(newTour));
     closeModal();
   };
 
