@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import toursData from '../../data/tours.json'
+import toursData from '../../../data/tours.json'
 import { ITourListData } from 'interfaces';
 import { ITourState } from 'interfaces/storeStates';
 import { addTourThunk, deleteTourThunk, editTourThunk, fetchToursThunk } from './operations';
@@ -83,7 +83,8 @@ export const toursSlice = createSlice({
     addTour: (state, action) => {
       state.tours.push(action.payload);
       state.total_tours = state.tours.length;
-    }, editTour: (state, action) => {
+    },
+    editTour: (state, action) => {
       const updatedTour = state.tours.map((tour: ITourListData) =>
         tour.id === action.payload.id ? action.payload : tour
       );

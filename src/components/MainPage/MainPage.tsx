@@ -6,17 +6,18 @@ import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
-  getToursIsError,
-  getToursIsErrorMessage,
-  getToursIsLoading,
+  toursIsError,
+  toursIsErrorMessage,
+  toursIsLoading,
   selectVisibleTours,
   selectVisibleToursCount,
 } from "../../store/tours/tours-selectors";
 import { selectTheme } from "../../store/theme/theme-selector";
-import { fetchToursThunk } from "../../store/tours/operations";
-import { AppDispatch } from "../../store/index";
+// import { fetchToursThunk } from "../../store/tours/operations";
+// import { AppDispatch } from "../../store/index";
+import { useGetAllToursQuery } from "../../store/tours/api";
 
 // import { fetchTours } from "../../store/tours/tours-slices";
 
@@ -25,17 +26,20 @@ function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTourId, setSelectedTourId] = useState<number | null>(null);
 
-  const dispatch: AppDispatch = useDispatch();
+  // const dispatch: AppDispatch = useDispatch();
   const theme = useSelector(selectTheme);
-  const tours = useSelector(selectVisibleTours(searchQuery));
-  const total_tours = useSelector(selectVisibleToursCount(searchQuery));
-  const isLoading = useSelector(getToursIsLoading);
-  const isError = useSelector(getToursIsError);
-  const errorMessage = useSelector(getToursIsErrorMessage);
+  // const tours = useSelector(selectVisibleTours(searchQuery));
+  // const total_tours = useSelector(selectVisibleToursCount(searchQuery));
 
-  useEffect(() => {
-    dispatch(fetchToursThunk(searchQuery));
-  }, [dispatch, searchQuery]);
+  const { data, isLoading, error } = useGetAllToursQuery(searchQuery); // with api
+
+  // const isLoading = useSelector(toursIsLoading);
+  // const isError = useSelector(toursIsError);
+  // const errorMessage = useSelector(toursIsErrorMessage);
+
+  // useEffect(() => {
+  //   dispatch(fetchToursThunk(searchQuery));
+  // }, [dispatch, searchQuery]);
 
   const handleSearchChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +72,7 @@ function MainPage() {
             [styles.darkTitle]: theme === "isLight",
           })}
         >
-          Total tours: {total_tours}
+          Total tours: {data?.total_tours}
         </p>
         <div className={styles.left}>
           <div className={styles.inputContainer}>
@@ -108,10 +112,11 @@ function MainPage() {
         <div>Loading...</div>
       ) : (
         <>
-          {isError ? (
-            <div>{errorMessage}</div>
+          {error ? (
+            <div>{error.status}</div> // with api
           ) : (
-            <TourList handleEditTour={handleEditTour} data={tours} />
+            // <div>{errorMessage}</div>
+            <TourList handleEditTour={handleEditTour} data={data.tours} />
           )}
         </>
       )}

@@ -9,6 +9,11 @@ import { selectedTour } from "../../store/tours/tours-selectors";
 import { selectTheme } from "../../store/theme/theme-selector";
 import { addTourThunk, editTourThunk } from "../../store/tours/operations";
 import { AppDispatch } from "store";
+import {
+  useAddTourMutation,
+  useEditTourMutation,
+  useSelectedTour,
+} from "../../store/tours/api";
 
 interface IProps {
   closeModal: () => void;
@@ -27,18 +32,37 @@ const initialState = {
 
 function NewTourForm({ closeModal, selectedTourId }: IProps) {
   const selectedTourItem = useSelector(selectedTour(selectedTourId));
+  // const selectedTourItem = useSelector(useSelectedTour(selectedTourId));
+
   const [newTourData, setNewTourData] = useState(
     selectedTourItem || initialState
   );
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
-  const dispatch: AppDispatch = useDispatch();
+  // const dispatch: AppDispatch = useDispatch();
+
+  const [addNewTour] = useAddTourMutation(); // with api
+  const [editTour] = useEditTourMutation(); // with api
+
+  console.log(addNewTour);
+  console.log(editTour);
+  console.log(useAddTourMutation());
+  console.log(useEditTourMutation());
 
   const isEditMode = !!selectedTourId;
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (isEditMode) {
-      dispatch(editTourThunk(newTourData));
+      // dispatch(
+      //   editTourThunk({
+      //     tourItemId: selectedTourId,
+      //     updatedTourData: newTourData,
+      //   })
+      // );
+      await editTour({
+        tourItemId: selectedTourId,
+        updatedTourData: newTourData,
+      });
       closeModal();
       return;
     }
@@ -48,7 +72,8 @@ function NewTourForm({ closeModal, selectedTourId }: IProps) {
       ...newTourData,
       id: newTourId,
     };
-    dispatch(addTourThunk(newTour));
+    // dispatch(addTourThunk(newTour));
+    addNewTour(newTour); // with api
     closeModal();
   };
 

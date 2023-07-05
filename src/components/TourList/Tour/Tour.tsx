@@ -8,6 +8,7 @@ import { selectTheme } from "../../../store/theme/theme-selector";
 import { selectView } from "../../../store/view/view-selector";
 import { deleteTourThunk } from "../../../store/tours/operations";
 import { AppDispatch } from "store";
+import { useDeleteTourMutation } from "../../../store/tours/api";
 
 interface IProps {
   tourItemData: ITourListData;
@@ -17,10 +18,13 @@ interface IProps {
 function Tour({ tourItemData, handleEditTour }: IProps) {
   const theme = useSelector(selectTheme);
   const view = useSelector(selectView);
-  const dispatch: AppDispatch = useDispatch();
+  // const dispatch: AppDispatch = useDispatch();
+
+  const [deleteTour] = useDeleteTourMutation();
 
   const handleDeleteTour = (id: number) => {
-    dispatch(deleteTourThunk(id));
+    // dispatch(deleteTour(id));
+    deleteTour(id);
   };
 
   return view !== "isList" ? (

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "New York, USA",
-      "price": "1500",
+      "price": "1600",
       "image": "/assets/img/new_york.jpg",
       "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
       "continent": "North America",
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "title": "Lisbon, Portugal",
-      "price": "1200",
+      "price": "1600",
       "image": "/assets/img/lisbon.jpg",
       "description": "Discover the historic charm of Lisbon and indulge in delicious Portuguese cuisine.",
       "continent": "Europe",
@@ -21,7 +21,7 @@
     {
       "id": 3,
       "title": "Bali, Indonesia",
-      "price": "1800",
+      "price": "1000",
       "image": "/assets/img/bali.jpg",
       "description": "Relax on the beautiful beaches of Bali and immerse yourself in its spiritual atmosphere.",
       "continent": "Asia",
@@ -215,6 +215,87 @@
       "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
       "continent": "South America",
       "adults": true
+    },
+    {
+      "id": 220899,
+      "title": "Lviv",
+      "price": "1300",
+      "image": "/assets/img/grand_canyon.jpg",
+      "description": "Nice city",
+      "continent": "South America",
+      "adults": true
+    },
+    {
+      "id": 819558,
+      "title": "Lviv",
+      "price": "1300",
+      "image": "/assets/img/lisbon.jpg",
+      "description": "Nice city",
+      "continent": "Australia",
+      "adults": false
+    },
+    {
+      "id": 885501,
+      "title": "Petro",
+      "price": "1200",
+      "image": "/assets/img/lisbon.jpg",
+      "description": "Nice city",
+      "continent": "Antarctica",
+      "adults": false
+    },
+    {
+      "id": 238867,
+      "title": "123",
+      "price": "13",
+      "image": "/assets/img/lisbon.jpg",
+      "description": "Nice city",
+      "continent": "Antarctica",
+      "adults": false
+    },
+    {
+      "id": 199820,
+      "title": "q",
+      "price": "qe",
+      "image": "/assets/img/grand_canyon.jpg",
+      "description": "Nice city, but I wouldn't live there",
+      "continent": "Antarctica",
+      "adults": false
+    },
+    {
+      "id": 26358,
+      "title": "qwe",
+      "price": "1300",
+      "image": "/assets/img/lisbon.jpg",
+      "description": "Nice city",
+      "continent": "Australia",
+      "adults": true
+    },
+    {
+      "id": 188288,
+      "title": "qwe",
+      "price": "1300",
+      "image": "/assets/img/new_york.jpg",
+      "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
+      "continent": "Asia",
+      "adults": false
+    },
+    {
+      "id": 674276,
+      "title": "qw",
+      "price": "1300",
+      "image": "/assets/img/grand_canyon.jpg",
+      "description": "Cool",
+      "continent": "Antarctica",
+      "adults": false
+    },
+    {
+      "id": 493144,
+      "title": "qw",
+      "price": "qw",
+      "image": "qw",
+      "description": "qw",
+      "continent": "Australia",
+      "adults": false
     }
   ]
 }
