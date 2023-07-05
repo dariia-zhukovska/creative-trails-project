@@ -1,5 +1,5 @@
 import { ITourListData } from "interfaces";
-import { useGetAllToursQuery } from "./api";
+import { toursApi } from "./api";
 import { createSelector } from "@reduxjs/toolkit";
 
 
@@ -28,9 +28,18 @@ export const toursIsErrorMessage = (state: any) => state.tours.errorMessage;
 
 // selectors with rtk query
 
+export const selectToursResult = toursApi.endpoints.getAllTours.select('');
 
-export const useSelectedTour = (id: number | null) => {
-  const { data } = useGetAllToursQuery('');
-  return data.tours.find((tour: ITourListData) => tour.id === id) || null;
-};
+export const selectTours = createSelector(
+  selectToursResult,
+  (toursResult) => {
+    return toursResult?.data?.tours ?? [];
+  }
+)
+
+export const selectToursById = createSelector(
+  selectTours,
+  (_, tourId) => tourId,
+  (tours: any, tourId) => tours.find((tour: ITourListData) => tour.id === tourId)
+)
 

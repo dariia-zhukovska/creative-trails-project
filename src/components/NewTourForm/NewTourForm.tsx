@@ -5,15 +5,15 @@ import CommonInput from "../shared/elements/CommonInputs";
 import CommonSelect from "../shared/elements/CommonSelect";
 import { useDispatch, useSelector } from "react-redux";
 import { editTour } from "../../store/tours/tours-slices";
-import { selectedTour } from "../../store/tours/tours-selectors";
+import {
+  selectAllTours,
+  selectToursById,
+  selectedTour,
+} from "../../store/tours/tours-selectors";
 import { selectTheme } from "../../store/theme/theme-selector";
 import { addTourThunk, editTourThunk } from "../../store/tours/operations";
 import { AppDispatch } from "store";
-import {
-  useAddTourMutation,
-  useEditTourMutation,
-  useSelectedTour,
-} from "../../store/tours/api";
+import { useAddTourMutation, useEditTourMutation } from "../../store/tours/api";
 
 interface IProps {
   closeModal: () => void;
@@ -31,26 +31,22 @@ const initialState = {
 };
 
 function NewTourForm({ closeModal, selectedTourId }: IProps) {
-  const selectedTourItem = useSelector(selectedTour(selectedTourId));
-  // const selectedTourItem = useSelector(useSelectedTour(selectedTourId));
+  // const selectedTourItem = useSelector(selectedTour(selectedTourId));
+  const selectedTourItem = useSelector((state) =>
+    selectToursById(state, selectedTourId)
+  ); // with api
 
   const [newTourData, setNewTourData] = useState(
     selectedTourItem || initialState
   );
   const [isSaveDisabled, setIsSaveDisabled] = useState(true);
   // const dispatch: AppDispatch = useDispatch();
-
   const [addNewTour] = useAddTourMutation(); // with api
   const [editTour] = useEditTourMutation(); // with api
 
-  console.log(addNewTour);
-  console.log(editTour);
-  console.log(useAddTourMutation());
-  console.log(useEditTourMutation());
-
   const isEditMode = !!selectedTourId;
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (isEditMode) {
       // dispatch(
@@ -59,10 +55,10 @@ function NewTourForm({ closeModal, selectedTourId }: IProps) {
       //     updatedTourData: newTourData,
       //   })
       // );
-      await editTour({
+      editTour({
         tourItemId: selectedTourId,
         updatedTourData: newTourData,
-      });
+      }); // with api
       closeModal();
       return;
     }

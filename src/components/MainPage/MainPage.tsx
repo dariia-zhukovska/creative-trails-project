@@ -6,7 +6,7 @@ import { debounce } from "lodash";
 import TourList from "../TourList/TourList";
 import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
 import NewTourForm from "../NewTourForm/NewTourForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   toursIsError,
   toursIsErrorMessage,
@@ -15,8 +15,8 @@ import {
   selectVisibleToursCount,
 } from "../../store/tours/tours-selectors";
 import { selectTheme } from "../../store/theme/theme-selector";
-// import { fetchToursThunk } from "../../store/tours/operations";
-// import { AppDispatch } from "../../store/index";
+import { fetchToursThunk } from "../../store/tours/operations";
+import { AppDispatch } from "../../store/index";
 import { useGetAllToursQuery } from "../../store/tours/api";
 
 // import { fetchTours } from "../../store/tours/tours-slices";
@@ -31,7 +31,7 @@ function MainPage() {
   // const tours = useSelector(selectVisibleTours(searchQuery));
   // const total_tours = useSelector(selectVisibleToursCount(searchQuery));
 
-  const { data, isLoading, error } = useGetAllToursQuery(searchQuery); // with api
+  const { data, isLoading, isError, error } = useGetAllToursQuery(searchQuery); // with api
 
   // const isLoading = useSelector(toursIsLoading);
   // const isError = useSelector(toursIsError);
@@ -112,10 +112,10 @@ function MainPage() {
         <div>Loading...</div>
       ) : (
         <>
-          {error ? (
+          {isError ? (
+            // <div>{errorMessage}</div>
             <div>{error.status}</div> // with api
           ) : (
-            // <div>{errorMessage}</div>
             <TourList handleEditTour={handleEditTour} data={data.tours} />
           )}
         </>

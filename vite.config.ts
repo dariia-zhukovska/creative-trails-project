@@ -10,4 +10,9 @@ export default defineConfig({
     include: ['./public/img/*.svg'],
   }),
   ],
+  server: {
+    hmr: {
+      overlay: false,
+    },
+  },
 })

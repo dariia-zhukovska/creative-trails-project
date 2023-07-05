@@ -7,7 +7,6 @@ const transformResponse = (response: ITourListData[]) => {
   return { tours: response, total_tours: response.length };
 }
 
-
 export const toursApi = createApi({
   reducerPath: 'tours',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/' }),

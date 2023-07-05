@@ -17,7 +17,7 @@ export const store = configureStore({
     [toursApi.reducerPath]: toursApi.reducer, //with api
 
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(toursApi.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(toursApi.middleware) //with api
 
 },
 )
