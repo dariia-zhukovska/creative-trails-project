@@ -3,20 +3,22 @@
     {
       "id": 1,
       "title": "New York, USA",
-      "price": "5000",
+      "price": "7000",
       "image": "/assets/img/new_york.jpg",
       "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
       "continent": "North America",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Explore the bustling streets of New York City and experience its vibrant culture. New York, USA is a dynamic city that never sleeps, offering a diverse range of attractions, from iconic landmarks like Times Square and the Statue of Liberty to world-class museums, Broadway shows, and a thriving culinary scene."
     },
     {
       "id": 2,
       "title": "Lisbon, Portugal",
-      "price": "1200",
+      "price": "1300",
       "image": "/assets/img/lisbon.jpg",
       "description": "Discover the historic charm of Lisbon and indulge in delicious Portuguese cuisine.",
       "continent": "Europe",
-      "adults": false
+      "adults": false,
+      "fullDescription": "Discover the historic charm of Lisbon and indulge in delicious Portuguese cuisine. Lisbon, Portugal is a city of captivating beauty, with its narrow winding streets, colorful tiled buildings, and panoramic views from its hilltops. Explore historic landmarks such as the Belem Tower and Jeronimos Monastery, and savor the flavors of traditional Portuguese dishes like pastéis de nata and bacalhau."
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "image": "/assets/img/bali.jpg",
       "description": "Relax on the beautiful beaches of Bali and immerse yourself in its spiritual atmosphere.",
       "continent": "Asia",
-      "adults": false
+      "adults": false,
+      "fullDescription": "Relax on the beautiful beaches of Bali and immerse yourself in its spiritual atmosphere. Bali, Indonesia is a tropical paradise known for its stunning landscapes, lush rice terraces, and vibrant cultural traditions. Explore ancient temples, indulge in rejuvenating spa treatments, and try traditional Balinese cuisine. Whether you're seeking relaxation or adventure, Bali offers a truly enchanting experience."
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "image": "/assets/img/reykjavik.jpg",
       "description": "Experience the stunning landscapes and geothermal wonders of Reykjavik.",
       "continent": "Europe",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Experience the stunning landscapes and geothermal wonders of Reykjavik. Reykjavik, Iceland's capital, is a city of contrasts, where you can witness rugged volcanic landscapes, soak in hot springs, and chase the mesmerizing Northern Lights. Explore the iconic Golden Circle, visit the famous Blue Lagoon, and embark on thrilling outdoor adventures like glacier hiking and whale watching."
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "image": "/assets/img/antarctica.jpg",
       "description": "Embark on an extraordinary adventure to the remote wilderness of Antarctica.",
       "continent": "Antarctica",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Embark on an extraordinary adventure to the remote wilderness of Antarctica. Antarctica, the southernmost continent, is a land of untouched beauty and pristine landscapes. Cruise through icy waters, encounter diverse wildlife including penguins and seals, and marvel at massive glaciers and icebergs. This once-in-a-lifetime journey will leave you in awe of nature's majesty."
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "image": "/assets/img/kathmandu.jpg",
       "description": "Discover the cultural treasures and majestic mountains of Kathmandu.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Discover the cultural treasures and majestic mountains of Kathmandu. Kathmandu, Nepal's capital, is a city steeped in history and spirituality. Explore ancient temples and UNESCO World Heritage sites, such as Boudhanath Stupa and Pashupatinath Temple. Take in breathtaking views of the Himalayas, go trekking in the nearby mountains, and experience the warm hospitality of the Nepalese people."
     },
     {
       "id": 7,
@@ -61,7 +67,8 @@
       "image": "/assets/img/petra.jpg",
       "description": "Uncover the ancient city of Petra and marvel at its impressive architecture.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Uncover the ancient city of Petra and marvel at its impressive architecture. Petra, located in Jordan, is a UNESCO World Heritage site and one of the New Seven Wonders of the World. Explore the intricate rock-cut architecture, including the iconic Treasury and Monastery. Immerse yourself in the rich history and Bedouin culture of this ancient city as you walk through its narrow canyons and hidden tombs."
     },
     {
       "id": 8,
@@ -70,7 +77,8 @@
       "image": "/assets/img/salar_de_uyuni.jpg",
       "description": "Witness the breathtaking salt flats of Salar de Uyuni in Bolivia.",
       "continent": "South America",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Witness the breathtaking salt flats of Salar de Uyuni in Bolivia. Salar de Uyuni is the world's largest salt flat, spanning over 10,000 square kilometers. Marvel at the vast expanse of white salt, reflecting the sky like a giant mirror. Explore the unique landscapes, visit the cactus-covered Incahuasi Island, and capture incredible photographs of this otherworldly natural wonder."
     },
     {
       "id": 9,
@@ -79,7 +87,8 @@
       "image": "/assets/img/faroe_islands.jpg",
       "description": "Experience the untouched natural beauty of the Faroe Islands.",
       "continent": "Europe",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Experience the untouched natural beauty of the Faroe Islands. The Faroe Islands, located in the North Atlantic Ocean, offer a rugged and unspoiled landscape of dramatic cliffs, rolling hills, and picturesque villages. Explore hidden waterfalls, hike along breathtaking coastal trails, and encounter abundant birdlife. Immerse yourself in the peaceful serenity of this remote island paradise."
     },
     {
       "id": 10,
@@ -88,7 +97,8 @@
       "image": "/assets/img/moraine_lake.jpg",
       "description": "Visit the iconic Moraine Lake and soak in the picturesque Canadian Rockies.",
       "continent": "North America",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Visit the iconic Moraine Lake and soak in the picturesque Canadian Rockies. Moraine Lake, located in Banff National Park, is renowned for its stunning turquoise waters surrounded by majestic mountain peaks. Take a leisurely hike around the lake, rent a canoe to explore its pristine beauty, and capture postcard-worthy photographs. Immerse yourself in the awe-inspiring wilderness of the Canadian Rockies."
     },
     {
       "id": 11,
@@ -97,7 +107,8 @@
       "image": "/assets/img/namib_desert.jpg",
       "description": "Explore the mesmerizing landscapes of the Namib Desert in Namibia.",
       "continent": "Africa",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Explore the mesmerizing landscapes of the Namib Desert in Namibia. The Namib Desert is one of the oldest and most captivating deserts in the world, with its towering sand dunes and vast plains. Witness the stunning sunrise over the dunes, go on a thrilling desert safari, and discover the unique flora and fauna that have adapted to this harsh environment. Experience the solitude and tranquility of this extraordinary desert."
     },
     {
       "id": 12,
@@ -106,7 +117,8 @@
       "image": "/assets/img/kilimanjaro.jpg",
       "description": "Conquer the highest peak in Africa, Mount Kilimanjaro.",
       "continent": "Africa",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Conquer the highest peak in Africa, Mount Kilimanjaro. Standing at 5,895 meters, Kilimanjaro is a majestic mountain that offers an unforgettable climbing experience. Embark on an epic journey through diverse ecosystems, from lush rainforests to alpine meadows and arctic landscapes. Summit the Uhuru Peak at sunrise and be rewarded with breathtaking panoramic views. Challenge yourself and create lifelong memories on this incredible adventure."
     },
     {
       "id": 13,
@@ -115,7 +127,8 @@
       "image": "/assets/img/cairo.jpg",
       "description": "Immerse yourself in the ancient wonders of Cairo, including the pyramids and Sphinx.",
       "continent": "Africa",
-      "adults": false
+      "adults": false,
+      "fullDescription": "Immerse yourself in the ancient wonders of Cairo, including the pyramids and Sphinx. Cairo, the capital of Egypt, is a treasure trove of historical and cultural landmarks. Explore the iconic Giza Plateau, home to the Great Pyramids and the Sphinx. Discover the ancient temples and artifacts in the Egyptian Museum. Stroll through the bustling streets of Old Cairo and visit the vibrant markets. Experience the enchanting blend of ancient and modern in this vibrant city."
     },
     {
       "id": 14,
@@ -124,16 +137,18 @@
       "image": "/assets/img/socotra.jpg",
       "description": "Discover the unique and otherworldly landscapes of Socotra Island.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Discover the unique and otherworldly landscapes of Socotra Island. Socotra, part of Yemen, is a UNESCO World Heritage site known for its extraordinary biodiversity and surreal landscapes. Marvel at the iconic Dragon's Blood Trees, endemic to this remote island. Explore pristine beaches, hike through rugged mountains, and dive into crystal-clear waters teeming with marine life. Immerse yourself in the untouched natural beauty of this hidden gem."
     },
     {
       "id": 15,
       "title": "Longyearbyen, Spitsbergen",
-      "price": "2600",
+      "price": "3500",
       "image": "/assets/img/longyearbyen.webp",
-      "description": "Experience the Arctic wilderness and spot polar bears in Longyearbyen.",
+      "description": "Embark on an Arctic adventure in Longyearbyen, the largest settlement in Spitsbergen.",
       "continent": "Europe",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Embark on an Arctic adventure in Longyearbyen, the largest settlement in Spitsbergen. Located in the Svalbard archipelago, this remote destination offers a unique experience in the Arctic wilderness. Explore glaciers, encounter polar bears, and witness the stunning Northern Lights. Take part in dog sledding, snowmobiling, and ice cave tours. Discover the rugged beauty and fascinating wildlife of the far north."
     },
     {
       "id": 16,
@@ -142,7 +157,8 @@
       "image": "/assets/img/cancun.jpg",
       "description": "Enjoy the sun-drenched beaches and vibrant nightlife of Cancun.",
       "continent": "North America",
-      "adults": false
+      "adults": false,
+      "fullDescription": "Enjoy the sun-drenched beaches and vibrant nightlife of Cancun. Located on the northeastern coast of the Yucatan Peninsula in Mexico, Cancun is a tropical paradise renowned for its stunning white sand beaches and turquoise waters. Relax under swaying palm trees, swim in the crystal-clear Caribbean Sea, and indulge in water sports such as snorkeling and scuba diving. After a day in the sun, immerse yourself in the vibrant nightlife, with an array of clubs, bars, and restaurants offering a lively atmosphere and delicious Mexican cuisine."
     },
     {
       "id": 17,
@@ -151,7 +167,8 @@
       "image": "/assets/img/los_angeles.jpg",
       "description": "Explore the glamorous city of Los Angeles and visit its famous landmarks.",
       "continent": "North America",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Explore the glamorous city of Los Angeles and visit its famous landmarks. Known as the entertainment capital of the world, Los Angeles offers a unique blend of glitz, glamour, and cultural diversity. Discover the iconic Hollywood Walk of Fame, explore the historic TCL Chinese Theatre, and enjoy breathtaking views from the Griffith Observatory. Immerse yourself in the vibrant arts scene of Downtown LA and visit world-class museums like the Getty Center. Relax on the sun-soaked beaches of Santa Monica and indulge in delicious cuisine from around the world. Experience the allure of the City of Angels."
     },
     {
       "id": 18,
@@ -160,7 +177,8 @@
       "image": "/assets/img/provence.jpg",
       "description": "Indulge in the charm of the Provence region with its lavender fields and vineyards.",
       "continent": "Europe",
-      "adults": false
+      "adults": false,
+      "fullDescription": "Indulge in the charm of the Provence region with its lavender fields and vineyards. Located in the southeastern part of France, Provence is a picturesque destination known for its breathtaking natural beauty and rich cultural heritage. Wander through fields of vibrant lavender, visit charming villages adorned with cobblestone streets, and explore historic sites such as the Palais des Papes in Avignon. Savor the region's renowned gastronomy, accompanied by world-class wines from local vineyards. Immerse yourself in the idyllic ambiance of Provence and let its enchanting landscapes and vibrant colors captivate your senses."
     },
     {
       "id": 19,
@@ -169,7 +187,8 @@
       "image": "/assets/img/tokyo.jpg",
       "description": "Experience the vibrant energy and rich traditions of Tokyo.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Experience the vibrant energy and rich traditions of Tokyo. As the capital city of Japan, Tokyo is a bustling metropolis that seamlessly blends modernity with ancient traditions. Explore the neon-lit streets of Shibuya, visit historic temples like Senso-ji in Asakusa, and immerse yourself in the vibrant nightlife of Shinjuku. Indulge in delectable sushi at Tsukiji Fish Market, shop for unique fashion in Harajuku, and witness the tranquility of the Imperial Palace Gardens. From high-tech innovations to serene traditional gardens, Tokyo offers a captivating experience that will leave you in awe of its dynamic cultural landscape."
     },
     {
       "id": 20,
@@ -178,7 +197,8 @@
       "image": "/assets/img/bangkok.jpg",
       "description": "Immerse yourself in the bustling markets and temples of Bangkok.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Immerse yourself in the bustling markets and temples of Bangkok. Thailand's capital city, Bangkok, is a vibrant and captivating destination that entices visitors with its unique blend of rich cultural heritage and modern urban charm. Explore the vibrant street markets of Chatuchak and sample delicious street food, visit the grandeur of the Grand Palace and Wat Phra Kaew, and take a boat ride along the Chao Phraya River to discover hidden temples and traditional communities. Indulge in a traditional Thai massage, experience the lively nightlife of Khao San Road, and savor the flavors of authentic Thai cuisine. Bangkok offers a sensory adventure like no other."
     },
     {
       "id": 21,
@@ -187,7 +207,8 @@
       "image": "/assets/img/el_nido.jpg",
       "description": "Discover the pristine beauty of El Nido's white sand beaches and crystal-clear waters.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Discover the pristine beauty of El Nido's white sand beaches and crystal-clear waters. Located in the province of Palawan in the Philippines, El Nido is a tropical paradise renowned for its breathtaking landscapes and abundant marine life. Explore secluded coves and lagoons, go island hopping to discover hidden beaches, and snorkel or dive in vibrant coral reefs teeming with colorful fish. Take a kayak tour through the mesmerizing Big and Small Lagoons, and hike up the limestone cliffs for panoramic views of the Bacuit Archipelago. Immerse yourself in the tranquility of this natural wonderland and create unforgettable memories in El Nido."
     },
     {
       "id": 22,
@@ -196,7 +217,8 @@
       "image": "/assets/img/dubai.jpg",
       "description": "Experience the luxurious and futuristic cityscape of Dubai.",
       "continent": "Asia",
-      "adults": false
+      "adults": false,
+      "fullDescription": "Experience the luxurious and futuristic cityscape of Dubai. Situated in the United Arab Emirates, Dubai is a dazzling metropolis known for its impressive skyline, opulent shopping malls, and extravagant lifestyle. Marvel at iconic landmarks such as the Burj Khalifa, the world's tallest building, and the Palm Jumeirah, an artificial island shaped like a palm tree. Indulge in retail therapy at the Dubai Mall and explore the vibrant Gold and Spice Souks. Immerse yourself in a world of luxury at 5-star hotels and resorts, dine at gourmet restaurants, and enjoy thrilling desert safaris. Dubai offers a blend of cultural authenticity and modern extravagance that will leave you awe-inspired."
     },
     {
       "id": 23,
@@ -205,7 +227,8 @@
       "image": "/assets/img/male.jpg",
       "description": "Relax and indulge in the idyllic beaches and turquoise waters of the Maldives.",
       "continent": "Asia",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Relax and indulge in the idyllic beaches and turquoise waters of the Maldives. Nestled in the Indian Ocean, the Maldives is a tropical paradise composed of pristine coral islands and luxurious resorts. Unwind on powdery white sand beaches, swim in crystal-clear waters, and snorkel among vibrant coral reefs teeming with marine life. Embark on a sunset cruise, experience a traditional Maldivian spa treatment, and dine under the stars in a private overwater villa. Immerse yourself in the tranquility of this tropical paradise and let the Maldives' natural beauty rejuvenate your body and soul."
     },
     {
       "id": 24,
@@ -214,7 +237,18 @@
       "image": "/assets/img/machu_picchu.jpg",
       "description": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes.",
       "continent": "South America",
-      "adults": true
+      "adults": true,
+      "fullDescription": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes. Situated high in the Andes Mountains, Machu Picchu is a UNESCO World Heritage Site and one of the most iconic archaeological sites in the world. Embark on a journey to this ancient citadel and marvel at its remarkable architecture, intricate stone terraces, and panoramic mountain vistas. Trek along the Inca Trail, witness the sunrise over the sacred Huayna Picchu peak, and immerse yourself in the mystical energy of this sacred site. Discover the rich history and cultural significance of the Inca civilization while exploring the awe-inspiring ruins of Machu Picchu."
+    },
+    {
+      "id": 25,
+      "title": "Sydney, Australia",
+      "price": "2300",
+      "image": "",
+      "description": "Experience the vibrant city life and stunning harbor views of Sydney.",
+      "continent": "Australia",
+      "adults": true,
+      "fullDescription": "Experience the vibrant city life and stunning harbor views of Sydney. As Australia's largest city, Sydney offers a perfect blend of natural beauty and cosmopolitan attractions. Take a stroll along the iconic Sydney Harbour Bridge, visit the Sydney Opera House, and relax at the famous Bondi Beach. Explore the historic Rocks district, shop at trendy boutiques in Paddington, and indulge in delicious cuisine at world-class restaurants. Immerse yourself in the city's vibrant arts and culture scene, and enjoy breathtaking views of the city skyline from scenic viewpoints like the Royal Botanic Garden and Mrs. Macquarie's Chair. With its diverse attractions and laid-back atmosphere, Sydney promises an unforgettable experience for every traveler."
     }
   ]
 }

@@ -4,8 +4,7 @@
   flex-direction: column;
   gap: 2vw;
   padding: 16px;
-  padding-bottom: 100px;
-  min-height: 100vh;
+  margin-top: 80px;
 }
 
 .ligh {

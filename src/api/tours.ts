@@ -11,6 +11,15 @@ export const getTours = async (query?: string): Promise<ITourListData[]> => {
   }
 };
 
+export const getSpecificTour = async (tourItemId: string) => {
+  try {
+    const response = await instance.get(`/tours/${tourItemId}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const addTour = async (newTourData: ITourListData) => {
   try {
     const response = await instance.post('/tours', newTourData);
@@ -37,6 +46,9 @@ export const deleteTour = async (tourItemId: number) => {
     console.error(error);
   }
 };
+
+
+
 
 
 
