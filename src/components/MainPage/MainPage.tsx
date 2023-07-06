@@ -114,7 +114,7 @@ function MainPage() {
         <>
           {isError ? (
             // <div>{errorMessage}</div>
-            <div>{error.status}</div> // with api
+            <div>{error as string}</div> // with api
           ) : (
             <TourList handleEditTour={handleEditTour} data={data.tours} />
           )}
