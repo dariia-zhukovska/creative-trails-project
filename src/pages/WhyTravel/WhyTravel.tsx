@@ -1,15 +1,14 @@
 import clsx from "clsx";
+import { useSelector } from "react-redux";
 import styles from "./WhyTravel.module.css";
+import { selectTheme } from "../../store/theme/theme-slices";
 
-interface IProps {
-  isLight: boolean;
-}
-
-function WhyTravel({ isLight }: IProps) {
+function WhyTravel() {
+  const theme = useSelector(selectTheme);
   return (
     <div
       className={clsx(styles.lightContainer, {
-        [styles.darkContainer]: !isLight,
+        [styles.darkContainer]: theme === "isLight",
       })}
     >
       <div className={styles.content}>

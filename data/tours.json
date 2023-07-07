@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "New York, USA",
-      "price": "7000",
+      "price": "6000",
       "image": "/assets/img/new_york.jpg",
       "description": "Explore the bustling streets of New York City and experience its vibrant culture.",
       "continent": "North America",
@@ -241,14 +241,13 @@
       "fullDescription": "Explore the ancient Incan ruins of Machu Picchu in the heart of the Peruvian Andes. Situated high in the Andes Mountains, Machu Picchu is a UNESCO World Heritage Site and one of the most iconic archaeological sites in the world. Embark on a journey to this ancient citadel and marvel at its remarkable architecture, intricate stone terraces, and panoramic mountain vistas. Trek along the Inca Trail, witness the sunrise over the sacred Huayna Picchu peak, and immerse yourself in the mystical energy of this sacred site. Discover the rich history and cultural significance of the Inca civilization while exploring the awe-inspiring ruins of Machu Picchu."
     },
     {
-      "id": 25,
-      "title": "Sydney, Australia",
-      "price": "2300",
-      "image": "",
-      "description": "Experience the vibrant city life and stunning harbor views of Sydney.",
+      "id": 920042,
+      "title": "qwe",
+      "price": "qe",
+      "image": "eq",
+      "description": "eq",
       "continent": "Australia",
-      "adults": true,
-      "fullDescription": "Experience the vibrant city life and stunning harbor views of Sydney. As Australia's largest city, Sydney offers a perfect blend of natural beauty and cosmopolitan attractions. Take a stroll along the iconic Sydney Harbour Bridge, visit the Sydney Opera House, and relax at the famous Bondi Beach. Explore the historic Rocks district, shop at trendy boutiques in Paddington, and indulge in delicious cuisine at world-class restaurants. Immerse yourself in the city's vibrant arts and culture scene, and enjoy breathtaking views of the city skyline from scenic viewpoints like the Royal Botanic Garden and Mrs. Macquarie's Chair. With its diverse attractions and laid-back atmosphere, Sydney promises an unforgettable experience for every traveler."
+      "adults": false
     }
   ]
 }

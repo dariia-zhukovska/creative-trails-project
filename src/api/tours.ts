@@ -1,5 +1,5 @@
 import instance from "./config";
-import { ITourListData } from "types";
+import { ITourListData } from "interfaces";
 
 export const getTours = async (query?: string): Promise<ITourListData[]> => {
   try {

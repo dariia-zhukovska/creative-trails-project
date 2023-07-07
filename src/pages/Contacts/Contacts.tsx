@@ -1,5 +1,7 @@
 import clsx from "clsx";
+import { useSelector } from "react-redux";
 import styles from "./Contacts.module.css";
+import { selectTheme } from "../../store/theme/theme-slices";
 
 import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
 import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
@@ -8,15 +10,12 @@ import darkInstagram from "/src/assets/icons/darkInstagram.svg";
 import lightGithub from "/src/assets/icons/lightGithub.svg";
 import darkGithub from "/src/assets/icons/darkGithub.svg";
 
-interface IProps {
-  isLight: boolean;
-}
-
-function Contacts({ isLight }: IProps) {
+function Contacts() {
+  const theme = useSelector(selectTheme);
   return (
     <div
       className={clsx(styles.lightContainer, {
-        [styles.darkContainer]: !isLight,
+        [styles.darkContainer]: theme === "isLight",
       })}
     >
       <div className={styles.content}>
@@ -29,7 +28,7 @@ function Contacts({ isLight }: IProps) {
               target="blank"
             >
               <img
-                src={isLight ? lightLinkedin : darkLinkedin}
+                src={theme === "isDark" ? lightLinkedin : darkLinkedin}
                 alt="linkedin"
               />
             </a>
@@ -41,7 +40,7 @@ function Contacts({ isLight }: IProps) {
               target="blank"
             >
               <img
-                src={isLight ? lightInstagram : darkInstagram}
+                src={theme === "isDark" ? lightInstagram : darkInstagram}
                 alt="instagram"
               />
             </a>
@@ -52,7 +51,10 @@ function Contacts({ isLight }: IProps) {
               role="button"
               target="blank"
             >
-              <img src={isLight ? lightGithub : darkGithub} alt="github" />
+              <img
+                src={theme === "isDark" ? lightGithub : darkGithub}
+                alt="github"
+              />
             </a>
           </div>
         </div>

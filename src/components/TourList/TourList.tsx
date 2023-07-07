@@ -1,27 +1,31 @@
-import { ITourListData } from "../../types";
-import styles from "./TourList.module.css";
-import Tour from "./Tour/Tour";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
+import styles from "./TourList.module.css";
+
+import { ITourListData } from "../../interfaces";
+import Tour from "./Tour/Tour";
+
+import { selectView } from "../../store/view/view-slices";
 
 interface IProps {
-  isLight: boolean;
-  isList: boolean;
+  handleEditTour: (id: number) => void;
   data: ITourListData[];
-  onEditTour: (tour: ITourListData) => void;
-  onSuccess: () => void;
 }
 
-function TourList({ isLight, isList, data, onEditTour, onSuccess }: IProps) {
+function TourList({ handleEditTour, data }: IProps) {
+  const view = useSelector(selectView);
+
   return (
-    <ul className={clsx(styles.gridView, { [styles.listView]: !isList })}>
-      {data.map((item: ITourListData) => (
+    <ul
+      className={clsx(styles.gridView, {
+        [styles.listView]: view === "isList",
+      })}
+    >
+      {data?.map((item: ITourListData) => (
         <Tour
           key={item.id}
           tourItemData={item}
-          isLight={isLight}
-          isList={isList}
-          onEditTour={onEditTour}
-          onSuccess={onSuccess}
+          handleEditTour={handleEditTour}
         />
       ))}
     </ul>

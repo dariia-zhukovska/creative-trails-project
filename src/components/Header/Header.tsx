@@ -1,36 +1,38 @@
 import clsx from "clsx";
-import ThemeSwitcher from "../shared/ThemeSwitcher/ThemeSwitcher";
-import styles from "./Header.module.css";
-import HeaderNav from "../HeaderNav/HeaderNav";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import styles from "./Header.module.css";
+
+import ThemeSwitcher from "../../shared/ThemeSwitcher/ThemeSwitcher";
+import HeaderNav from "../HeaderNav/HeaderNav";
+
+import { setTheme, selectTheme } from "../../store/theme/theme-slices";
 
 import lightLogo from "../../assets/icons/light_logo.svg";
 import darkLogo from "../../assets/icons/dark_logo.svg";
 
-interface IProps {
-  isLight: boolean;
-  onThemeChange: (isLight: boolean) => void;
-}
-
-function Header({ isLight, onThemeChange }: IProps) {
+function Header() {
+  const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
   const handleThemeToggle = () => {
-    onThemeChange(!isLight);
+    const newTheme = theme === "isLight" ? "isDark" : "isLight";
+    dispatch(setTheme(newTheme));
   };
 
   return (
     <header
       className={clsx(styles.lightHeaderContainer, {
-        [styles.darkHeaderContainer]: !isLight,
+        [styles.darkHeaderContainer]: theme === "isLight",
       })}
     >
       <div className={styles.logo}>
         <Link to="/">
-          <img src={isLight ? lightLogo : darkLogo} />
+          <img src={theme === "isDark" ? lightLogo : darkLogo} />
         </Link>
       </div>
       <HeaderNav />
       <div className={styles.headerThemeToggle}>
-        <ThemeSwitcher onToggleTheme={handleThemeToggle}></ThemeSwitcher>
+        <ThemeSwitcher onToggleTheme={handleThemeToggle} />
       </div>
     </header>
   );

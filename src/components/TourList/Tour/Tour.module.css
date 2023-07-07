@@ -69,7 +69,7 @@
 }
 
 .gridEditButton {
-  background-image: url('../../../assets/icons/light_edit.svg');
+  background-image: url('../../../assets/icons/dark_edit.svg');
   margin-right: 16px;
 }
 
@@ -88,6 +88,9 @@
 }
 
 
+.darkEditButton {
+  background-image: url('../../../assets/icons/light_edit.svg');
+}
 
 .tourItemImage,
 .tourItemImageList {

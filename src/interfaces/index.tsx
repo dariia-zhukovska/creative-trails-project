@@ -19,7 +19,6 @@ export interface IInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   checked?: boolean;
-  isLight: boolean;
 }
 
 interface Option {
@@ -34,6 +33,5 @@ export interface ISelectProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   options: Option[];
-  isLight: boolean;
   required?: boolean;
 }
