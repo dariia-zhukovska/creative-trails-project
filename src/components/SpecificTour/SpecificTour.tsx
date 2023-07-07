@@ -1,92 +1,95 @@
 import clsx from "clsx";
 import imageNotFound from "/public/assets/img/img_not_found.svg";
 import styles from "./SpecificTour.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { getSpecificTour } from "../../api/tours";
-import { ITourListData } from "types/index";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import TourForm from "../TourForm/TourForm";
 import ReactModal from "react-modal";
 import NotFound from "../NotFound/NotFound";
 import Loading from "../../components/shared/Loading/Loading";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../store/theme/theme-selector";
+import {
+  useDeleteTourMutation,
+  useGetAllToursQuery,
+  useGetSpecificTourQuery,
+} from "../../store/tours/api";
 
-interface IProps {
-  isLight: boolean;
-}
 
-function SpecificTour({ isLight }: IProps) {
-  const [tourItemData, setTourItemData] = useState<ITourListData | null>(null);
+function SpecificTour() {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setLoading] = useState<boolean>(false);
 
-  const { id: tourId } = useParams();
+  const theme = useSelector(selectTheme);
+  const { id } = useParams();
+  const selectedTourId = Number(id);
 
-  const requestTourData = useCallback(async () => {
-    if (tourId) {
-      setLoading(true);
-      const response = await getSpecificTour(tourId);
-      setTourItemData(response);
-      setLoading(false);
-    }
-  }, [tourId]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    requestTourData();
-  }, [requestTourData]);
+  const { isLoading } = useGetAllToursQuery("");
+  const { data: tour } = useGetSpecificTourQuery(selectedTourId);
+
+  const [deleteTour] = useDeleteTourMutation();
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
   };
 
   const handleEditTour = () => {
     setIsModalOpen(true);
   };
 
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteTour = () => {
+    deleteTour(selectedTourId);
+    navigate("/tours");
+  };
+
   return isLoading ? (
     <Loading />
-  ) : !tourItemData?.id ? (
-    <NotFound isLight={isLight} />
+  ) : !selectedTourId ? (
+    <NotFound />
   ) : (
     <div
       className={clsx(styles.tourItem, {
-        [styles.darkTourItem]: !isLight,
+        [styles.darkTourItem]: theme === "isLight",
       })}
     >
       <img
-        src={tourItemData.image || imageNotFound}
-        alt={tourItemData.title}
+        src={tour?.image || imageNotFound}
+        alt={tour?.title}
         className={styles.tourItemImage}
       />
       <div className={styles.tourDescription}>
         <div className={styles.titleLine}>
-          <h2 className={styles.tourItemTitle}>{tourItemData.title}</h2>
+          <h2 className={styles.tourItemTitle}>{tour?.title}</h2>
           <button
             className={clsx(styles.gridEditButton, styles.lightEditButton, {
-              [styles.darkEditButton]: !isLight,
+              [styles.darkEditButton]: theme === "isLight",
             })}
             onClick={handleEditTour}
           ></button>
+          <button
+            className={clsx(styles.gridDeleteButton, styles.lightDeleteButton, {
+              [styles.darkDeleteButton]: theme === "isLight",
+            })}
+            onClick={handleDeleteTour}
+          ></button>
         </div>
         <div className={styles.continentAge}>
-          <h4 className={styles.tourItemContinent}>{tourItemData.continent}</h4>
-          {tourItemData.adults && (
-            <span className={styles.tourItemAge}>18+</span>
-          )}
+          <h4 className={styles.tourItemContinent}>{tour?.continent}</h4>
+          {tour?.adults && <span className={styles.tourItemAge}>18+</span>}
         </div>
         <div className={styles.tourItemPriceLine}>
-          <p className={styles.tourItemPrice}>{`${tourItemData.price} $`}</p>
+          <p className={styles.tourItemPrice}>{`${tour?.price} $`}</p>
         </div>
 
         <div className={styles.tourItemMoreCard}>
           <p>
-            {isExpanded
-              ? tourItemData.description
-              : tourItemData.fullDescription}
+            {isExpanded ? tour?.description : tour?.fullDescription}
             <div className={styles.tourItemMore} onClick={handleToggle}>
               {isExpanded ? "More about book" : "Less about book"}
             </div>
@@ -100,11 +103,8 @@ function SpecificTour({ isLight }: IProps) {
         className={styles.modalContent}
       >
         <TourForm
-          isLight={isLight}
           closeModal={handleModalClose}
-          tourData={tourItemData}
-          editMode={true}
-          onSuccess={requestTourData}
+          selectedTourId={selectedTourId}
         />
       </ReactModal>
     </div>

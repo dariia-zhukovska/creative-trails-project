@@ -1,15 +1,14 @@
 import clsx from "clsx";
 import styles from "./About.module.css";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../store/theme/theme-selector";
 
-interface IProps {
-  isLight: boolean;
-}
-
-function About({ isLight }: IProps) {
+function About() {
+  const theme = useSelector(selectTheme);
   return (
     <div
       className={clsx(styles.lightContainer, {
-        [styles.darkContainer]: !isLight,
+        [styles.darkContainer]: theme === "isLight",
       })}
     >
       <div className={styles.content}>

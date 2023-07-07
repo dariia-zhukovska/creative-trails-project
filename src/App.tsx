@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "./components/Header/Header";
 import MainPage from "./components/MainPage/MainPage";
 import Footer from "./components/Footer/Footer";
@@ -8,33 +7,24 @@ import About from "./components/About/About";
 import Contacts from "./components/Contacts/Contacts";
 import WhyTravel from "./components/WhyTravel/WhyTravel";
 import SpecificTour from "./components/SpecificTour/SpecificTour";
+import { useSelector } from "react-redux";
+import { selectTheme } from "./store/theme/theme-selector";
 
 function App() {
-  const [isThemeLight, setIsThemeLight] = useState(true);
-  const handleThemeChange = (isLight: boolean) => {
-    setIsThemeLight(isLight);
-  };
-
+  const theme = useSelector(selectTheme);
   return (
-    <div className={isThemeLight ? "App" : "AppDark"}>
-      <Header isLight={isThemeLight} onThemeChange={handleThemeChange} />
+    <div className={theme !== "isLight" ? "App" : "AppDark"}>
+      <Header />
       <Routes>
-        <Route path="/" element={<MainPage isLight={isThemeLight} />}>
-          <Route path="/tours" element={<MainPage isLight={isThemeLight} />} />
+        <Route path="/" element={<MainPage />}>
+          <Route path="/tours" element={<MainPage />} />
         </Route>
-        <Route path="/about" element={<About isLight={isThemeLight} />} />
-        <Route
-          path="/whytravel"
-          element={<WhyTravel isLight={isThemeLight} />}
-        />
-        <Route path="/contacts" element={<Contacts isLight={isThemeLight} />} />
-        <Route
-          index
-          path="/tours/:id"
-          element={<SpecificTour isLight={isThemeLight} />}
-        />
+        <Route path="/about" element={<About />} />
+        <Route path="/whytravel" element={<WhyTravel />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route index path="/tours/:id" element={<SpecificTour />} />
       </Routes>
-      <Footer isLight={isThemeLight} />
+      <Footer />
     </div>
   );
 }
