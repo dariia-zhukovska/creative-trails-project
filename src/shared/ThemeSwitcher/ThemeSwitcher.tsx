@@ -1,8 +1,9 @@
 import styles from "./ThemeSwitcher.module.css";
 
 interface IToggleThemeProps {
-  onToggleTheme: React.MouseEventHandler<HTMLButtonElement>;
+  onToggleTheme: () => void;
 }
+
 function ThemeSwitcher({ onToggleTheme }: IToggleThemeProps) {
   return (
     <button className={styles.themeButton} onClick={onToggleTheme}>

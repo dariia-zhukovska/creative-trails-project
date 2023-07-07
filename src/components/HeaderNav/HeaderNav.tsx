@@ -1,10 +1,6 @@
 // import clsx from "clsx";
-import styles from "./HeaderNav.module.css";
 import { Link } from "react-router-dom";
-
-// interface IProps {
-
-// }
+import styles from "./HeaderNav.module.css";
 
 function HeaderNav() {
   return (
