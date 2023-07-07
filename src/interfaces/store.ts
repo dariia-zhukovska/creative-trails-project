@@ -9,7 +9,6 @@ export interface ITourState {
   tours: ITourListData[];
 }
 
-
 export interface IThemeState {
   theme: string;
 }

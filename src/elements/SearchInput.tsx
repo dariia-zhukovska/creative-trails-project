@@ -5,10 +5,7 @@ interface IProps {
   onChange: (value: string) => void;
 }
 
-
-
 function SearchInput({ onChange }: IProps) {
-
   const handleSearchChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       onChange(event.target.value);

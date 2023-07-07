@@ -1,13 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import styles from "./TourForm.module.css";
 import clsx from "clsx";
-import CommonInput from "../shared/elements/CommonInputs";
-import CommonSelect from "../shared/elements/CommonSelect";
-import { selectToursById } from "../../store/tours/api";
-import { selectTheme } from "../../store/theme/theme-selector";
-
-import { useAddTourMutation, useEditTourMutation } from "../../store/tours/api";
 import { useSelector } from "react-redux";
+import styles from "./TourForm.module.css";
+
+import CommonInput from "../../elements/CommonInputs";
+import CommonSelect from "../../elements/CommonSelect";
+
+import { selectTheme } from "../../store/theme/theme-slices";
+import {
+  useAddTourMutation,
+  useEditTourMutation,
+  selectToursById,
+} from "../../store/tours/api";
 
 interface IProps {
   closeModal: () => void;

@@ -1,9 +1,9 @@
+import { useSelector } from "react-redux";
 import styles from "./NotFound.module.css";
+import { selectTheme } from "../../store/theme/theme-slices";
 
 import notFoundLight from "/public/assets/img/not_found_light.png";
 import notFoundDark from "/public/assets/img/not_found_dark.png";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../store/theme/theme-selector";
 
 function NotFound() {
   const theme = useSelector(selectTheme);

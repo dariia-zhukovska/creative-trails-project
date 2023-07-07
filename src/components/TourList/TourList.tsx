@@ -1,9 +1,11 @@
-import { ITourListData } from "../../interfaces";
-import styles from "./TourList.module.css";
-import Tour from "./Tour/Tour";
-import clsx from "clsx";
 import { useSelector } from "react-redux";
-import { selectView } from "../../store/view/view-selector";
+import clsx from "clsx";
+import styles from "./TourList.module.css";
+
+import { ITourListData } from "../../interfaces";
+import Tour from "./Tour/Tour";
+
+import { selectView } from "../../store/view/view-slices";
 
 interface IProps {
   handleEditTour: (id: number) => void;

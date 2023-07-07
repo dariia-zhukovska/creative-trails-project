@@ -1,8 +1,9 @@
-import styles from "./CommonInputs.module.css";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-import { selectTheme } from "../../../store/theme/theme-selector";
+import styles from "./CommonInputs.module.css";
+
 import { IInputProps } from "interfaces";
+import { selectTheme } from "../store/theme/theme-slices";
 
 function CommonInput({
   label,

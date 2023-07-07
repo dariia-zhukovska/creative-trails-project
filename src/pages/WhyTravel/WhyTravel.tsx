@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import styles from "./WhyTravel.module.css";
 import { useSelector } from "react-redux";
-import { selectTheme } from "../../store/theme/theme-selector";
+import styles from "./WhyTravel.module.css";
+import { selectTheme } from "../../store/theme/theme-slices";
 
 function WhyTravel() {
   const theme = useSelector(selectTheme);

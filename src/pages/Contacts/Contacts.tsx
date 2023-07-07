@@ -1,5 +1,7 @@
 import clsx from "clsx";
+import { useSelector } from "react-redux";
 import styles from "./Contacts.module.css";
+import { selectTheme } from "../../store/theme/theme-slices";
 
 import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
 import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
@@ -7,8 +9,6 @@ import lightInstagram from "/src/assets/icons/lightInstagram.svg";
 import darkInstagram from "/src/assets/icons/darkInstagram.svg";
 import lightGithub from "/src/assets/icons/lightGithub.svg";
 import darkGithub from "/src/assets/icons/darkGithub.svg";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../store/theme/theme-selector";
 
 function Contacts() {
   const theme = useSelector(selectTheme);

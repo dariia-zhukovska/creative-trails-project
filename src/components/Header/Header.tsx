@@ -1,15 +1,15 @@
 import clsx from "clsx";
-import ThemeSwitcher from "../shared/ThemeSwitcher/ThemeSwitcher";
-import styles from "./Header.module.css";
-import HeaderNav from "../HeaderNav/HeaderNav";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import styles from "./Header.module.css";
+
+import ThemeSwitcher from "../../shared/ThemeSwitcher/ThemeSwitcher";
+import HeaderNav from "../HeaderNav/HeaderNav";
+
+import { setTheme, selectTheme } from "../../store/theme/theme-slices";
 
 import lightLogo from "../../assets/icons/light_logo.svg";
 import darkLogo from "../../assets/icons/dark_logo.svg";
-import { useDispatch, useSelector } from "react-redux";
-
-import { selectTheme } from "../../store/theme/theme-selector";
-import { setTheme } from "../../store/theme/theme-slices";
 
 function Header() {
   const dispatch = useDispatch();

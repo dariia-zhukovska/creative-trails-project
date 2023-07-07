@@ -1,14 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import "./App.css";
+
 import Header from "./components/Header/Header";
 import MainPage from "./components/MainPage/MainPage";
 import Footer from "./components/Footer/Footer";
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import About from "./components/About/About";
-import Contacts from "./components/Contacts/Contacts";
-import WhyTravel from "./components/WhyTravel/WhyTravel";
-import SpecificTour from "./components/SpecificTour/SpecificTour";
-import { useSelector } from "react-redux";
-import { selectTheme } from "./store/theme/theme-selector";
+import About from "./pages/About/About";
+import Contacts from "./pages/Contacts/Contacts";
+import WhyTravel from "./pages/WhyTravel/WhyTravel";
+import SpecificTour from "./pages/SpecificTour/SpecificTour";
+
+import { selectTheme } from "./store/theme/theme-slices";
 
 function App() {
   const theme = useSelector(selectTheme);

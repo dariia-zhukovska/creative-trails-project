@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import styles from "./About.module.css";
 import { useSelector } from "react-redux";
-import { selectTheme } from "../../store/theme/theme-selector";
+import styles from "./About.module.css";
+import { selectTheme } from "../../store/theme/theme-slices";
 
 function About() {
   const theme = useSelector(selectTheme);

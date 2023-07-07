@@ -1,13 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./ListViewSwitcher.module.css";
+
+import { selectTheme } from "../../store/theme/theme-slices";
+import { selectView, setView } from "../../store/view/view-slices";
 
 import lightListIcon from "/src/assets/icons/lightListIcon.svg";
 import lightGridIcon from "/src/assets/icons/lightGridIcon.svg";
 import darkListIcon from "/src/assets/icons/darkListIcon.svg";
 import darkGridIcon from "/src/assets/icons/darkGridIcon.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTheme } from "../../../store/theme/theme-selector";
-import { selectView } from "../../../store/view/view-selector";
-import { setView } from "../../../store/view/view-slices";
 
 function ListViewSwitcher() {
   const dispatch = useDispatch();

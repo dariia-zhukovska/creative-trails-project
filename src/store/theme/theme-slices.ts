@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IThemeState } from "interfaces/storeStates";
+import { IThemeState } from "interfaces/store";
 
 const initialState: IThemeState = {
   theme: 'isDark'
@@ -16,3 +16,5 @@ export const themeSlice = createSlice({
 })
 
 export const { setTheme } = themeSlice.actions;
+
+export const selectTheme = (state: any) => state.theme.theme;

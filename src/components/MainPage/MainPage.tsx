@@ -1,16 +1,17 @@
+import clsx from "clsx";
 import { useState } from "react";
 import ReactModal from "react-modal";
-import styles from "./MainPage.module.css";
-import clsx from "clsx";
-import TourList from "../TourList/TourList";
-import ListViewSwitcher from "../shared/ListViewSwitcher/ListViewSwitcher";
-import TourForm from "../TourForm/TourForm";
 import { useSelector } from "react-redux";
+import styles from "./MainPage.module.css";
 
-import { selectTheme } from "../../store/theme/theme-selector";
-import SearchInput from "../shared/elements/SearchInput";
+import TourList from "../TourList/TourList";
+import ListViewSwitcher from "../../shared/ListViewSwitcher/ListViewSwitcher";
+import TourForm from "../TourForm/TourForm";
+import Loading from "../../shared/Loading/Loading";
+import SearchInput from "../../elements/SearchInput";
+
+import { selectTheme } from "../../store/theme/theme-slices";
 import { useGetAllToursQuery } from "../../store/tours/api";
-import Loading from "../../components/shared/Loading/Loading";
 
 function MainPage() {
   const [searchQuery, setSearchQuery] = useState("");

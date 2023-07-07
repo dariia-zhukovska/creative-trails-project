@@ -1,14 +1,15 @@
 import clsx from "clsx";
 import styles from "./Footer.module.css";
 
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../store/theme/theme-slices";
+
 import lightLinkedin from "/src/assets/icons/lightLinkedin.svg";
 import darkLinkedin from "/src/assets/icons/darkLinkedin.svg";
 import lightInstagram from "/src/assets/icons/lightInstagram.svg";
 import darkInstagram from "/src/assets/icons/darkInstagram.svg";
 import lightGithub from "/src/assets/icons/lightGithub.svg";
 import darkGithub from "/src/assets/icons/darkGithub.svg";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../store/theme/theme-selector";
 
 function Footer() {
   const theme = useSelector(selectTheme);

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IViewState } from "interfaces/storeStates";
+import { IViewState } from "interfaces/store";
 
 const initialState: IViewState = {
   view: 'isGrid'
@@ -16,3 +16,5 @@ export const viewSlice = createSlice({
 })
 
 export const { setView } = viewSlice.actions;
+
+export const selectView = (state: any) => state.view.view;

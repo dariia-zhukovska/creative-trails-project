@@ -1,20 +1,21 @@
 import clsx from "clsx";
-import imageNotFound from "/public/assets/img/img_not_found.svg";
-import styles from "./SpecificTour.module.css";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import TourForm from "../TourForm/TourForm";
 import ReactModal from "react-modal";
-import NotFound from "../NotFound/NotFound";
-import Loading from "../../components/shared/Loading/Loading";
 import { useSelector } from "react-redux";
-import { selectTheme } from "../../store/theme/theme-selector";
+import styles from "./SpecificTour.module.css";
+
+import TourForm from "../../components/TourForm/TourForm";
+import NotFound from "../NotFound/NotFound";
+import Loading from "../../shared/Loading/Loading";
+import { selectTheme } from "../../store/theme/theme-slices";
 import {
   useDeleteTourMutation,
   useGetAllToursQuery,
   useGetSpecificTourQuery,
 } from "../../store/tours/api";
 
+import imageNotFound from "/public/assets/img/img_not_found.svg";
 
 function SpecificTour() {
   const [isExpanded, setIsExpanded] = useState(true);

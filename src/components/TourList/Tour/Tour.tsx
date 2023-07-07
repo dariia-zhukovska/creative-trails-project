@@ -1,12 +1,14 @@
 import clsx from "clsx";
-import imageNotFound from "/public/assets/img/img_not_found.svg";
-import styles from "./Tour.module.css";
-import { ITourListData } from "interfaces";
-import { useSelector } from "react-redux";
-import { selectTheme } from "../../../store/theme/theme-selector";
-import { selectView } from "../../../store/view/view-selector";
-import { useDeleteTourMutation } from "../../../store/tours/api";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import styles from "./Tour.module.css";
+
+import { ITourListData } from "interfaces";
+import { selectTheme } from "../../../store/theme/theme-slices";
+import { selectView } from "../../../store/view/view-slices";
+import { useDeleteTourMutation } from "../../../store/tours/api";
+
+import imageNotFound from "/public/assets/img/img_not_found.svg";
 
 interface IProps {
   tourItemData: ITourListData;
@@ -183,4 +185,3 @@ function Tour({ tourItemData, handleEditTour }: IProps) {
 }
 
 export default Tour;
-
